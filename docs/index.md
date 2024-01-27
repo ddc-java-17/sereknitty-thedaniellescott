@@ -9,47 +9,49 @@ order: 0
 
 ## Summary
 
-Replace this paragraph with one or more paragraphs summarizing the purpose and operation of the Android app you propose to develop in this project.
+Sereknitty is an app that makes knitting patterns easier to keep handy on their phone or tablet. It will also allow knitters to input patterns and take pictures of their swatches or projects for their own reference in the future. Sereknitty lead knitters to tutorials on new stitches, and allow knitters to save exactly what row and stitch they ended on when they have to stop knitting.
 
 ## Intended users & user stories
 {: menu="Users" }
 
-Write a bullet list here, including at least 2 different types of intended users. Make it reasonably specific; simply saying "Anyone who likes games" (for example) is not sufficiently specific.
+* Moderate to advanced knitters who like to work in complicated patterns like lace.
+> As an advanced knitter, I want easy progress tracking on my lace shawl pattern so that I can pick up my knitting right where I left off.
 
-For each type of intended user, include at least 1 _user story_. A user story is usually just 1 simple sentence (no more than 2 sentences), in the voice of the intended user, stating a specific task that the user performs using the app, and the benefit that will be obtained. The simplest user stories take the form 
-
-> As a <type of intended user (_who_)> I want to <use of specific feature or functionality (_what_)> so that <benefit (_why_).
-
-Please avoid writing too much for the user story. In particular, if the way the user story is written makes it difficult to see the _who_, _what_, and _why_, then you probably need to re-write it more directly. (On the other hand, a user story should not simply be a re-statement of the intended user description.)
-
-Here is one (silly) example of an intended user, along with a user story. Please note not only the conceptual structure, but the Markdown syntax used.
-
-* People who like to use randomness in their decision-making.
-
-    > As someone who enjoys randomness in my life, I use this app to flip a virtual coin or roll one or more virtual dice, so that I can base my decisions on randomness without having to carry coins or dice in my pockets.
+* Knitters who are still learning the ropes.
+>As a new knitter, I want ease of access to tutorials for new stitches in my pattern so that I can spend more time knitting instead of searching for stitch tutorials. 
 
 ## Functionality
 
-List (using a bullet list---or ordered list, if order is relevant) the key functional aspects that will be provided by the app---i.e., tell us what the user will be able to do using the app. This should not simply be a re-statement of the [summary](#summary), but should instead provide a more specific articulation of the functionality and user experience. 
+* Knitters will be able to access knitting patterns that they put into Sereknitty and see pictures they have taken of their work like a knitting journal or catalogue. Inputs for color work and lace patterns.
+* Interactable and zoomable knitting pattern that allows the knitter to tap and hold for stitch information and tutorial.
+* A counter that one simply has to tap to progress. If the knitter just needs to see the pattern, they can hide or turn off the counting feature.
+* Highlight current row and/or stitch in the pattern (also a togglable feature).
+* Save current row and stitch location for later when you have to stop knitting.
+
 
 ## Persistent data
 {: menu="Persistence" }
-
-Using a bullet list, list what content will be stored on the Android device. This should include any information that users of your app would expect to be maintained (i.e., without connection to a server) across multiple sessions of use.
-
-For example, this starter app already includes the necessary data model elements and data-access code to store & retrieve the following 
 
 * User
     * Display name
     * OAuth2.0 identifier
     * Timestamp of first login to the app
+* Current (or all preferably) patterns
+  * Current pattern progress (stitch and row coordinates)
+* Pictures of patterns
     
 ## Device/external services
 {: menu="Services" }
 
-If the client component will need to access special services of the device (e.g., sensors, contacts, messaging), list them here using a bullet list. Also, if the client component will need to access already-existing external services (e.g., real-time weather data, Open Movie Database, Open Trivia Database), those should also be listed here; any such references to external services should include links to the main page or API description page for the service.
+* Camera
+* Gallery
+* Internet
 
 ## Stretch goals and possible enhancements 
 {: menu="Stretch goals" }
 
-If you can identify functional elements of the software that you think might not be achievable in the scope of the project, but which would nonetheless add significant value if you were able to include them, list them here. For now, we recommend listing them in order of complexity/amount of work, from the least to the most.
+* This app could very easily extend to crochet, but since I do not have the expertise in crochet, I am leaving it out. It is possible that knitting machine and knitting loom users could find use for an app like this as well, but I know less about these than I know about crochet.
+* I could film my own tutorial videos to bypass potential licensing issues, however, I do not have that kind of time, or the aesthetically pretty hands for the job.
+* I would like the software to be able to switch between charts and written instructions with ease. Some patterns (EG: circular shawls) are easier to understand with a chart and written instructions, and much of this is to the taste of the individual knitter.
+* I like the idea of being able to share patterns with friends, but I am a solo knitter and I have no idea if other knitters would be interested in this feature.
+* I would like to be able to add the ability to upload an image or PDF, have the app look at it, and automatically translate the image to the interactable pattern. This would save users a lot of time and frustration with manual input, but with my skill and resources, I am not sure it is possible.
