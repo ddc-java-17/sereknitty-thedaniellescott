@@ -1,12 +1,12 @@
-# Android project proposal starter
+# Sereknitty
 
 ## Summary
 
-This is a project template for all phases&mdash;from proposal to final delivery&mdash;of the personal Android project in the [Deep Dive Coding](https://deepdivecoding.com/) [Java + Android bootcamp](https://deepdivecoding.com/java-android/).
+This is an app for knitters to make patterns easier to read, hang on to, and easier to keep handy while knitting.
 
 ## Credits, copyrights, and license information
 
-Written by Nicholas Bennett and Todd Nordquist.
+Written by Danielle Scott.
 
 &copy; 2024 CNM Ingenuity, Inc.
 
