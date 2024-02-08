@@ -29,7 +29,6 @@ dependencyResolutionManagement {
     }
 }
 
-// TODO Change to relevant artifact ID.
-rootProject.name = "android-app-starter"
+rootProject.name = "sereknitty"
 
 include(":app")
