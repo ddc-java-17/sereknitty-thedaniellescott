@@ -1,9 +1,11 @@
 package edu.cnm.deepdive.sereknitty.model;
 
+import android.location.Location;
+
 public class Project {
 
   private final String id;
-
+  private final Location location;
   private Project project = new Project();
   // Builds a cool new knitting project instance.
 
