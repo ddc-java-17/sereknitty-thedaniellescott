@@ -8,8 +8,7 @@ public class Row {
   private final List<Stitches> stitches;
 
   public Row() {
-    stitches = new List<>();
-    Row row = new Row();
+    // Row = List <Stitches>, but in a way that the compiler understands.
   }
 
 }
