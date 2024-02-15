@@ -10,9 +10,8 @@ public enum Stitches {
   YARN_OVER("YO"), // YO
   MAKE_1_RIGHT("M1R"), // M1R
   MAKE_1_LEFT("M1L"),
-  KNIT_3_TOGETHER("K3tog"),
-  ; // M1L
+  KNIT_3_TOGETHER("K3tog"); // M1L
 
-// TODO: 2/12/2024 Figure out how to notate cabling.
+// TODO: 2/12/2024 Figure out how to notate cabling, brioche knitting,
 
 }
