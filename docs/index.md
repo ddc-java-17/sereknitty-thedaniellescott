@@ -44,7 +44,11 @@ Sereknitty is an app that makes knitting patterns easier to keep handy on their 
 {: menu="Services" }
 
 * Camera
-* Gallery
+  * https://developer.android.com/media/camera/camera-deprecated/camera-api
+  * Sereknitty will allow users to take pictures of their projects and save the picture with their pattern or project.
+  * Sereknitty will not require full-time access to the camera to run the app.
+* Storage Permissions
+  * 
 * Internet
 
 ## Stretch goals and possible enhancements 

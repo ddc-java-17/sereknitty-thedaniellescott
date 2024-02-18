@@ -6,7 +6,7 @@ import java.util.List;
 public class Pattern extends Project {
 
   private final String name;
-  private final Row row;
+  private final List<Row> rows;
 
 // file type?
 
