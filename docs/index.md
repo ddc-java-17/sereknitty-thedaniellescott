@@ -9,7 +9,7 @@ order: 0
 
 ## Summary
 
-Sereknitty is an app that makes knitting patterns easier to keep handy on their phone or tablet. It will also allow knitters to input patterns and take pictures of their swatches or projects for their own reference in the future. Sereknitty lead knitters to tutorials on new stitches, and allow knitters to save exactly what row and stitch they ended on when they have to stop knitting.
+Sereknitty is an app that makes knitting patterns easier to keep handy on their phone or tablet. It will also allow knitters to input patterns and take pictures of their swatches or projects for their own reference in the future. Sereknitty leads knitters to tutorials on new stitches, and allows knitters to save exactly what row and stitch they end on when they have to stop knitting.
 
 ## Intended users & user stories
 {: menu="Users" }
@@ -36,7 +36,7 @@ Sereknitty is an app that makes knitting patterns easier to keep handy on their 
     * Display name
     * OAuth2.0 identifier
     * Timestamp of first login to the app
-* Current (or all preferably) patterns
+* Current patterns
   * Current pattern progress (stitch and row coordinates)
 * Pictures of patterns
     
