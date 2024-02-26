@@ -10,6 +10,7 @@ public class Row {
   public Row() {
     stitch = new List<Stitch>();
     // Row = List <Stitches>, but in a way that the compiler understands.
+    //Maybe Stream.toArray of user input? (plus a few other steps obviously!)
   }
 
   public addStitch(Stitch stitch) {
