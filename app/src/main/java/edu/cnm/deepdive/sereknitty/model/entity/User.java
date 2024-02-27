@@ -35,6 +35,7 @@ import java.time.Instant;
         @Index(value = "display_name", unique = true)
     }
 )
+
 public class User {
 
   @PrimaryKey(autoGenerate = true)
