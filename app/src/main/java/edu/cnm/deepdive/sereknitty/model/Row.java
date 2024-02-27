@@ -8,7 +8,9 @@ public class Row {
   private final List<Stitch> stitch;
 
   public Row() {
-    stitch = new List<Stitch>();
+    Row row = new Row();
+    row = new List<Stitch>();
+
     // Row = List <Stitches>, but in a way that the compiler understands.
     //Maybe Stream.toArray of user input? (plus a few other steps obviously!)
   }

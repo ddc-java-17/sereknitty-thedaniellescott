@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pattern extends Project {
-
+/*
   private final String name;
   private final List<Row> rows;
 
@@ -12,7 +12,7 @@ public class Pattern extends Project {
 
 
   Pattern() {
-    Pattern pattern = new pattern;
+    Pattern pattern = new pattern();
     pattern = new List<Row>();
 
     // Pattern is a list of rows.
@@ -20,6 +20,6 @@ public class Pattern extends Project {
   // TODO: 2/12/2024  Figure out how to display a picture the user submits or takes.
 
 
-
+*/
 
 }
