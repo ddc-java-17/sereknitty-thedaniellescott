@@ -40,8 +40,10 @@ import java.time.Instant;
 @TypeConverters({Converters.class})
 public abstract class SereknittyDatabase extends RoomDatabase {
 
-  /**  Name of SQLite database file. */
-  public static final String NAME = "starter"; // TODO Change to more app-specific value.
+  /**
+   * Name of SQLite database file.
+   */
+  public static final String NAME = "sereknitty-database";
 
   SereknittyDatabase() {
     // Package-private constructor to avoid automatic HTML generation for Javadocs.
@@ -53,8 +55,8 @@ public abstract class SereknittyDatabase extends RoomDatabase {
    */
   public abstract UserDao getUserDao();
 
-  public abstract PatternDao getPatternDao();
   // TODO Declare abstract accessors (aka getters) for other DAOs used in this project.
+  public abstract PatternDao getPatternDao();
 
   /**
    * Defines converters for otherwise unsupported types (initially, just {@link Instant}) to one of
