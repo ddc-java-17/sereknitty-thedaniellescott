@@ -7,6 +7,11 @@ public class Row {
 
   private final List<Stitch> stitch;
 
+  public Row(List<Stitch> stitch) {
+    this.stitch = stitch;
+  }
+
+  /*
   public Row() {
     Row row = new Row();
     row = new List<Stitch>();
@@ -22,5 +27,5 @@ public class Row {
   public List<Stitch> getStitch() {
     return stitch;
   }
-
+*/
 }
