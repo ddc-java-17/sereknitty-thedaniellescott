@@ -22,6 +22,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
+import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
 import edu.cnm.deepdive.sereknitty.model.dao.UserDao;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.entity.User;
@@ -52,6 +53,7 @@ public abstract class SereknittyDatabase extends RoomDatabase {
    */
   public abstract UserDao getUserDao();
 
+  public abstract PatternDao getPatternDao();
   // TODO Declare abstract accessors (aka getters) for other DAOs used in this project.
 
   /**

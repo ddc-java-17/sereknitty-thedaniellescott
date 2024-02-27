@@ -7,6 +7,7 @@ import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.qualifiers.ApplicationContext;
 import dagger.hilt.components.SingletonComponent;
+import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
 import edu.cnm.deepdive.sereknitty.model.dao.UserDao;
 import edu.cnm.deepdive.sereknitty.service.SereknittyDatabase;
 import javax.inject.Singleton;
@@ -35,6 +36,11 @@ public final class DatabaseModule {
   @Provides
   UserDao provideUserDao(SereknittyDatabase database) {
     return database.getUserDao();
+  }
+
+  @Provides
+  PatternDao providePatternDao(SereknittyDatabase database) {
+    return database.getPatternDao();
   }
 
   // TODO Add additional methods so satisfy dependencies on other DAO interface implementations.
