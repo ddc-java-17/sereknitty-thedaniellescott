@@ -4,6 +4,9 @@ description: "Entity-relationship diagram and DDL."
 menu: Data Model
 order: 20
 ddl: sql/ddl.sql
+uml:
+  image: img/uml.svg
+  pdf: pdf/uml.pdf
 erd:
   image: img/erd.svg
   pdf: pdf/erd.pdf
