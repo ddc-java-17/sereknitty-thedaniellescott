@@ -36,8 +36,16 @@ public class Pattern {
   @Column(nullable = false)
   @UpdateTimestamp
   @Temporal(TemporalType.TIMESTAMP)
+  @ColumnInfo(name = "modified", index = true)
   @JsonProperty(access = Access.READ_ONLY)
   private Instant modified;
+
+  @NonNull
+  @JsonProperty
+  private int ROW_MAX;
+
+
+  private int STITCH_MAX;
 
   @ColumnInfo(name = "user_id", index = true)
   private long userId;

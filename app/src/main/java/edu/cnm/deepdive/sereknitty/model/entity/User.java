@@ -61,13 +61,12 @@ public class User {
   private String displayName = "";
 
   @NonNull
-  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
+  @OneToOne(mappedBy = "user", fetch = FetchType.LAZY,
       cascade = CascadeType.ALL, orphanRemoval = true)
-  @OrderBy("created DESC")
   @JsonIgnore
-  private final List<Pattern> patterns = new LinkedList<>();
+  private final PatternManager patternManager;
 
-  // TODO Define additional fields as appropriate.
+  // TODO: 3/3/2024 Finish PatternManager field
 
   /**
    * Returns the auto-generated unique identifier of this instance.
@@ -145,10 +144,6 @@ public class User {
     this.displayName = displayName;
   }
 
-  @NonNull
-  public List<Pattern> getPatterns() {
-    return patterns;
-  }
 
   // TODO Define additional getters and setters. These must be defined for any additional fields
   //  mapped to database columns.
