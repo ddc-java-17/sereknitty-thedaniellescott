@@ -8,6 +8,8 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.time.Instant;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity(
     tableName = "pattern",
@@ -22,10 +24,8 @@ public class Pattern {
   private static final int STITCH_MAX = 100;
 
   @NonNull
-  @Id
-  @GeneratedValue
-  @Column(name = "pattern_id", nullable = false, updatable = false)
-  @JsonIgnore
+  @PrimaryKey(autoGenerate = true)
+  @ColumnInfo(name = "pattern_id")
   private Long id;
 
   @NonNull
@@ -55,11 +55,7 @@ public class Pattern {
   @Max(STITCH_MAX)
   private int stitchLength;
 
-  @NonNull
-  @ManyToOne(optional = false, fetch = FetchType.EAGER)
-  @JoinColumn(name = "user_id", nullable = false, updatable = false)
-  @JsonProperty(access = Access.READ_ONLY)
-  private User user;
+
 
 
   /* todo: add this bit to a project entity class.
@@ -77,23 +73,12 @@ public class Pattern {
   private boolean isFlat;
   */
 
-// TODO: 2/26/2024 Add date_added
-
-
   public long getId() {
     return id;
   }
 
   public void setId(long id) {
     this.id = id;
-  }
-
-  public long getUserId() {
-    return userId;
-  }
-
-  public void setUserId(long userId) {
-    this.userId = userId;
   }
 
   @NonNull
@@ -113,4 +98,21 @@ public class Pattern {
   public void setModified(@NonNull Instant modified) {
     this.modified = modified;
   }
+
+  public int getRowLength() {
+    return rowLength;
+  }
+
+  public void setRowLength(int rowLength) {
+    this.rowLength = rowLength;
+  }
+
+  public int getStitchLength() {
+    return stitchLength;
+  }
+
+  public void setStitchLength(int stitchLength) {
+    this.stitchLength = stitchLength;
+  }
+
 }

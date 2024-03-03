@@ -44,9 +44,7 @@ public class User {
   @ColumnInfo(name = "user_id")
   private long id;
 
-  @NonNull
-  @Column(name = "external_key", nullable = false, updatable = false, unique = true, columnDefinition = "UUID")
-  @JsonProperty(access = Access.READ_ONLY)
+  @ColumnInfo(name = "user_id", index = true)
   private UUID key;
 
   @NonNull
@@ -61,10 +59,7 @@ public class User {
   private String displayName = "";
 
   @NonNull
-  @OneToOne(mappedBy = "user", fetch = FetchType.LAZY,
-      cascade = CascadeType.ALL, orphanRemoval = true)
-  @JsonIgnore
-  private final PatternManager patternManager;
+  private final List<PatternManager> patternManager = new LinkedList<>();
 
   // TODO: 3/3/2024 Finish PatternManager field
 
@@ -144,6 +139,10 @@ public class User {
     this.displayName = displayName;
   }
 
+  @NonNull
+  public List<PatternManager> getPatternManager() {
+    return patternManager;
+  }
 
   // TODO Define additional getters and setters. These must be defined for any additional fields
   //  mapped to database columns.
