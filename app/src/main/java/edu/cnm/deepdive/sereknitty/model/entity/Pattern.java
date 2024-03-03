@@ -29,33 +29,12 @@ public class Pattern {
   private Long id;
 
   @NonNull
-  @Column(nullable = false, updatable = false)
-  @CreationTimestamp
-  @Temporal(TemporalType.TIMESTAMP)
-  @JsonProperty(access = Access.READ_ONLY)
+  @ColumnInfo(name = "created")
   private Instant created;
 
   @NonNull
-  @Column(nullable = false)
-  @UpdateTimestamp
-  @Temporal(TemporalType.TIMESTAMP)
-  @ColumnInfo(name = "modified", index = true)
-  @JsonProperty(access = Access.READ_ONLY)
+@ColumnInfo(name = "modified")
   private Instant modified;
-
-  @NonNull
-  @Column(nullable = false, updateable = false)
-  @Min(1)
-  @Max(ROW_MAX)
-  private int rowLength;
-
-  @NonNull
-  @Column(nullable = false, updateable = false)
-  @Min(1)
-  @Max(STITCH_MAX)
-  private int stitchLength;
-
-
 
 
   /* todo: add this bit to a project entity class.
@@ -97,22 +76,6 @@ public class Pattern {
 
   public void setModified(@NonNull Instant modified) {
     this.modified = modified;
-  }
-
-  public int getRowLength() {
-    return rowLength;
-  }
-
-  public void setRowLength(int rowLength) {
-    this.rowLength = rowLength;
-  }
-
-  public int getStitchLength() {
-    return stitchLength;
-  }
-
-  public void setStitchLength(int stitchLength) {
-    this.stitchLength = stitchLength;
   }
 
 }
