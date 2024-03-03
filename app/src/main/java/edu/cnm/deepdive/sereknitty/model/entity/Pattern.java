@@ -18,6 +18,9 @@ import java.util.Date;
 )
 public class Pattern {
 
+  private static final int ROW_MAX = 100;
+  private static final int STITCH_MAX = 100;
+
   @NonNull
   @Id
   @GeneratedValue
@@ -41,14 +44,22 @@ public class Pattern {
   private Instant modified;
 
   @NonNull
-  @JsonProperty
-  private int ROW_MAX;
+  @Column(nullable = false, updateable = false)
+  @Min(1)
+  @Max(ROW_MAX)
+  private int rowLength;
 
+  @NonNull
+  @Column(nullable = false, updateable = false)
+  @Min(1)
+  @Max(STITCH_MAX)
+  private int stitchLength;
 
-  private int STITCH_MAX;
-
-  @ColumnInfo(name = "user_id", index = true)
-  private long userId;
+  @NonNull
+  @ManyToOne(optional = false, fetch = FetchType.EAGER)
+  @JoinColumn(name = "user_id", nullable = false, updatable = false)
+  @JsonProperty(access = Access.READ_ONLY)
+  private User user;
 
 
   /* todo: add this bit to a project entity class.
