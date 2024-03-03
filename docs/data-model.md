@@ -21,4 +21,4 @@ erd:
 
 * [`edu.cnm.deepdive.sereknitty.model.entity.Pattern`](app/src/main/java/edu/cnm/deepdive/sereknitty/model/entity/Pattern.java)
 * [`edu.cnm.deepdive.sereknitty.model.entity.User`](app/src/main/java/edu/cnm/deepdive/sereknitty/model/entity/User.java)
-* [`edu.cnm.deepdive.sereknitty.model.entity.PatternManager`]()
+* [`edu.cnm.deepdive.sereknitty.model.entity.PatternManager`](app/src/main/java/edu/cnm/deepdive/sereknitty/model/entity/PatternManager.java)
