@@ -52,63 +52,6 @@ public interface UserDao {
   Single<Long> insert(User user);
 
   /**
-   * Constructs and returns a {@link Single} that, when executed (subscribed to), inserts
-   * {@code users} into the database and invokes the subscribing
-   * {@link io.reactivex.rxjava3.functions.Consumer} with a corresponding list of auto-generated
-   * primary key values of the inserted records.
-   *
-   * @param users {@link User} instances to be inserted.
-   * @return {@link Single} that will (when subscribed to) insert {@code users} into the database.
-   */
-  @Insert
-  Single<List<Long>> insert(User... users);
-
-  /**
-   * Constructs and returns a {@link Single} that, when executed (subscribed to), inserts
-   * {@code users} into the database and invokes the subscribing
-   * {@link io.reactivex.rxjava3.functions.Consumer} with a corresponding list of auto-generated
-   * primary key values of the inserted records.
-   *
-   * @param users {@link User} instances to be inserted.
-   * @return {@link Single} that will (when subscribed to) insert {@code users} into the database.
-   */
-  @Insert
-  Single<List<Long>> insert(Collection<User> users);
-
-  /**
-   * Constructs and returns a {@link Single} that, when executed (subscribed to), updates
-   * {@code user} in the database and invokes the subscribing
-   * {@link io.reactivex.rxjava3.functions.Consumer} with the number of records modified.
-   *
-   * @param user {@link User} instance to be updated.
-   * @return {@link Single} that will (when subscribed to) update {@code user} in the database.
-   */
-  @Update
-  Single<Integer> update(User user);
-
-  /**
-   * Constructs and returns a {@link Single} that, when executed (subscribed to), updates
-   * {@code users} in the database and invokes the subscribing
-   * {@link io.reactivex.rxjava3.functions.Consumer} with the number of records modified.
-   *
-   * @param users {@link User} instances to be updated.
-   * @return {@link Single} that will (when subscribed to) update {@code users} in the database.
-   */
-  @Update
-  Single<Integer> update(User... users);
-
-  /**
-   * Constructs and returns a {@link Single} that, when executed (subscribed to), updates
-   * {@code users} in the database and invokes the subscribing
-   * {@link io.reactivex.rxjava3.functions.Consumer} with the number of records modified.
-   *
-   * @param users {@link User} instances to be updated.
-   * @return {@link Single} that will (when subscribed to) update {@code users} in the database.
-   */
-  @Update
-  Single<Integer> update(Collection<User> users);
-
-  /**
    * Constructs and returns a {@link Single} that, when executed (subscribed to), deletes
    * {@code user} from the database and invokes the subscribing
    * {@link io.reactivex.rxjava3.functions.Consumer} with the number of records modified.
@@ -118,28 +61,6 @@ public interface UserDao {
    */
   @Delete
   Single<Integer> delete(User user);
-
-  /**
-   * Constructs and returns a {@link Single} that, when executed (subscribed to), deletes
-   * {@code users} from the database and invokes the subscribing
-   * {@link io.reactivex.rxjava3.functions.Consumer} with the number of records modified.
-   *
-   * @param users {@link User} instances to be deleted.
-   * @return {@link Single} that will (when subscribed to) delete {@code users} in the database.
-   */
-  @Delete
-  Single<Integer> delete(User... users);
-
-  /**
-   * Constructs and returns a {@link Single} that, when executed (subscribed to), deletes
-   * {@code users} from the database and invokes the subscribing
-   * {@link io.reactivex.rxjava3.functions.Consumer} with the number of records modified.
-   *
-   * @param users {@link User} instances to be deleted.
-   * @return {@link Single} that will (when subscribed to) delete {@code users} in the database.
-   */
-  @Delete
-  Single<Integer> delete(Collection<User> users);
 
   /**
    * Constructs and returns a {@link LiveData}-based query of a single user, using the primary key
@@ -166,12 +87,6 @@ public interface UserDao {
   @Query("SELECT * FROM user WHERE oauth_key = :oauthKey")
   Maybe<User> select(String oauthKey);
 
-  /**
-   * Constructs and returns a {@link LiveData}-based query of all {@link User} instances, sorted by
-   * display name. When observed (or when the contents of the {@code user} table are modified using
-   * Room methods), the query is executed.
-   */
-  @Query("SELECT * FROM user ORDER BY display_name ASC")
-  LiveData<List<User>> select();
+
 
 }
