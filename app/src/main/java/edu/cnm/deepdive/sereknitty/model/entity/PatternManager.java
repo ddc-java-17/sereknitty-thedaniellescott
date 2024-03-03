@@ -13,8 +13,11 @@ import java.util.List;
     tableName = "pattern_manager_id",
     indices = {
         @Index(value = "user_id", unique = true)
-    }
-)
+    },
+    foreignKeys = @ForeignKey(entity = User.class,
+        childColumns = "user_id",
+        parentColumns = "user_id",
+        onDelete = ForeignKey.CASCADE))
 public class PatternManager {
 
   @PrimaryKey(autoGenerate = true)
@@ -25,6 +28,14 @@ public class PatternManager {
   private long userId;
 
 
+  @ColumnInfo(name = "location_id")
+  private long locationId;
 
+  public long getId() {
+    return id;
+  }
 
+  public void setId(long id) {
+    this.id = id;
+  }
 }

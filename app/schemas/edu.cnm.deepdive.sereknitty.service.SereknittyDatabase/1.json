@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "cb9217163d74d5639e63d664e175f766",
+    "identityHash": "2b45591ce460608a9ac4a7ecf6525149",
     "entities": [
       {
         "tableName": "user",
@@ -63,11 +63,23 @@
       },
       {
         "tableName": "pattern",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `user_id` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_id` INTEGER PRIMARY KEY AUTOINCREMENT, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `user_id` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "pattern_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "created",
+            "columnName": "created",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modified",
+            "columnName": "modified",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -85,6 +97,33 @@
           ]
         },
         "indices": [
+          {
+            "name": "index_pattern_pattern_id",
+            "unique": false,
+            "columnNames": [
+              "pattern_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_pattern_id` ON `${TABLE_NAME}` (`pattern_id`)"
+          },
+          {
+            "name": "index_pattern_created",
+            "unique": false,
+            "columnNames": [
+              "created"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_created` ON `${TABLE_NAME}` (`created`)"
+          },
+          {
+            "name": "index_pattern_modified",
+            "unique": false,
+            "columnNames": [
+              "modified"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_modified` ON `${TABLE_NAME}` (`modified`)"
+          },
           {
             "name": "index_pattern_user_id",
             "unique": false,
@@ -113,7 +152,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cb9217163d74d5639e63d664e175f766')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2b45591ce460608a9ac4a7ecf6525149')"
     ]
   }
 }

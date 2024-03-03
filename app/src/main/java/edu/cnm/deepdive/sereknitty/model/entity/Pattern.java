@@ -13,6 +13,11 @@ import java.util.List;
 
 @Entity(
     tableName = "pattern",
+    indices = {
+        @Index(value = "pattern_id"),
+        @Index(value = "created"),
+        @Index(value = "modified")
+    },
     foreignKeys = @ForeignKey(
         entity = User.class, parentColumns = "user_id", childColumns = "user_id",
         onDelete = ForeignKey.CASCADE
@@ -23,7 +28,6 @@ public class Pattern {
   private static final int ROW_MAX = 100;
   private static final int STITCH_MAX = 100;
 
-  @NonNull
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "pattern_id")
   private Long id;
@@ -33,8 +37,11 @@ public class Pattern {
   private Instant created;
 
   @NonNull
-@ColumnInfo(name = "modified")
+  @ColumnInfo(name = "modified")
   private Instant modified;
+
+  @ColumnInfo(name = "user_id", index = true)
+  private long userId;
 
 
   /* todo: add this bit to a project entity class.
@@ -78,4 +85,11 @@ public class Pattern {
     this.modified = modified;
   }
 
+  public long getUserId() {
+    return userId;
+  }
+
+  public void setUserId(long userId) {
+    this.userId = userId;
+  }
 }

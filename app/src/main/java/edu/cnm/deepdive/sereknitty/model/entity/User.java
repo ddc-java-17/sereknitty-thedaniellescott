@@ -44,9 +44,6 @@ public class User {
   @ColumnInfo(name = "user_id")
   private long id;
 
-  @ColumnInfo(name = "user_id", index = true)
-  private UUID key;
-
   @NonNull
   private Instant created = Instant.MIN;
 
@@ -57,9 +54,6 @@ public class User {
   @ColumnInfo(name = "display_name", collate = ColumnInfo.NOCASE)
   @NonNull
   private String displayName = "";
-
-  @NonNull
-  private final List<PatternManager> patternManager = new LinkedList<>();
 
   // TODO: 3/3/2024 Finish PatternManager field
 
@@ -78,11 +72,6 @@ public class User {
   @SuppressWarnings("JavadocDeclaration")
   public void setId(long id) {
     this.id = id;
-  }
-
-  @NonNull
-  public UUID getKey() {
-    return key;
   }
 
   /**
@@ -139,10 +128,6 @@ public class User {
     this.displayName = displayName;
   }
 
-  @NonNull
-  public List<PatternManager> getPatternManager() {
-    return patternManager;
-  }
 
   // TODO Define additional getters and setters. These must be defined for any additional fields
   //  mapped to database columns.
