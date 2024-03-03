@@ -22,6 +22,9 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.time.Instant;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Encapsulates the data elements maintained for a signed-in user in the app's Room/SQLite-based
@@ -35,12 +38,16 @@ import java.time.Instant;
         @Index(value = "display_name", unique = true)
     }
 )
-
 public class User {
 
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "user_id")
   private long id;
+
+  @NonNull
+  @Column(name = "external_key", nullable = false, updatable = false, unique = true, columnDefinition = "UUID")
+  @JsonProperty(access = Access.READ_ONLY)
+  private UUID key;
 
   @NonNull
   private Instant created = Instant.MIN;
@@ -52,6 +59,13 @@ public class User {
   @ColumnInfo(name = "display_name", collate = ColumnInfo.NOCASE)
   @NonNull
   private String displayName = "";
+
+  @NonNull
+  @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
+      cascade = CascadeType.ALL, orphanRemoval = true)
+  @OrderBy("created DESC")
+  @JsonIgnore
+  private final List<Pattern> patterns = new LinkedList<>();
 
   // TODO Define additional fields as appropriate.
 
@@ -70,6 +84,11 @@ public class User {
   @SuppressWarnings("JavadocDeclaration")
   public void setId(long id) {
     this.id = id;
+  }
+
+  @NonNull
+  public UUID getKey() {
+    return key;
   }
 
   /**
@@ -124,6 +143,11 @@ public class User {
   @SuppressWarnings("JavadocDeclaration")
   public void setDisplayName(@NonNull String displayName) {
     this.displayName = displayName;
+  }
+
+  @NonNull
+  public List<Pattern> getPatterns() {
+    return patterns;
   }
 
   // TODO Define additional getters and setters. These must be defined for any additional fields

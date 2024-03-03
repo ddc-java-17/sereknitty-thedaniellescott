@@ -6,6 +6,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import java.time.Instant;
 import java.util.Date;
 
 @Entity(
@@ -15,12 +16,32 @@ import java.util.Date;
         onDelete = ForeignKey.CASCADE
     )
 )
-
 public class Pattern {
 
-  @PrimaryKey(autoGenerate = true)
-  @ColumnInfo(name = "pattern_id")
-  private long id;
+  @NonNull
+  @Id
+  @GeneratedValue
+  @Column(name = "pattern_id", nullable = false, updatable = false)
+  @JsonIgnore
+  private Long id;
+
+  @NonNull
+  @Column(nullable = false, updatable = false)
+  @CreationTimestamp
+  @Temporal(TemporalType.TIMESTAMP)
+  @JsonProperty(access = Access.READ_ONLY)
+  private Instant created;
+
+  @NonNull
+  @Column(nullable = false)
+  @UpdateTimestamp
+  @Temporal(TemporalType.TIMESTAMP)
+  @JsonProperty(access = Access.READ_ONLY)
+  private Instant modified;
+
+  @ColumnInfo(name = "user_id", index = true)
+  private long userId;
+
 
   /* todo: add this bit to a project entity class.
   @ColumnInfo(name = "finished")
@@ -39,8 +60,6 @@ public class Pattern {
 
 // TODO: 2/26/2024 Add date_added
 
-  @ColumnInfo(name = "user_id", index = true)
-  private long userId;
 
   public long getId() {
     return id;
@@ -56,5 +75,23 @@ public class Pattern {
 
   public void setUserId(long userId) {
     this.userId = userId;
+  }
+
+  @NonNull
+  public Instant getCreated() {
+    return created;
+  }
+
+  public void setCreated(@NonNull Instant created) {
+    this.created = created;
+  }
+
+  @NonNull
+  public Instant getModified() {
+    return modified;
+  }
+
+  public void setModified(@NonNull Instant modified) {
+    this.modified = modified;
   }
 }
