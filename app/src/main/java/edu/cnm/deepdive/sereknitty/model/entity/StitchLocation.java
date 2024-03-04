@@ -38,7 +38,7 @@ public class StitchLocation {
 
   @NonNull
   @ColumnInfo(name = "location")
-  private long[] content;
+  private long[] location;
 
   public long getId() {
     return id;
@@ -68,7 +68,10 @@ public class StitchLocation {
 
   @NonNull
   public long[] getContent() {
-    return content;
+    return location;
   }
 
+  public void setContent(@NonNull long[] location) {
+    this.location = location;
+  }
 }

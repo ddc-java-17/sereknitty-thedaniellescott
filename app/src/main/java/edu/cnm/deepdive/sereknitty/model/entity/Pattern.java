@@ -84,4 +84,11 @@ public class Pattern {
     this.modified = modified;
   }
 
+  public boolean isKnitThisBefore() {
+    return knitThisBefore;
+  }
+
+  public void setKnitThisBefore(boolean knitThisBefore) {
+    this.knitThisBefore = knitThisBefore;
+  }
 }
