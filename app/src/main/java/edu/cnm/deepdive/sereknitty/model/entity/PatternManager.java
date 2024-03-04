@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity(
-    tableName = "pattern_manager_id",
+    tableName = "pattern_manager",
     indices = {
         @Index(value = "user_id", unique = true)
     },
