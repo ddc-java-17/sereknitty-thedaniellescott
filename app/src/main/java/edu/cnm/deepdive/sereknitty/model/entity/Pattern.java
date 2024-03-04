@@ -36,10 +36,6 @@ public class Pattern {
   @ColumnInfo(name = "modified")
   private Instant modified;
 
-  @ColumnInfo(name = "user_id", index = true)
-  private long userId;
-
-
   /* todo: add this bit to a project entity class.
   @ColumnInfo(name = "finished")
   private boolean finished;
@@ -81,11 +77,4 @@ public class Pattern {
     this.modified = modified;
   }
 
-  public long getUserId() {
-    return userId;
-  }
-
-  public void setUserId(long userId) {
-    this.userId = userId;
-  }
 }
