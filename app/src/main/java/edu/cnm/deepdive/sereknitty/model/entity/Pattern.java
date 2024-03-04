@@ -7,9 +7,6 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.time.Instant;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 
 @Entity(
     tableName = "pattern",
@@ -19,14 +16,13 @@ import java.util.List;
         @Index(value = "modified")
     },
     foreignKeys = @ForeignKey(
-        entity = User.class, parentColumns = "user_id", childColumns = "user_id",
+        entity = PatternManager.class,
+        parentColumns = "pattern_manager_id",
+        childColumns = "pattern_manager_id",
         onDelete = ForeignKey.CASCADE
     )
 )
 public class Pattern {
-
-  private static final int ROW_MAX = 100;
-  private static final int STITCH_MAX = 100;
 
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "pattern_id")
