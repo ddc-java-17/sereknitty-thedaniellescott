@@ -36,6 +36,9 @@ public class Pattern {
   @ColumnInfo(name = "modified")
   private Instant modified;
 
+  @ColumnInfo(name = "knit_this_before")
+  private boolean knitThisBefore;
+
   /* todo: add this bit to a project entity class.
   @ColumnInfo(name = "finished")
   private boolean finished;
@@ -43,12 +46,16 @@ public class Pattern {
   todo: Add date_finished to project, too.
  */
 
-  /* todo: when I can figure out how, implement allowances for knitting in the round
+  /* todo: when I can figure out how, implement allowances for knitting in the round,
+       and larger works requiring seaming.
   @ColumnInfo(name = "in_the_round")
   private boolean inTheRound;
 
   @ColumnInfo(name = "is_flat")
   private boolean isFlat;
+
+  @ColumnInfo(name = "is_seamed")
+
   */
 
   public long getId() {
