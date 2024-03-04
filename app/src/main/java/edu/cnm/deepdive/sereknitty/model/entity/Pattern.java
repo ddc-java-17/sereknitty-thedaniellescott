@@ -28,6 +28,9 @@ public class Pattern {
   @ColumnInfo(name = "pattern_id")
   private Long id;
 
+  @ColumnInfo(name = "pattern_name")
+  private String patternName;
+
   @NonNull
   @ColumnInfo(name = "created")
   private Instant created;
@@ -55,6 +58,7 @@ public class Pattern {
   private boolean isFlat;
 
   @ColumnInfo(name = "is_seamed")
+  private boolean isSeamed;
 
   */
 
@@ -64,6 +68,14 @@ public class Pattern {
 
   public void setId(long id) {
     this.id = id;
+  }
+
+  public String getPatternName() {
+    return patternName;
+  }
+
+  public void setPatternName(String patternName) {
+    this.patternName = patternName;
   }
 
   @NonNull

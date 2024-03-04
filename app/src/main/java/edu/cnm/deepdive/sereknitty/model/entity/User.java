@@ -47,6 +47,10 @@ public class User {
   @NonNull
   private Instant created = Instant.MIN;
 
+  @NonNull
+  @ColumnInfo(name = "modified")
+  private Instant modified;
+
   @ColumnInfo(name = "oauth_key")
   @NonNull
   private String oauthKey = "";
@@ -90,6 +94,15 @@ public class User {
   @SuppressWarnings("JavadocDeclaration")
   public void setCreated(@NonNull Instant created) {
     this.created = created;
+  }
+
+  @NonNull
+  public Instant getModified() {
+    return modified;
+  }
+
+  public void setModified(@NonNull Instant modified) {
+    this.modified = modified;
   }
 
   /**
