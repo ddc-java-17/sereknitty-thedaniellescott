@@ -30,3 +30,6 @@ erd:
 * [`edu.cnm.deepdive.sereknitty.model.dao.PatternDao`](app/src/main/java/edu/cnm/deepdive/sereknitty/model/dao/PatternDao.java)
 * [`edu.cnm.deepdive.sereknitty.model.dao.PatternManagerDao`](app/src/main/java/edu/cnm/deepdive/sereknitty/model/dao/PatternManagerDao.java)
 * [`edu.cnm.deepdive.sereknitty.model.dao.StitchLocationDao`](app/src/main/java/edu/cnm/deepdive/sereknitty/model/dao/StitchLocationDao.java)
+
+## DDL
+* [`docs.sql.ddl`](docs/sql/ddl.sql)
