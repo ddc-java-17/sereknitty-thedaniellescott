@@ -22,6 +22,9 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.time.Instant;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Encapsulates the data elements maintained for a signed-in user in the app's Room/SQLite-based
@@ -44,6 +47,10 @@ public class User {
   @NonNull
   private Instant created = Instant.MIN;
 
+  @NonNull
+  @ColumnInfo(name = "modified")
+  private Instant modified;
+
   @ColumnInfo(name = "oauth_key")
   @NonNull
   private String oauthKey = "";
@@ -52,7 +59,7 @@ public class User {
   @NonNull
   private String displayName = "";
 
-  // TODO Define additional fields as appropriate.
+  // TODO: 3/3/2024 Finish PatternManager field
 
   /**
    * Returns the auto-generated unique identifier of this instance.
@@ -87,6 +94,15 @@ public class User {
   @SuppressWarnings("JavadocDeclaration")
   public void setCreated(@NonNull Instant created) {
     this.created = created;
+  }
+
+  @NonNull
+  public Instant getModified() {
+    return modified;
+  }
+
+  public void setModified(@NonNull Instant modified) {
+    this.modified = modified;
   }
 
   /**
@@ -124,6 +140,7 @@ public class User {
   public void setDisplayName(@NonNull String displayName) {
     this.displayName = displayName;
   }
+
 
   // TODO Define additional getters and setters. These must be defined for any additional fields
   //  mapped to database columns.

@@ -9,9 +9,9 @@ import androidx.room.PrimaryKey;
 import java.time.Instant;
 
 @Entity(
-    tableName = "pattern",
+    tableName = "stitch_location",
     indices = {
-        @Index(value = "pattern_id"),
+        @Index(value = "stitch_location_id"),
         @Index(value = "created"),
         @Index(value = "modified")
     },
@@ -22,14 +22,11 @@ import java.time.Instant;
         onDelete = ForeignKey.CASCADE
     )
 )
-public class Pattern {
+public class StitchLocation {
 
   @PrimaryKey(autoGenerate = true)
-  @ColumnInfo(name = "pattern_id")
-  private Long id;
-
-  @ColumnInfo(name = "pattern_name")
-  private String patternName;
+  @ColumnInfo(name = "stitch_location_id")
+  private long id;
 
   @NonNull
   @ColumnInfo(name = "created")
@@ -39,28 +36,9 @@ public class Pattern {
   @ColumnInfo(name = "modified")
   private Instant modified;
 
-  @ColumnInfo(name = "knit_this_before")
-  private boolean knitThisBefore;
-
-  /* todo: add this bit to a project entity class.
-  @ColumnInfo(name = "finished")
-  private boolean finished;
-
-  todo: Add date_finished to project, too.
- */
-
-  /* todo: when I can figure out how, implement allowances for knitting in the round,
-       and larger works requiring seaming.
-  @ColumnInfo(name = "in_the_round")
-  private boolean inTheRound;
-
-  @ColumnInfo(name = "is_flat")
-  private boolean isFlat;
-
-  @ColumnInfo(name = "is_seamed")
-  private boolean isSeamed;
-
-  */
+  @NonNull
+  @ColumnInfo(name = "location")
+  private long[] location;
 
   public long getId() {
     return id;
@@ -68,14 +46,6 @@ public class Pattern {
 
   public void setId(long id) {
     this.id = id;
-  }
-
-  public String getPatternName() {
-    return patternName;
-  }
-
-  public void setPatternName(String patternName) {
-    this.patternName = patternName;
   }
 
   @NonNull
@@ -96,11 +66,12 @@ public class Pattern {
     this.modified = modified;
   }
 
-  public boolean isKnitThisBefore() {
-    return knitThisBefore;
+  @NonNull
+  public long[] getContent() {
+    return location;
   }
 
-  public void setKnitThisBefore(boolean knitThisBefore) {
-    this.knitThisBefore = knitThisBefore;
+  public void setContent(@NonNull long[] location) {
+    this.location = location;
   }
 }
