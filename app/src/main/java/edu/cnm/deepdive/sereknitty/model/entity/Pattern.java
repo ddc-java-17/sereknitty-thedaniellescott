@@ -42,6 +42,10 @@ public class Pattern {
   @ColumnInfo(name = "knit_this_before")
   private boolean knitThisBefore;
 
+  @NonNull
+  @ColumnInfo(name = "pattern_manager_id")
+  private long patternManagerId;
+
   /* todo: add this bit to a project entity class.
   @ColumnInfo(name = "finished")
   private boolean finished;
@@ -102,5 +106,13 @@ public class Pattern {
 
   public void setKnitThisBefore(boolean knitThisBefore) {
     this.knitThisBefore = knitThisBefore;
+  }
+
+  public long getPatternManagerId() {
+    return patternManagerId;
+  }
+
+  public void setPatternManagerId(long patternManagerId) {
+    this.patternManagerId = patternManagerId;
   }
 }

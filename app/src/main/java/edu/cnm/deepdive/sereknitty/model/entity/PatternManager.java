@@ -9,6 +9,10 @@ import androidx.room.PrimaryKey;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * PatternManager stores and retrieves information for the user.
+ */
+
 @Entity(
     tableName = "pattern_manager",
     indices = {
@@ -37,5 +41,21 @@ public class PatternManager {
 
   public void setId(long id) {
     this.id = id;
+  }
+
+  public long getUserId() {
+    return userId;
+  }
+
+  public long getLocationId() {
+    return locationId;
+  }
+
+  public void setLocationId(long locationId) {
+    this.locationId = locationId;
+  }
+
+  public void setUserId(long userId) {
+    this.userId = userId;
   }
 }
