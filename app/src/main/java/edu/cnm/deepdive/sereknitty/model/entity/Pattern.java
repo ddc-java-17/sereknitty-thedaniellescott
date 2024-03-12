@@ -43,7 +43,7 @@ public class Pattern {
   private boolean knitThisBefore;
 
   @NonNull
-  @ColumnInfo(name = "pattern_manager_id")
+  @ColumnInfo(name = "pattern_manager_id", index = true)
   private long patternManagerId;
 
   /* todo: add this bit to a project entity class.

@@ -21,7 +21,7 @@ public interface StitchLocationDao {
   LiveData<StitchLocation> select(Long id);
 
   @Update
-  LiveData<StitchLocation> updateStitchLocation(StitchLocation stitchLocation);
+  Single<Integer> updateStitchLocation(StitchLocation stitchLocation);
 
   @Delete
   Single<Integer> delete(StitchLocation stitchLocation);

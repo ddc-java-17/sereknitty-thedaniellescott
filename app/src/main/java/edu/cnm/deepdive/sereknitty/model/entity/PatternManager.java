@@ -31,7 +31,6 @@ public class PatternManager {
   @ColumnInfo(name = "user_id")
   private long userId;
 
-
   @ColumnInfo(name = "location_id")
   private long locationId;
 
@@ -47,15 +46,15 @@ public class PatternManager {
     return userId;
   }
 
+  public void setUserId(long userId) {
+    this.userId = userId;
+  }
+
   public long getLocationId() {
     return locationId;
   }
 
   public void setLocationId(long locationId) {
     this.locationId = locationId;
-  }
-
-  public void setUserId(long userId) {
-    this.userId = userId;
   }
 }
