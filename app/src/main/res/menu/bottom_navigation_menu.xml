@@ -3,9 +3,14 @@
 
   <item
     android:id="@+id/pattern_library_fragment"
-    android:title="@string/pattern_library_title"
-   TODO Add an icon
-    />
+    android:title="@string/pattern_library_title"/>
+  <!-- TODO Add an icon -->
+
+  <item
+    android:id="@+id/pattern_reader_fragment"
+    android:title="@string/pattern_reader_title"/>
+  <!-- TODO Add an icon -->
+
 
 
 </menu>

@@ -41,5 +41,6 @@
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="pattern_reader_label">Pattern Reader</string>
   <string name="pattern_library_title">Library</string>
+  <string name="pattern_reader_title">Pattern Reader</string>
 
 </resources>
