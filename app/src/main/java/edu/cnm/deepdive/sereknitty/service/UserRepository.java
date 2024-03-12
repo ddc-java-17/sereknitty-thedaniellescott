@@ -79,8 +79,8 @@ public class UserRepository {
    * when observed, or (if already being observed) whenever the contents of the underlying
    * {@code user} table are modified using Room data-access methods.
    */
-  public LiveData<List<User>> getAll() {
-    return userDao.select();
+  public LiveData<List<User>> getAll(User user) {
+    return userDao.select(user);
   }
 
   /**

@@ -100,7 +100,7 @@ public class UserViewModel extends ViewModel implements DefaultLifecycleObserver
    * signed in when this class has been instantiated).
    */
   public LiveData<List<User>> getUsers() {
-    return repository.getAll();
+    return repository.getAll(user.getValue());
   }
 
   /**

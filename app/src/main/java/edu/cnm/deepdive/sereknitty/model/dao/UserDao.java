@@ -52,6 +52,15 @@ public interface UserDao {
   Single<Long> insert(User user);
 
   /**
+   * Constructs and returns a {@Link Single} that, when executed (subscribed to), updates
+   * {@code user} to the database.
+   * @param user {@link User} instance to be updated.
+   * @return {@link Single} that will update {@code user} to the database.
+   */
+  @Update
+  Single<User> update(User user);
+
+  /**
    * Constructs and returns a {@link Single} that, when executed (subscribed to), deletes
    * {@code user} from the database and invokes the subscribing
    * {@link io.reactivex.rxjava3.functions.Consumer} with the number of records modified.
@@ -72,6 +81,14 @@ public interface UserDao {
    */
   @Query("SELECT * FROM user WHERE user_id = :id")
   LiveData<User> select(long id);
+
+  /**
+   * Constructs and returns a {@Link User}-based query if a list of users,
+   * @param user
+   * @return
+   */
+  @Query("SELECT * FROM user")
+  LiveData<List<User>> select(User user);
 
   /**
    * Constructs and returns a ReactiveX-based query of a single user, using the fixed OAuth2.0
