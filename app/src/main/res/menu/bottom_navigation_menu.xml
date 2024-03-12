@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item
+    android:id="@+id/pattern_library_fragment"
+    android:title="@string/pattern_library_title"
+   TODO Add an icon
+    />
+
+
+</menu>
