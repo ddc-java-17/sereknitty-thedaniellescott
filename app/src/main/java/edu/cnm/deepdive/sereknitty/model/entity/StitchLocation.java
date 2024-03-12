@@ -36,6 +36,10 @@ public class StitchLocation {
   @ColumnInfo(name = "modified")
   private Instant modified;
 
+  @NonNull
+  @ColumnInfo(name = "pattern_manager_id")
+  private long patternManagerId;
+
 /*  @NonNull
   @ColumnInfo(name = "location")
   private long[] location;
@@ -66,6 +70,14 @@ public class StitchLocation {
 
   public void setModified(@NonNull Instant modified) {
     this.modified = modified;
+  }
+
+  public long getPatternManagerId() {
+    return patternManagerId;
+  }
+
+  public void setPatternManagerId(long patternManagerId) {
+    this.patternManagerId = patternManagerId;
   }
 
   /*
