@@ -28,7 +28,7 @@ public class PatternManager {
   @ColumnInfo(name = "pattern_manager_id")
   private long id;
 
-  @ColumnInfo(name = "user_id", index = true)
+  @ColumnInfo(name = "user_id")
   private long userId;
 
 

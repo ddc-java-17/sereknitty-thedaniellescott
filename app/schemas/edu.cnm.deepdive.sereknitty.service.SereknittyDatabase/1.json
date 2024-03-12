@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c59d93becb5c1d7c3c69bec43595c814",
+    "identityHash": "3444feaf5f6372dc1f2bba8dbba523ae",
     "entities": [
       {
         "tableName": "user",
@@ -159,11 +159,17 @@
       },
       {
         "tableName": "pattern_manager",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_manager_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `location_id` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_manager_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `user_id` INTEGER NOT NULL, `location_id` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "pattern_manager_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userId",
+            "columnName": "user_id",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -180,12 +186,34 @@
             "pattern_manager_id"
           ]
         },
-        "indices": [],
-        "foreignKeys": []
+        "indices": [
+          {
+            "name": "index_pattern_manager_user_id",
+            "unique": true,
+            "columnNames": [
+              "user_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_pattern_manager_user_id` ON `${TABLE_NAME}` (`user_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "user",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "user_id"
+            ],
+            "referencedColumns": [
+              "user_id"
+            ]
+          }
+        ]
       },
       {
         "tableName": "stitch_location",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`stitch_location_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `location` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`stitch_location_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -203,12 +231,6 @@
             "fieldPath": "modified",
             "columnName": "modified",
             "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "location",
-            "columnName": "location",
-            "affinity": "TEXT",
             "notNull": true
           }
         ],
@@ -253,7 +275,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c59d93becb5c1d7c3c69bec43595c814')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3444feaf5f6372dc1f2bba8dbba523ae')"
     ]
   }
 }

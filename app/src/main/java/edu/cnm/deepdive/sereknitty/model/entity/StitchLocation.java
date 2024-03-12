@@ -36,9 +36,11 @@ public class StitchLocation {
   @ColumnInfo(name = "modified")
   private Instant modified;
 
-  @NonNull
+/*  @NonNull
   @ColumnInfo(name = "location")
   private long[] location;
+
+ */
 
   public long getId() {
     return id;
@@ -66,6 +68,7 @@ public class StitchLocation {
     this.modified = modified;
   }
 
+  /*
   @NonNull
   public long[] getContent() {
     return location;
@@ -74,4 +77,6 @@ public class StitchLocation {
   public void setContent(@NonNull long[] location) {
     this.location = location;
   }
+
+   */
 }
