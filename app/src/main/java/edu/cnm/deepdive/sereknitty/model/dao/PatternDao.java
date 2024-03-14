@@ -28,7 +28,6 @@ public interface PatternDao {
         .map((count) -> pattern);
   }
 
-
   @Delete
   Single<Integer> delete(Pattern pattern);
 

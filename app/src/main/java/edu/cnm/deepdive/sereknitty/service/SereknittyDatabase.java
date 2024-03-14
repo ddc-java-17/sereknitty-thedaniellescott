@@ -49,7 +49,7 @@ public abstract class SereknittyDatabase extends RoomDatabase {
     // Package-private constructor to avoid automatic HTML generation for Javadocs.
   }
 
-  public static String getName(){
+  public static String getName() {
     return NAME;
   }
 
