@@ -59,7 +59,6 @@ public class User {
   @NonNull
   private String displayName = "";
 
-  // TODO: 3/3/2024 Finish PatternManager field
 
   /**
    * Returns the auto-generated unique identifier of this instance.

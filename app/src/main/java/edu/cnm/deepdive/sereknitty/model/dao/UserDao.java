@@ -24,7 +24,6 @@ import androidx.room.Update;
 import edu.cnm.deepdive.sereknitty.model.entity.User;
 import io.reactivex.rxjava3.core.Maybe;
 import io.reactivex.rxjava3.core.Single;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -58,7 +57,12 @@ public interface UserDao {
    * @return {@link Single} that will update {@code user} to the database.
    */
   @Update
-  Single<User> update(User user);
+  Single<Integer> update(User user);
+
+  default Single<User> updateAndPassThrough(User user) {
+    return update(user)
+        .map((count) -> user);
+  }
 
   /**
    * Constructs and returns a {@link Single} that, when executed (subscribed to), deletes
@@ -83,12 +87,12 @@ public interface UserDao {
   LiveData<User> select(long id);
 
   /**
-   * Constructs and returns a {@Link User}-based query if a list of users,
-   * @param user
+   *
+   *
    * @return
    */
   @Query("SELECT * FROM user")
-  LiveData<List<User>> select(User user);
+  LiveData<List<User>> select();
 
   /**
    * Constructs and returns a ReactiveX-based query of a single user, using the fixed OAuth2.0

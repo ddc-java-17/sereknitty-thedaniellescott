@@ -14,14 +14,7 @@ import java.time.Instant;
         @Index(value = "pattern_id"),
         @Index(value = "created"),
         @Index(value = "modified")
-    },
-    foreignKeys = @ForeignKey(
-        entity = PatternManager.class,
-        parentColumns = "pattern_manager_id",
-        childColumns = "pattern_manager_id",
-        onDelete = ForeignKey.CASCADE
-    )
-)
+    })
 public class Pattern {
 
   @PrimaryKey(autoGenerate = true)
@@ -42,9 +35,6 @@ public class Pattern {
   @ColumnInfo(name = "knit_this_before")
   private boolean knitThisBefore;
 
-  @NonNull
-  @ColumnInfo(name = "pattern_manager_id", index = true)
-  private long patternManagerId;
 
   /* todo: add this bit to a project entity class.
   @ColumnInfo(name = "finished")
@@ -108,11 +98,4 @@ public class Pattern {
     this.knitThisBefore = knitThisBefore;
   }
 
-  public long getPatternManagerId() {
-    return patternManagerId;
-  }
-
-  public void setPatternManagerId(long patternManagerId) {
-    this.patternManagerId = patternManagerId;
-  }
 }

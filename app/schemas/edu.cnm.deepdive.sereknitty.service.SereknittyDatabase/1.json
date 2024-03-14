@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "dfad293000aa3e6fe47824fd5f2601d8",
+    "identityHash": "4c95f4e80e06655511db8c3bb846e143",
     "entities": [
       {
         "tableName": "user",
@@ -69,7 +69,7 @@
       },
       {
         "tableName": "pattern",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_id` INTEGER PRIMARY KEY AUTOINCREMENT, `pattern_name` TEXT, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `knit_this_before` INTEGER NOT NULL, `pattern_manager_id` INTEGER NOT NULL, FOREIGN KEY(`pattern_manager_id`) REFERENCES `pattern_manager`(`pattern_manager_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_id` INTEGER PRIMARY KEY AUTOINCREMENT, `pattern_name` TEXT, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `knit_this_before` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -98,12 +98,6 @@
           {
             "fieldPath": "knitThisBefore",
             "columnName": "knit_this_before",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "patternManagerId",
-            "columnName": "pattern_manager_id",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -141,168 +135,15 @@
             ],
             "orders": [],
             "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_modified` ON `${TABLE_NAME}` (`modified`)"
-          },
-          {
-            "name": "index_pattern_pattern_manager_id",
-            "unique": false,
-            "columnNames": [
-              "pattern_manager_id"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_pattern_manager_id` ON `${TABLE_NAME}` (`pattern_manager_id`)"
           }
         ],
-        "foreignKeys": [
-          {
-            "table": "pattern_manager",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "pattern_manager_id"
-            ],
-            "referencedColumns": [
-              "pattern_manager_id"
-            ]
-          }
-        ]
-      },
-      {
-        "tableName": "pattern_manager",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_manager_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `user_id` INTEGER NOT NULL, `location_id` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
-        "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "pattern_manager_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "userId",
-            "columnName": "user_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "locationId",
-            "columnName": "location_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "autoGenerate": true,
-          "columnNames": [
-            "pattern_manager_id"
-          ]
-        },
-        "indices": [
-          {
-            "name": "index_pattern_manager_user_id",
-            "unique": true,
-            "columnNames": [
-              "user_id"
-            ],
-            "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_pattern_manager_user_id` ON `${TABLE_NAME}` (`user_id`)"
-          }
-        ],
-        "foreignKeys": [
-          {
-            "table": "user",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "user_id"
-            ],
-            "referencedColumns": [
-              "user_id"
-            ]
-          }
-        ]
-      },
-      {
-        "tableName": "stitch_location",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`stitch_location_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `pattern_manager_id` INTEGER NOT NULL, FOREIGN KEY(`pattern_manager_id`) REFERENCES `pattern_manager`(`pattern_manager_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
-        "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "stitch_location_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "created",
-            "columnName": "created",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "modified",
-            "columnName": "modified",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "patternManagerId",
-            "columnName": "pattern_manager_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "autoGenerate": true,
-          "columnNames": [
-            "stitch_location_id"
-          ]
-        },
-        "indices": [
-          {
-            "name": "index_stitch_location_stitch_location_id",
-            "unique": false,
-            "columnNames": [
-              "stitch_location_id"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_stitch_location_stitch_location_id` ON `${TABLE_NAME}` (`stitch_location_id`)"
-          },
-          {
-            "name": "index_stitch_location_created",
-            "unique": false,
-            "columnNames": [
-              "created"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_stitch_location_created` ON `${TABLE_NAME}` (`created`)"
-          },
-          {
-            "name": "index_stitch_location_modified",
-            "unique": false,
-            "columnNames": [
-              "modified"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_stitch_location_modified` ON `${TABLE_NAME}` (`modified`)"
-          }
-        ],
-        "foreignKeys": [
-          {
-            "table": "pattern_manager",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "pattern_manager_id"
-            ],
-            "referencedColumns": [
-              "pattern_manager_id"
-            ]
-          }
-        ]
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'dfad293000aa3e6fe47824fd5f2601d8')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4c95f4e80e06655511db8c3bb846e143')"
     ]
   }
 }
