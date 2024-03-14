@@ -23,12 +23,8 @@ import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
-import edu.cnm.deepdive.sereknitty.model.dao.PatternManagerDao;
-import edu.cnm.deepdive.sereknitty.model.dao.StitchLocationDao;
 import edu.cnm.deepdive.sereknitty.model.dao.UserDao;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
-import edu.cnm.deepdive.sereknitty.model.entity.PatternManager;
-import edu.cnm.deepdive.sereknitty.model.entity.StitchLocation;
 import edu.cnm.deepdive.sereknitty.model.entity.User;
 import edu.cnm.deepdive.sereknitty.service.SereknittyDatabase.Converters;
 import java.time.Instant;
@@ -38,7 +34,7 @@ import java.time.Instant;
  * using data-access object (DAO) instances obtained from the singleton instance of this class.
  */
 @Database(
-    entities = {User.class, Pattern.class, PatternManager.class, StitchLocation.class},
+    entities = {User.class, Pattern.class},
     version = 1
 )
 @TypeConverters({Converters.class})
@@ -53,7 +49,7 @@ public abstract class SereknittyDatabase extends RoomDatabase {
     // Package-private constructor to avoid automatic HTML generation for Javadocs.
   }
 
-  public static String getName(){
+  public static String getName() {
     return NAME;
   }
 
@@ -64,10 +60,6 @@ public abstract class SereknittyDatabase extends RoomDatabase {
   public abstract UserDao getUserDao();
 
   public abstract PatternDao getPatternDao();
-
-  public abstract PatternManagerDao getPatternManagerDao();
-
-  public abstract StitchLocationDao getStitchLocationDao();
 
 
   /**
