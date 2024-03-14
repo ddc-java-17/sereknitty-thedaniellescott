@@ -3,7 +3,6 @@ package edu.cnm.deepdive.sereknitty.model.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.time.Instant;
@@ -14,14 +13,7 @@ import java.time.Instant;
         @Index(value = "pattern_id"),
         @Index(value = "created"),
         @Index(value = "modified")
-    },
-    foreignKeys = @ForeignKey(
-        entity = PatternManager.class,
-        parentColumns = "pattern_manager_id",
-        childColumns = "pattern_manager_id",
-        onDelete = ForeignKey.CASCADE
-    )
-)
+    })
 public class Pattern {
 
   @PrimaryKey(autoGenerate = true)
@@ -41,6 +33,7 @@ public class Pattern {
 
   @ColumnInfo(name = "knit_this_before")
   private boolean knitThisBefore;
+
 
   /* todo: add this bit to a project entity class.
   @ColumnInfo(name = "finished")
@@ -103,4 +96,5 @@ public class Pattern {
   public void setKnitThisBefore(boolean knitThisBefore) {
     this.knitThisBefore = knitThisBefore;
   }
+
 }

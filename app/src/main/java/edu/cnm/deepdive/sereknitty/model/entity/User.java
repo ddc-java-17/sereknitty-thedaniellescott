@@ -22,9 +22,6 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.time.Instant;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.UUID;
 
 /**
  * Encapsulates the data elements maintained for a signed-in user in the app's Room/SQLite-based
@@ -59,7 +56,6 @@ public class User {
   @NonNull
   private String displayName = "";
 
-  // TODO: 3/3/2024 Finish PatternManager field
 
   /**
    * Returns the auto-generated unique identifier of this instance.
@@ -140,7 +136,6 @@ public class User {
   public void setDisplayName(@NonNull String displayName) {
     this.displayName = displayName;
   }
-
 
   // TODO Define additional getters and setters. These must be defined for any additional fields
   //  mapped to database columns.
