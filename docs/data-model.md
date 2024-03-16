@@ -1,6 +1,6 @@
 ---
 title: Data Model
-description: "Unified Modelling Language (UML) diagram, Entity-relationship diagram (ERD), and Data Definition Language (DDL)."
+description: "Unified Modelling Language (UML) class diagram, Entity-relationship diagram (ERD), and Data Definition Language (DDL)."
 menu: Data Model
 order: 20
 uml:
@@ -30,4 +30,5 @@ erd:
 
 
 ## DDL
+
 * [`docs.sql.ddl`](docs/sql/ddl.sql)
