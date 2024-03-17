@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "23e9ba816bd1d2660038c1717237c31d",
+    "identityHash": "c019cecd3f3f9f2b7bbd4c467c829fbb",
     "entities": [
       {
         "tableName": "user",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `external_key` BLOB, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `oauth_key` TEXT NOT NULL, `display_name` TEXT NOT NULL COLLATE NOCASE, `patterns` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `external_key` BLOB, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `oauth_key` TEXT NOT NULL, `display_name` TEXT NOT NULL COLLATE NOCASE)",
         "fields": [
           {
             "fieldPath": "id",
@@ -43,12 +43,6 @@
             "columnName": "display_name",
             "affinity": "TEXT",
             "notNull": true
-          },
-          {
-            "fieldPath": "patterns",
-            "columnName": "patterns",
-            "affinity": "TEXT",
-            "notNull": false
           }
         ],
         "primaryKey": {
@@ -81,7 +75,7 @@
       },
       {
         "tableName": "pattern",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_id` INTEGER PRIMARY KEY AUTOINCREMENT, `external_key` BLOB, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `pattern_name` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_id` INTEGER PRIMARY KEY AUTOINCREMENT, `external_key` BLOB, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `pattern_name` TEXT, `user_id` INTEGER NOT NULL, `current_row_id` INTEGER NOT NULL, `current_stitch_id` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`current_row_id`) REFERENCES `row`(`current_row_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`current_stitch_id`) REFERENCES `row`(`current_stitch_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -112,6 +106,24 @@
             "columnName": "pattern_name",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "userId",
+            "columnName": "user_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currentRow",
+            "columnName": "current_row_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currentStitch",
+            "columnName": "current_stitch_id",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -123,12 +135,12 @@
         "indices": [
           {
             "name": "index_pattern_pattern_id",
-            "unique": false,
+            "unique": true,
             "columnNames": [
               "pattern_id"
             ],
             "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_pattern_id` ON `${TABLE_NAME}` (`pattern_id`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_pattern_pattern_id` ON `${TABLE_NAME}` (`pattern_id`)"
           },
           {
             "name": "index_pattern_created",
@@ -147,15 +159,172 @@
             ],
             "orders": [],
             "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_modified` ON `${TABLE_NAME}` (`modified`)"
+          },
+          {
+            "name": "index_pattern_pattern_name",
+            "unique": false,
+            "columnNames": [
+              "pattern_name"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_pattern_name` ON `${TABLE_NAME}` (`pattern_name`)"
+          },
+          {
+            "name": "index_pattern_user_id",
+            "unique": false,
+            "columnNames": [
+              "user_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_user_id` ON `${TABLE_NAME}` (`user_id`)"
+          },
+          {
+            "name": "index_pattern_current_row_id",
+            "unique": false,
+            "columnNames": [
+              "current_row_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_current_row_id` ON `${TABLE_NAME}` (`current_row_id`)"
+          },
+          {
+            "name": "index_pattern_current_stitch_id",
+            "unique": false,
+            "columnNames": [
+              "current_stitch_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_current_stitch_id` ON `${TABLE_NAME}` (`current_stitch_id`)"
           }
         ],
-        "foreignKeys": []
+        "foreignKeys": [
+          {
+            "table": "user",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "user_id"
+            ],
+            "referencedColumns": [
+              "user_id"
+            ]
+          },
+          {
+            "table": "row",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "current_row_id"
+            ],
+            "referencedColumns": [
+              "current_row_id"
+            ]
+          },
+          {
+            "table": "row",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "current_stitch_id"
+            ],
+            "referencedColumns": [
+              "current_stitch_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "row",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`row_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `current_row_id` INTEGER NOT NULL, `current_stitch_id` INTEGER NOT NULL, `pattern_id` INTEGER NOT NULL, FOREIGN KEY(`pattern_id`) REFERENCES `pattern`(`pattern_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "row_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currentRow",
+            "columnName": "current_row_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "currentStitch",
+            "columnName": "current_stitch_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "patternId",
+            "columnName": "pattern_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "row_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_row_row_id",
+            "unique": false,
+            "columnNames": [
+              "row_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_row_row_id` ON `${TABLE_NAME}` (`row_id`)"
+          },
+          {
+            "name": "index_row_current_row_id",
+            "unique": true,
+            "columnNames": [
+              "current_row_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_row_current_row_id` ON `${TABLE_NAME}` (`current_row_id`)"
+          },
+          {
+            "name": "index_row_current_stitch_id",
+            "unique": true,
+            "columnNames": [
+              "current_stitch_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_row_current_stitch_id` ON `${TABLE_NAME}` (`current_stitch_id`)"
+          },
+          {
+            "name": "index_row_pattern_id",
+            "unique": false,
+            "columnNames": [
+              "pattern_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_row_pattern_id` ON `${TABLE_NAME}` (`pattern_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "pattern",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "pattern_id"
+            ],
+            "referencedColumns": [
+              "pattern_id"
+            ]
+          }
+        ]
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '23e9ba816bd1d2660038c1717237c31d')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c019cecd3f3f9f2b7bbd4c467c829fbb')"
     ]
   }
 }

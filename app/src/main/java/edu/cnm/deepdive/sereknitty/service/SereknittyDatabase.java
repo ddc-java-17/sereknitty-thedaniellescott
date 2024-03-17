@@ -23,8 +23,10 @@ import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
+import edu.cnm.deepdive.sereknitty.model.dao.RowDao;
 import edu.cnm.deepdive.sereknitty.model.dao.UserDao;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
+import edu.cnm.deepdive.sereknitty.model.entity.Row;
 import edu.cnm.deepdive.sereknitty.model.entity.User;
 import edu.cnm.deepdive.sereknitty.service.SereknittyDatabase.Converters;
 import java.time.Instant;
@@ -34,7 +36,7 @@ import java.time.Instant;
  * using data-access object (DAO) instances obtained from the singleton instance of this class.
  */
 @Database(
-    entities = {User.class, Pattern.class},
+    entities = {User.class, Pattern.class, Row.class},
     version = 1
 )
 @TypeConverters({Converters.class})
@@ -60,6 +62,8 @@ public abstract class SereknittyDatabase extends RoomDatabase {
   public abstract UserDao getUserDao();
 
   public abstract PatternDao getPatternDao();
+
+  public abstract RowDao getRowDao();
 
 
   /**

@@ -64,9 +64,6 @@ public class User {
   @NonNull
   private String displayName = "";
 
-  @ColumnInfo(name = "patterns")
-  private List<Pattern> patterns = new LinkedList<>();
-
 
   /**
    * Returns the auto-generated unique identifier of this instance.
@@ -156,20 +153,6 @@ public class User {
   @SuppressWarnings("JavadocDeclaration")
   public void setDisplayName(@NonNull String displayName) {
     this.displayName = displayName;
-  }
-
-  /**
-   * Returns the list of patterns created by or associated with this user.
-   */
-  public List<Pattern> getPatterns() {
-    return patterns;
-  }
-
-  /**
-   * Sets the list of patterns created by or associated with this user.
-   */
-    public void setPatterns(List<Pattern> patterns) {
-    this.patterns = patterns;
   }
 
   private void generateKey() {

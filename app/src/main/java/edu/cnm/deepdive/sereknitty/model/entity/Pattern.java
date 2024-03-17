@@ -53,7 +53,11 @@ public class Pattern {
   @ColumnInfo(name = "user_id", index = true)
   private long userId;
 
+  @ColumnInfo(name = "current_row_id", index = true)
+  private long currentRow;
 
+  @ColumnInfo(name = "current_stitch_id", index = true)
+  private long currentStitch;
 
   public long getId() {
     return id;
@@ -105,4 +109,19 @@ public class Pattern {
     this.userId = userId;
   }
 
+  public long getCurrentRow() {
+    return currentRow;
+  }
+
+  public void setCurrentRow(long currentRow) {
+    this.currentRow = currentRow;
+  }
+
+  public long getCurrentStitch() {
+    return currentStitch;
+  }
+
+  public void setCurrentStitch(long currentStitch) {
+    this.currentStitch = currentStitch;
+  }
 }
