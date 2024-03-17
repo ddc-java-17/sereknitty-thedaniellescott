@@ -12,9 +12,10 @@ import java.util.UUID;
 @Entity(
     tableName = "pattern",
     indices = {
-        @Index(value = "pattern_id"),
+        @Index(value = "pattern_id", unique = true),
         @Index(value = "created"),
-        @Index(value = "modified")
+        @Index(value = "modified"),
+        @Index(value = "pattern_name")
     },
     foreignKeys = {@ForeignKey(entity = User.class,
         parentColumns = "user_id",
@@ -92,16 +93,16 @@ public class Pattern {
     return patternName;
   }
 
+  public void setPatternName(String patternName) {
+    this.patternName = patternName;
+  }
+
   public long getUserId() {
     return userId;
   }
 
   public void setUserId(long userId) {
     this.userId = userId;
-  }
-
-  public void setPatternName(String patternName) {
-    this.patternName = patternName;
   }
 
 }
