@@ -9,7 +9,7 @@ order: 0
 
 ## Summary
 
-Sereknitty is an app that makes knitting patterns easier to keep handy on their phone or tablet. It will also allow knitters to input patterns and take pictures of their swatches or projects for their own reference in the future. Sereknitty leads knitters to tutorials on new stitches, and allows knitters to save exactly what row and stitch they end on when they have to stop knitting.
+Sereknitty is an app that makes knitting patterns easier to keep handy on their phone or tablet. It will also allow knitters to input patterns and take pictures of their swatches or projects for their own reference in the future. Sereknitty leads knitters to tutorials on new stitches, and allows knitters to save exactly what row and rowStitch they end on when they have to stop knitting.
 
 ## Intended users & user stories
 {: menu="Users" }
@@ -18,15 +18,15 @@ Sereknitty is an app that makes knitting patterns easier to keep handy on their 
 > As an advanced knitter, I want easy progress tracking on my lace shawl pattern so that I can pick up my knitting right where I left off.
 
 * Knitters who are still learning the ropes.
-> As a new knitter, I want ease of access to tutorials for new stitches in my pattern so that I can spend more time knitting instead of searching for stitch tutorials. 
+> As a new knitter, I want ease of access to tutorials for new stitches in my pattern so that I can spend more time knitting instead of searching for rowStitch tutorials. 
 
 ## Functionality
 
 * Knitters will be able to access knitting patterns that they put into Sereknitty and see pictures they have taken of their work like a knitting journal or catalogue. Inputs for color work and lace patterns.
-* Interactable and zoomable knitting pattern that allows the knitter to tap and hold for stitch information and tutorial.
+* Interactable and zoomable knitting pattern that allows the knitter to tap and hold for rowStitch information and tutorial.
 * A counter that one simply has to tap to progress. If the knitter just needs to see the pattern, they can hide or turn off the counting feature.
-* Highlight current row and/or stitch in the pattern (also a toggleable feature).
-* Save current row and stitch location for later when you have to stop knitting.
+* Highlight current row and/or rowStitch in the pattern (also a toggleable feature).
+* Save current row and rowStitch location for later when you have to stop knitting.
 
 
 ## Persistent data
@@ -37,7 +37,7 @@ Sereknitty is an app that makes knitting patterns easier to keep handy on their 
     * OAuth2.0 identifier
     * Timestamp of first login to the app
 * Current patterns
-  * Current pattern progress (stitch and row coordinates)
+  * Current pattern progress (rowStitch and row coordinates)
 * Pictures of patterns
     
 ## Device/external services

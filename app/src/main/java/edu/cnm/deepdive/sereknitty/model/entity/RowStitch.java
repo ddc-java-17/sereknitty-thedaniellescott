@@ -5,12 +5,12 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 
 @Entity(
-    tableName = "stitch",
+    tableName = "row_stitch",
     foreignKeys = @ForeignKey(entity = Row.class,
         parentColumns = "row_id",
         childColumns = "row_id")
 )
-public class Stitch {
+public class RowStitch {
 
   @ColumnInfo(name = "stitch_name")
   private String name;
