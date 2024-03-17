@@ -124,4 +124,9 @@ public class Pattern {
   public void setCurrentStitch(long currentStitch) {
     this.currentStitch = currentStitch;
   }
+
+  private void generateKey() {
+    key = UUID.randomUUID();
+  }
+
 }
