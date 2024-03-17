@@ -76,10 +76,24 @@ public class User {
   }
 
   /**
+   * Sets the auto-generated unique identifier of this instance.
+   */
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  /**
    * Returns the UUID for this instance.
    */
   public UUID getKey() {
     return key;
+  }
+
+  /**
+   * Sets the UUID for this instance.
+   */
+  public void setKey(UUID key) {
+    this.key = key;
   }
 
   /**
@@ -91,11 +105,25 @@ public class User {
   }
 
   /**
+   * Sets the timestamp of the INSERT of this user in the database.
+   */
+  public void setCreated(@NonNull Instant created) {
+    this.created = created;
+  }
+
+  /**
    * Returns the timestamp of the UPDATE of this user in the database.
    */
   @NonNull
   public Instant getModified() {
     return modified;
+  }
+
+  /**
+   * Sets the last timestamp of the UPDATE of this user in the database.
+   */
+  public void setModified(@NonNull Instant modified) {
+    this.modified = modified;
   }
 
   /**
@@ -108,8 +136,6 @@ public class User {
 
   /**
    * Sets the fixed OAuth2.0 identifier (aka <em>subject</em>) of this user.
-   *
-   * @param oauthKey
    */
   @SuppressWarnings("JavadocDeclaration")
   public void setOauthKey(@NonNull String oauthKey) {
@@ -126,8 +152,6 @@ public class User {
 
   /**
    * Sets unique display name of this user.
-   *
-   * @param displayName
    */
   @SuppressWarnings("JavadocDeclaration")
   public void setDisplayName(@NonNull String displayName) {
@@ -143,8 +167,6 @@ public class User {
 
   /**
    * Sets the list of patterns created by or associated with this user.
-   *
-   * @param patterns The list of patterns
    */
     public void setPatterns(List<Pattern> patterns) {
     this.patterns = patterns;

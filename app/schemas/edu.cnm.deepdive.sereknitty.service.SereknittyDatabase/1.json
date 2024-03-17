@@ -2,17 +2,23 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "4c95f4e80e06655511db8c3bb846e143",
+    "identityHash": "23e9ba816bd1d2660038c1717237c31d",
     "entities": [
       {
         "tableName": "user",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `oauth_key` TEXT NOT NULL, `display_name` TEXT NOT NULL COLLATE NOCASE)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `external_key` BLOB, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `oauth_key` TEXT NOT NULL, `display_name` TEXT NOT NULL COLLATE NOCASE, `patterns` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "user_id",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "key",
+            "columnName": "external_key",
+            "affinity": "BLOB",
+            "notNull": false
           },
           {
             "fieldPath": "created",
@@ -37,6 +43,12 @@
             "columnName": "display_name",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "patterns",
+            "columnName": "patterns",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -69,7 +81,7 @@
       },
       {
         "tableName": "pattern",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_id` INTEGER PRIMARY KEY AUTOINCREMENT, `pattern_name` TEXT, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `knit_this_before` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_id` INTEGER PRIMARY KEY AUTOINCREMENT, `external_key` BLOB, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `pattern_name` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -78,9 +90,9 @@
             "notNull": false
           },
           {
-            "fieldPath": "patternName",
-            "columnName": "pattern_name",
-            "affinity": "TEXT",
+            "fieldPath": "key",
+            "columnName": "external_key",
+            "affinity": "BLOB",
             "notNull": false
           },
           {
@@ -96,10 +108,10 @@
             "notNull": true
           },
           {
-            "fieldPath": "knitThisBefore",
-            "columnName": "knit_this_before",
-            "affinity": "INTEGER",
-            "notNull": true
+            "fieldPath": "patternName",
+            "columnName": "pattern_name",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -143,7 +155,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4c95f4e80e06655511db8c3bb846e143')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '23e9ba816bd1d2660038c1717237c31d')"
     ]
   }
 }
