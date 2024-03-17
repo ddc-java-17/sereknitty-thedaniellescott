@@ -22,6 +22,24 @@
   app:startDestination="@id/navigation_sign_in_demo">
 
   <action
+    android:id="@+id/navigate_to_pattern_reader"
+    android:label="@string/pattern_reader_label"
+    app:destination="@id/pattern_reader_fragment"/>
+
+  <action
+    android:id="@+id/navigate_to_pattern_builder"
+    app:destination="@id/pattern_builder_fragment"/>
+
+  <action
+    android:id="@+id/navigate_to_pattern_library"
+    app:destination="@id/pattern_library_fragment"/>
+
+  <action
+    android:id="@+id/navigate_to_settings"
+    app:destination="@id/settings_fragment"/>
+
+
+  <action
     android:id="@+id/explain_permissions"
     app:destination="@id/navigation_permissions_explanation">
 
