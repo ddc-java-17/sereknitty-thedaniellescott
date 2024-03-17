@@ -34,27 +34,6 @@ public class Pattern {
   @ColumnInfo(name = "knit_this_before")
   private boolean knitThisBefore;
 
-
-  /* todo: add this bit to a project entity class.
-  @ColumnInfo(name = "finished")
-  private boolean finished;
-
-  todo: Add date_finished to project, too.
- */
-
-  /* todo: when I can figure out how, implement allowances for knitting in the round,
-       and larger works requiring seaming.
-  @ColumnInfo(name = "in_the_round")
-  private boolean inTheRound;
-
-  @ColumnInfo(name = "is_flat")
-  private boolean isFlat;
-
-  @ColumnInfo(name = "is_seamed")
-  private boolean isSeamed;
-
-  */
-
   public long getId() {
     return id;
   }
@@ -89,12 +68,13 @@ public class Pattern {
     this.modified = modified;
   }
 
-  public boolean isKnitThisBefore() {
-    return knitThisBefore;
-  }
 
   public void setKnitThisBefore(boolean knitThisBefore) {
     this.knitThisBefore = knitThisBefore;
+  }
+
+  public boolean isKnitThisBefore() {
+    return knitThisBefore;
   }
 
 }

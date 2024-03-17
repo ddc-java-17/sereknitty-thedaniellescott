@@ -22,6 +22,9 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.time.Instant;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Encapsulates the data elements maintained for a signed-in user in the app's Room/SQLite-based
@@ -37,11 +40,16 @@ import java.time.Instant;
 )
 public class User {
 
+
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "user_id")
   private long id;
 
+  @ColumnInfo(name = "external_key")
+  private UUID key;
+
   @NonNull
+  @ColumnInfo(name = "created")
   private Instant created = Instant.MIN;
 
   @NonNull
@@ -56,6 +64,9 @@ public class User {
   @NonNull
   private String displayName = "";
 
+  @ColumnInfo(name = "patterns")
+  private List<Pattern> patterns = new LinkedList<>();
+
 
   /**
    * Returns the auto-generated unique identifier of this instance.
@@ -65,13 +76,10 @@ public class User {
   }
 
   /**
-   * Sets the unique identifier of this instance.
-   *
-   * @param id
+   * Returns the UUID for this instance.
    */
-  @SuppressWarnings("JavadocDeclaration")
-  public void setId(long id) {
-    this.id = id;
+  public UUID getKey() {
+    return key;
   }
 
   /**
@@ -83,22 +91,11 @@ public class User {
   }
 
   /**
-   * Sets the INSERT timestamp of this user. This method should be invoked just prior to INSERT.
-   *
-   * @param created
+   * Returns the timestamp of the UPDATE of this user in the database.
    */
-  @SuppressWarnings("JavadocDeclaration")
-  public void setCreated(@NonNull Instant created) {
-    this.created = created;
-  }
-
   @NonNull
   public Instant getModified() {
     return modified;
-  }
-
-  public void setModified(@NonNull Instant modified) {
-    this.modified = modified;
   }
 
   /**
@@ -137,8 +134,25 @@ public class User {
     this.displayName = displayName;
   }
 
-  // TODO Define additional getters and setters. These must be defined for any additional fields
-  //  mapped to database columns.
+  /**
+   * Returns the list of patterns created by or associated with this user.
+   */
+  public List<Pattern> getPatterns() {
+    return patterns;
+  }
+
+  /**
+   * Sets the list of patterns created by or associated with this user.
+   *
+   * @param patterns The list of patterns
+   */
+    public void setPatterns(List<Pattern> patterns) {
+    this.patterns = patterns;
+  }
+
+  private void generateKey() {
+    key = UUID.randomUUID();
+  }
 
   /**
    * Computes and returns the {@code int}-valued hash code of this instance. Currently, this
@@ -173,5 +187,6 @@ public class User {
     }
     return matched;
   }
+
 
 }
