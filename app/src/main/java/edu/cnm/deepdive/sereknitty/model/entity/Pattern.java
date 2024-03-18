@@ -3,25 +3,37 @@ package edu.cnm.deepdive.sereknitty.model.entity;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.time.Instant;
+import java.util.UUID;
 
 @Entity(
     tableName = "pattern",
     indices = {
-        @Index(value = "pattern_id"),
+        @Index(value = "pattern_id", unique = true),
         @Index(value = "created"),
-        @Index(value = "modified")
-    })
+        @Index(value = "modified"),
+        @Index(value = "pattern_name")
+    },
+    foreignKeys = {@ForeignKey(entity = User.class,
+        parentColumns = "user_id",
+        childColumns = "user_id",
+        onDelete = ForeignKey.CASCADE),
+        @ForeignKey(entity = Row.class,
+            parentColumns = "row_id",
+            childColumns = "current_row_id",
+            onDelete = ForeignKey.CASCADE)}
+)
 public class Pattern {
 
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "pattern_id")
   private Long id;
 
-  @ColumnInfo(name = "pattern_name")
-  private String patternName;
+  @ColumnInfo(name = "external_key")
+  private UUID key;
 
   @NonNull
   @ColumnInfo(name = "created")
@@ -31,44 +43,30 @@ public class Pattern {
   @ColumnInfo(name = "modified")
   private Instant modified;
 
-  @ColumnInfo(name = "knit_this_before")
-  private boolean knitThisBefore;
+  @ColumnInfo(name = "pattern_name")
+  private String patternName;
+
+  @ColumnInfo(name = "user_id", index = true)
+  private long userId;
+
+  @ColumnInfo(name = "current_row_id", index = true)
+  private long currentRowId;
 
 
-  /* todo: add this bit to a project entity class.
-  @ColumnInfo(name = "finished")
-  private boolean finished;
-
-  todo: Add date_finished to project, too.
- */
-
-  /* todo: when I can figure out how, implement allowances for knitting in the round,
-       and larger works requiring seaming.
-  @ColumnInfo(name = "in_the_round")
-  private boolean inTheRound;
-
-  @ColumnInfo(name = "is_flat")
-  private boolean isFlat;
-
-  @ColumnInfo(name = "is_seamed")
-  private boolean isSeamed;
-
-  */
-
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-  public String getPatternName() {
-    return patternName;
+  public UUID getKey() {
+    return key;
   }
 
-  public void setPatternName(String patternName) {
-    this.patternName = patternName;
+  public void setKey(UUID key) {
+    this.key = key;
   }
 
   @NonNull
@@ -89,12 +87,32 @@ public class Pattern {
     this.modified = modified;
   }
 
-  public boolean isKnitThisBefore() {
-    return knitThisBefore;
+  public String getPatternName() {
+    return patternName;
   }
 
-  public void setKnitThisBefore(boolean knitThisBefore) {
-    this.knitThisBefore = knitThisBefore;
+  public void setPatternName(String patternName) {
+    this.patternName = patternName;
+  }
+
+  public long getUserId() {
+    return userId;
+  }
+
+  public void setUserId(long userId) {
+    this.userId = userId;
+  }
+
+  public long getCurrentRowId() {
+    return currentRowId;
+  }
+
+  public void setCurrentRowId(long currentRowId) {
+    this.currentRowId = currentRowId;
+  }
+
+  private void generateKey() {
+    key = UUID.randomUUID();
   }
 
 }
