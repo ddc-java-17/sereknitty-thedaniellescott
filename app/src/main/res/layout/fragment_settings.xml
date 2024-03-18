@@ -13,5 +13,6 @@
     android:text="@string/hello_blank_fragment"/>
 
   <!-- TODO: Add a dark mode setting. -->
+<!--  TODO: Add a sort by setting (alphabetic, timestamp).-->
 
 </FrameLayout>
