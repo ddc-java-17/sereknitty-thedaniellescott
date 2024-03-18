@@ -27,6 +27,7 @@ import edu.cnm.deepdive.sereknitty.model.dao.RowDao;
 import edu.cnm.deepdive.sereknitty.model.dao.UserDao;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.entity.Row;
+import edu.cnm.deepdive.sereknitty.model.entity.RowStitch;
 import edu.cnm.deepdive.sereknitty.model.entity.User;
 import edu.cnm.deepdive.sereknitty.service.SereknittyDatabase.Converters;
 import java.time.Instant;
@@ -36,7 +37,7 @@ import java.time.Instant;
  * using data-access object (DAO) instances obtained from the singleton instance of this class.
  */
 @Database(
-    entities = {User.class, Pattern.class, Row.class},
+    entities = {User.class, Pattern.class, Row.class, RowStitch.class},
     version = 1
 )
 @TypeConverters({Converters.class})

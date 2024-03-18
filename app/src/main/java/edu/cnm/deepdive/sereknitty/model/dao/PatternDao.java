@@ -28,6 +28,9 @@ public interface PatternDao {
         .map((count) -> pattern);
   }
 
+  // TODO: 3/18/2024 set up recall for currentRowId
+  // TODO: 3/18/2024 @Query for LiveData<List<Pattern>> to look up all patterns
+
   @Delete
   Single<Integer> delete(Pattern pattern);
 

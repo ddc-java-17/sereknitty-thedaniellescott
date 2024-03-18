@@ -13,7 +13,7 @@ public interface RowStitchDao {
   @Insert
   Single<String> insert(RowStitch rowStitch);
 
-  @Query("SELECT * FROM row_stitch WHERE stitch_name = :name")
-  LiveData<RowStitch> select(String name);
+  @Query("SELECT * FROM row_stitch WHERE ordinal_position = :position")
+  LiveData<RowStitch> select(int position);
 
 }

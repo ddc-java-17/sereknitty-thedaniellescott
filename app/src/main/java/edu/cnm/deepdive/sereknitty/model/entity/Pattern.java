@@ -22,12 +22,8 @@ import java.util.UUID;
         childColumns = "user_id",
         onDelete = ForeignKey.CASCADE),
         @ForeignKey(entity = Row.class,
-            parentColumns = "current_row_id",
+            parentColumns = "row_id",
             childColumns = "current_row_id",
-            onDelete = ForeignKey.CASCADE),
-        @ForeignKey(entity = Row.class,
-            parentColumns = "current_stitch_id",
-            childColumns = "current_stitch_id",
             onDelete = ForeignKey.CASCADE)}
 )
 public class Pattern {
@@ -54,12 +50,10 @@ public class Pattern {
   private long userId;
 
   @ColumnInfo(name = "current_row_id", index = true)
-  private long currentRow;
+  private long currentRowId;
 
-  @ColumnInfo(name = "current_stitch_id", index = true)
-  private long currentStitch;
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
@@ -109,20 +103,12 @@ public class Pattern {
     this.userId = userId;
   }
 
-  public long getCurrentRow() {
-    return currentRow;
+  public long getCurrentRowId() {
+    return currentRowId;
   }
 
-  public void setCurrentRow(long currentRow) {
-    this.currentRow = currentRow;
-  }
-
-  public long getCurrentStitch() {
-    return currentStitch;
-  }
-
-  public void setCurrentStitch(long currentStitch) {
-    this.currentStitch = currentStitch;
+  public void setCurrentRowId(long currentRowId) {
+    this.currentRowId = currentRowId;
   }
 
   private void generateKey() {

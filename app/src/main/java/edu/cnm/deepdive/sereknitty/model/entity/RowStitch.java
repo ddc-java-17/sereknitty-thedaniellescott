@@ -3,6 +3,7 @@ package edu.cnm.deepdive.sereknitty.model.entity;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
 
 @Entity(
     tableName = "row_stitch",
@@ -12,22 +13,15 @@ import androidx.room.ForeignKey;
 )
 public class RowStitch {
 
-  @ColumnInfo(name = "stitch_name")
-  private String name;
-
-  @ColumnInfo(name = "row_id")
+  @PrimaryKey(autoGenerate = true)
+  @ColumnInfo(name = "row_stitch_id")
   private long id;
 
-  @ColumnInfo(name = "ordinal_position")
+  @ColumnInfo(name = "row_id", index = true)
+  private long rowId;
+
+  @ColumnInfo(name = "ordinal_position", index = true)
   private int ordinalPosition;
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
 
   public long getId() {
     return id;
@@ -35,6 +29,14 @@ public class RowStitch {
 
   public void setId(long id) {
     this.id = id;
+  }
+
+  public long getRowId() {
+    return rowId;
+  }
+
+  public void setRowId(long rowId) {
+    this.rowId = rowId;
   }
 
   public int getOrdinalPosition() {

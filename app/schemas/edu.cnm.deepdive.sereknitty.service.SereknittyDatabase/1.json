@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c019cecd3f3f9f2b7bbd4c467c829fbb",
+    "identityHash": "c69c4b4868a7060791ba4a2f09732fd0",
     "entities": [
       {
         "tableName": "user",
@@ -75,7 +75,7 @@
       },
       {
         "tableName": "pattern",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_id` INTEGER PRIMARY KEY AUTOINCREMENT, `external_key` BLOB, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `pattern_name` TEXT, `user_id` INTEGER NOT NULL, `current_row_id` INTEGER NOT NULL, `current_stitch_id` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`current_row_id`) REFERENCES `row`(`current_row_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`current_stitch_id`) REFERENCES `row`(`current_stitch_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_id` INTEGER PRIMARY KEY AUTOINCREMENT, `external_key` BLOB, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `pattern_name` TEXT, `user_id` INTEGER NOT NULL, `current_row_id` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`current_row_id`) REFERENCES `row`(`row_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -114,14 +114,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "currentRow",
+            "fieldPath": "currentRowId",
             "columnName": "current_row_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "currentStitch",
-            "columnName": "current_stitch_id",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -186,15 +180,6 @@
             ],
             "orders": [],
             "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_current_row_id` ON `${TABLE_NAME}` (`current_row_id`)"
-          },
-          {
-            "name": "index_pattern_current_stitch_id",
-            "unique": false,
-            "columnNames": [
-              "current_stitch_id"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_pattern_current_stitch_id` ON `${TABLE_NAME}` (`current_stitch_id`)"
           }
         ],
         "foreignKeys": [
@@ -217,25 +202,14 @@
               "current_row_id"
             ],
             "referencedColumns": [
-              "current_row_id"
-            ]
-          },
-          {
-            "table": "row",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "current_stitch_id"
-            ],
-            "referencedColumns": [
-              "current_stitch_id"
+              "row_id"
             ]
           }
         ]
       },
       {
         "tableName": "row",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`row_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `current_row_id` INTEGER NOT NULL, `current_stitch_id` INTEGER NOT NULL, `pattern_id` INTEGER NOT NULL, FOREIGN KEY(`pattern_id`) REFERENCES `pattern`(`pattern_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`row_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `current_stitch_id` INTEGER NOT NULL, `pattern_id` INTEGER NOT NULL, FOREIGN KEY(`pattern_id`) REFERENCES `pattern`(`pattern_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`current_stitch_id`) REFERENCES `row_stitch`(`row_stitch_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -244,13 +218,7 @@
             "notNull": true
           },
           {
-            "fieldPath": "currentRow",
-            "columnName": "current_row_id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "currentStitch",
+            "fieldPath": "currentStitchId",
             "columnName": "current_stitch_id",
             "affinity": "INTEGER",
             "notNull": true
@@ -279,22 +247,13 @@
             "createSql": "CREATE INDEX IF NOT EXISTS `index_row_row_id` ON `${TABLE_NAME}` (`row_id`)"
           },
           {
-            "name": "index_row_current_row_id",
-            "unique": true,
-            "columnNames": [
-              "current_row_id"
-            ],
-            "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_row_current_row_id` ON `${TABLE_NAME}` (`current_row_id`)"
-          },
-          {
             "name": "index_row_current_stitch_id",
-            "unique": true,
+            "unique": false,
             "columnNames": [
               "current_stitch_id"
             ],
             "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_row_current_stitch_id` ON `${TABLE_NAME}` (`current_stitch_id`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_row_current_stitch_id` ON `${TABLE_NAME}` (`current_stitch_id`)"
           },
           {
             "name": "index_row_pattern_id",
@@ -317,6 +276,80 @@
             "referencedColumns": [
               "pattern_id"
             ]
+          },
+          {
+            "table": "row_stitch",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "current_stitch_id"
+            ],
+            "referencedColumns": [
+              "row_stitch_id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "row_stitch",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`row_stitch_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `row_id` INTEGER NOT NULL, `ordinal_position` INTEGER NOT NULL, FOREIGN KEY(`row_id`) REFERENCES `row`(`row_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "row_stitch_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rowId",
+            "columnName": "row_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ordinalPosition",
+            "columnName": "ordinal_position",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "row_stitch_id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_row_stitch_row_id",
+            "unique": false,
+            "columnNames": [
+              "row_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_row_stitch_row_id` ON `${TABLE_NAME}` (`row_id`)"
+          },
+          {
+            "name": "index_row_stitch_ordinal_position",
+            "unique": false,
+            "columnNames": [
+              "ordinal_position"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_row_stitch_ordinal_position` ON `${TABLE_NAME}` (`ordinal_position`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "row",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "row_id"
+            ],
+            "referencedColumns": [
+              "row_id"
+            ]
           }
         ]
       }
@@ -324,7 +357,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c019cecd3f3f9f2b7bbd4c467c829fbb')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c69c4b4868a7060791ba4a2f09732fd0')"
     ]
   }
 }

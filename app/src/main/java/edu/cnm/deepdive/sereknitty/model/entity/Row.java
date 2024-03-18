@@ -9,13 +9,15 @@ import androidx.room.PrimaryKey;
 @Entity(
     tableName = "row",
     indices = {
-    @Index(value = "row_id"),
-    @Index(value = "current_row_id", unique = true),
-    @Index(value = "current_stitch_id", unique = true)},
-    foreignKeys = @ForeignKey(entity = Pattern.class,
+        @Index(value = "row_id")},
+    foreignKeys = {@ForeignKey(entity = Pattern.class,
         parentColumns = "pattern_id",
         childColumns = "pattern_id",
-        onDelete = ForeignKey.CASCADE)
+        onDelete = ForeignKey.CASCADE),
+        @ForeignKey(entity = RowStitch.class,
+            parentColumns = "row_stitch_id",
+            childColumns = "current_stitch_id",
+        onDelete = ForeignKey.CASCADE)}
 )
 public class Row {
 
@@ -23,11 +25,8 @@ public class Row {
   @ColumnInfo(name = "row_id")
   private long id;
 
-  @ColumnInfo(name = "current_row_id")
-  private long currentRow;
-
-  @ColumnInfo(name = "current_stitch_id")
-  private long currentStitch;
+  @ColumnInfo(name = "current_stitch_id", index = true)
+  private long currentStitchId;
 
   @ColumnInfo(name = "pattern_id", index = true)
   private long patternId;
@@ -40,20 +39,12 @@ public class Row {
     this.id = id;
   }
 
-  public long getCurrentRow() {
-    return currentRow;
+  public long getCurrentStitchId() {
+    return currentStitchId;
   }
 
-  public void setCurrentRow(long currentRow) {
-    this.currentRow = currentRow;
-  }
-
-  public long getCurrentStitch() {
-    return currentStitch;
-  }
-
-  public void setCurrentStitch(long currentStitch) {
-    this.currentStitch = currentStitch;
+  public void setCurrentStitchId(long currentStitchId) {
+    this.currentStitchId = currentStitchId;
   }
 
   public long getPatternId() {
