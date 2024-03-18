@@ -21,18 +21,37 @@
   android:id="@+id/navigation_graph"
   app:startDestination="@id/navigation_sign_in_demo">
 
-  <action
-    android:id="@+id/navigate_to_pattern_reader"
-    android:label="@string/pattern_reader_label"
-    app:destination="@id/pattern_reader_fragment"/>
+  <fragment
+    android:id="@+id/pattern_library_fragment"
+    android:name="edu.cnm.deepdive.sereknitty.controller.PatternLibraryFragment"
+    android:label="@string/pattern_library_label"
+    tools:layout="@layout/fragment_pattern_library">
 
-  <action
-    android:id="@+id/navigate_to_pattern_builder"
-    app:destination="@id/pattern_builder_fragment"/>
+    <action
+      android:id="@+id/navigate_to_pattern_reader"
+      app:destination="@id/pattern_reader_fragment"/>
 
-  <action
-    android:id="@+id/navigate_to_pattern_library"
-    app:destination="@id/pattern_library_fragment"/>
+    <action
+      android:id="@+id/navigate_to_pattern_builder"
+      app:destination="@id/pattern_builder_fragment"/>
+
+  </fragment>
+
+  <fragment
+    android:id="@+id/pattern_builder_fragment"
+    android:name="edu.cnm.deepdive.sereknitty.controller.PatternBuilderFragment"
+    android:label="@string/pattern_builder_label"
+    tools:layout="@layout/fragment_pattern_builder">
+
+    <action
+      android:id="@+id/navigate_to_pattern_reader"
+      app:destination="@id/pattern_reader_fragment"/>
+
+  </fragment>
+
+
+
+
 
   <action
     android:id="@+id/navigate_to_settings"

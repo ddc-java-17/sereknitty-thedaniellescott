@@ -12,4 +12,6 @@
     android:layout_height="match_parent"
     android:text="@string/hello_blank_fragment"/>
 
+<!--  TODO: Add a floating button that navigates to PatternBuilderFragment-->
+
 </FrameLayout>
