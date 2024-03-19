@@ -53,6 +53,7 @@ public interface UserDao {
   /**
    * Constructs and returns a {@Link Single} that, when executed (subscribed to), updates
    * {@code user} to the database.
+   *
    * @param user {@link User} instance to be updated.
    * @return {@link Single} that will update {@code user} to the database.
    */
@@ -87,8 +88,6 @@ public interface UserDao {
   LiveData<User> select(long id);
 
   /**
-   *
-   *
    * @return
    */
   @Query("SELECT * FROM user")
@@ -107,7 +106,6 @@ public interface UserDao {
    */
   @Query("SELECT * FROM user WHERE oauth_key = :oauthKey")
   Maybe<User> select(String oauthKey);
-
 
 
 }

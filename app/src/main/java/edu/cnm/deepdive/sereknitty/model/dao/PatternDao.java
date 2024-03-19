@@ -7,7 +7,9 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
+import edu.cnm.deepdive.sereknitty.model.entity.User;
 import io.reactivex.rxjava3.core.Single;
+import java.util.List;
 
 @Dao
 public interface PatternDao {
@@ -29,8 +31,18 @@ public interface PatternDao {
   }
 
   // TODO: 3/18/2024 set up recall for currentRowId
-  // TODO: 3/18/2024 @Query for LiveData<List<Pattern>> to look up all patterns
 
+  @Query("SELECT * FROM pattern")
+  LiveData<List<Pattern>> select();
+
+  /**
+   * Constructs and returns a {@link Single} that, when executed (subscribed to), deletes
+   * {@code pattern} from the database and invokes the subscribing
+   * {@link io.reactivex.rxjava3.functions.Consumer} with the number of records modified.
+   *
+   * @param pattern {@link Pattern} instance to be deleted.
+   * @return {@link Single} that will (when subscribed to) delete {@code pattern} from the database.
+   */
   @Delete
   Single<Integer> delete(Pattern pattern);
 
