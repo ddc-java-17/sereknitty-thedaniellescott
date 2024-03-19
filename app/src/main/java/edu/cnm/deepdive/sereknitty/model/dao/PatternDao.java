@@ -5,9 +5,11 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.entity.User;
+import edu.cnm.deepdive.sereknitty.model.pojo.PatternLocation;
 import io.reactivex.rxjava3.core.Single;
 import java.util.List;
 
@@ -30,7 +32,14 @@ public interface PatternDao {
         .map((count) -> pattern);
   }
 
-  // TODO: 3/18/2024 set up recall for currentRowId
+  // TODO: 3/19/2024 write save method for stitch location.
+
+  @Transaction
+  @Query("SELECT p.*, r.current_stitch_id FROM pattern AS p "
+      + "JOIN `row` AS r ON p.current_row_id = r.row_id "
+      + "WHERE p.pattern_id = :patternId")
+  LiveData<PatternLocation> getLocation(long patternId);
+
 
   @Query("SELECT * FROM pattern")
   LiveData<List<Pattern>> select();

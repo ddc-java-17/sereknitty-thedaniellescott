@@ -54,6 +54,8 @@ public class PatternRepository {
     return patternDao.select();
   }
 
+  // TODO: 3/19/2024 Write method using the getLocation query you wrote.
+
   /**
    * Constructs and returns a {@link Single} task that, when executed (subscribed to), will insert
    * or update the specified {@code pattern} in the database, and pass the updated {@link Pattern}
