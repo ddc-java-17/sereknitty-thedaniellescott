@@ -44,5 +44,6 @@
   <string name="pattern_reader_title">Pattern Reader</string>
   <string name="pattern_library_label">Pattern Library</string>
   <string name="pattern_builder_label">Pattern Builder</string>
+  <string name="add_pattern_description">Add Pattern</string>
 
 </resources>
