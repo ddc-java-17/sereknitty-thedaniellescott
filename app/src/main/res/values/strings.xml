@@ -45,5 +45,6 @@
   <string name="pattern_library_label">Pattern Library</string>
   <string name="pattern_builder_label">Pattern Builder</string>
   <string name="add_pattern_description">Add Pattern</string>
+  <string name="hello_pattern_library_fragment">Hello, world! Welcome to the Pattern Library!</string>
 
 </resources>
