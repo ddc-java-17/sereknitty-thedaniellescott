@@ -15,7 +15,7 @@ public interface RowDao {
   @Insert
   Single<Long> insert(Row row);
 
-  @Query("SELECT * FROM row WHERE row_id = :id")
+  @Query("SELECT * FROM 'row' WHERE row_id = :id")
   LiveData<Row> select(Long id);
 
   @Update
