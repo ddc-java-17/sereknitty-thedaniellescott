@@ -150,7 +150,8 @@ public class UserRepository {
                     })
                     .flatMap(this::insert)
             )
-        );
+        )
+        .subscribeOn(Schedulers.io());
   }
 
   private Single<User> insert(User user) {
@@ -160,13 +161,15 @@ public class UserRepository {
         .map((id) -> {
           user.setId(id);
           return user;
-        });
+        })
+        .subscribeOn(Schedulers.io());
   }
 
   private Single<User> update(User user) {
     return userDao
         .update(user)
-        .map((count) -> user);
+        .map((count) -> user)
+        .subscribeOn(Schedulers.io());
   }
 
   private Single<User> checkSafeDelete(User user) {
@@ -176,7 +179,8 @@ public class UserRepository {
             throw new IllegalStateException("");
           }
           return u;
-        });
+        })
+        .subscribeOn(Schedulers.io());
   }
 
 }

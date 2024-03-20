@@ -24,6 +24,7 @@ import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowDao;
+import edu.cnm.deepdive.sereknitty.model.dao.RowStitchDao;
 import edu.cnm.deepdive.sereknitty.model.dao.UserDao;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.entity.Row;
@@ -65,6 +66,8 @@ public abstract class SereknittyDatabase extends RoomDatabase {
   public abstract PatternDao getPatternDao();
 
   public abstract RowDao getRowDao();
+
+  public abstract RowStitchDao getRowStitchDao();
 
 
   /**
