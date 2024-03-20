@@ -1,6 +1,6 @@
 ---
 title: Data Model
-description: "Entity-relationship diagram and DDL."
+description: "Unified Modelling Language (UML) class diagram, Entity-relationship diagram (ERD), and Data Definition Language (DDL)."
 menu: Data Model
 order: 20
 uml:
@@ -27,3 +27,8 @@ erd:
 
 * [`edu.cnm.deepdive.sereknitty.model.dao.UserDao`](app/src/main/java/edu/cnm/deepdive/sereknitty/model/dao/UserDao.java)
 * [`edu.cnm.deepdive.sereknitty.model.dao.PatternDao`](app/src/main/java/edu/cnm/deepdive/sereknitty/model/dao/PatternDao.java)
+
+
+## DDL
+
+* [`docs.sql.ddl`](docs/sql/ddl.sql)

@@ -139,4 +139,10 @@ public class MainActivity extends AppCompatActivity implements
     }
   }
 
+  @Override
+  public boolean onSupportNavigateUp() {
+    getOnBackPressedDispatcher().onBackPressed();
+    return true;
+  }
+
 }
