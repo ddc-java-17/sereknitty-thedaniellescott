@@ -8,9 +8,7 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
-import edu.cnm.deepdive.sereknitty.model.entity.User;
 import edu.cnm.deepdive.sereknitty.model.pojo.PatternLocation;
-import io.reactivex.rxjava3.core.Maybe;
 import io.reactivex.rxjava3.core.Single;
 import java.util.List;
 
@@ -63,9 +61,9 @@ public interface PatternDao {
   }
 
   /**
-   * Constructs and returns a {@link LiveData}-based query of a single pattern, using the
-   * primary key value. When observed (or when the contents of the {@code patternLocation} table
-   * are modified using Room methods), the query is executed.
+   * Constructs and returns a {@link LiveData}-based query of a single pattern, using the primary
+   * key value. When observed (or when the contents of the {@code patternLocation} table are
+   * modified using Room methods), the query is executed.
    *
    * @param patternId Unique identifier (primary key value) of the {@link Pattern} instance of
    *                  interest.
@@ -81,8 +79,8 @@ public interface PatternDao {
 
   /**
    * Constructs and returns a {@link LiveData}-based query of a {@link List} of {@link Pattern}
-   * entities. When observed (or when the contents of the {@code pattern}
-   * table are modified using Room methods), the query is executed.
+   * entities. When observed (or when the contents of the {@code pattern} table are modified using
+   * Room methods), the query is executed.
    *
    * @return {@link LiveData} that can be observed for the {@link Pattern} instances of interest.
    */
