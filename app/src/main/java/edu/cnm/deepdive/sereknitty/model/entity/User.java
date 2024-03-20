@@ -22,8 +22,6 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.time.Instant;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -63,7 +61,6 @@ public class User {
   @ColumnInfo(name = "display_name", collate = ColumnInfo.NOCASE)
   @NonNull
   private String displayName = "";
-
 
   /**
    * Returns the auto-generated unique identifier of this instance.
