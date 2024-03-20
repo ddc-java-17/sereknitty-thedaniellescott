@@ -56,7 +56,7 @@ Sereknitty is an app that makes knitting patterns easier to keep handy on their 
 ## Stretch goals and possible enhancements 
 {: menu="Stretch goals" }
 
-* This app could very easily extend to crochet, but since I do not have the expertise in crochet, I am leaving it out. I think it is possible to extend this app's include to knitting machine and knitting loom as well.
+* This app could very easily extend to crochet, but since I do not have the expertise in crochet, I am leaving it out. I think it is possible to extend this app include to knitting machine and knitting loom as well.
 * I would like to implement a feature where I can include colors in the pattern input so users can include patterns for color working patterns (EG: Fair Isle knitting).
 * I would love to add a feature where one could tap a stitch to see what stitch it is and have a link to a tutorial on how to make this stitch.
 * I would like the software to be able to switch between charts and written instructions with ease. Some patterns (EG: circular shawls) are easier to understand with a chart and written instructions, and much of this is to the taste of the individual knitter.
