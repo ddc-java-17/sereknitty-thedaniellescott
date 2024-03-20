@@ -88,7 +88,11 @@ public interface UserDao {
   LiveData<User> select(long id);
 
   /**
-   * @return
+   * Constructs and returns a {@link LiveData}-based query of a {@link List} of {@link User}
+   * entities. When observed (or when the contents of the {@code user}
+   * table are modified using Room methods), the query is executed.
+   *
+   * @return {@link LiveData} that can be observed for the {@link User} instances of interest.
    */
   @Query("SELECT * FROM user")
   LiveData<List<User>> select();

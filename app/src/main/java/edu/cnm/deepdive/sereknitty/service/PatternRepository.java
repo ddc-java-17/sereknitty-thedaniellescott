@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.entity.User;
+import edu.cnm.deepdive.sereknitty.model.pojo.PatternLocation;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -54,7 +55,19 @@ public class PatternRepository {
     return patternDao.select();
   }
 
-  // TODO: 3/19/2024 Write method using the getLocation query you wrote.
+  /**
+   * Returns a {@link LiveData}-based query of a {@link PatternLocation} instance. The query
+   * executes when observed, or (if already being observed) whenever the contents of the underlying
+   * {@code pattern} table are modified using Room data-access methods.
+   * @param patternId Unique identifier (primary key value) of a {@link Pattern} entity instance.
+   * @return {@link LiveData}-based query for the {@link PatternLocation} identified by
+   * {@code patternId}.
+   */
+  public LiveData<PatternLocation> getLocation(long patternId) {
+    return patternDao.getLocation(patternId);
+  }
+
+  // TODO: 3/19/2024 write save method for stitch location.
 
   /**
    * Constructs and returns a {@link Single} task that, when executed (subscribed to), will insert
@@ -108,7 +121,5 @@ public class PatternRepository {
         .update(pattern)
         .map((count) -> pattern);
   }
-
-
 
 }

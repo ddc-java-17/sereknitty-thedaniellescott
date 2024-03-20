@@ -10,20 +10,50 @@ import androidx.room.Update;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.entity.User;
 import edu.cnm.deepdive.sereknitty.model.pojo.PatternLocation;
+import io.reactivex.rxjava3.core.Maybe;
 import io.reactivex.rxjava3.core.Single;
 import java.util.List;
 
+/**
+ * Provides CRUD operations on {@link Pattern} entity instances. {@code INSERT}, {@code UPDATE}, and
+ * {@code DELETE} operations are implemented as ReactiveX {@link Single} tasks, which execute on
+ * subscription; some {@code SELECT} tasks are implemented using {@link LiveData} queries, which
+ * execute on observation, or (if already being observed) on Room-based updates to the underlying
+ * tables.
+ */
 @Dao
 public interface PatternDao {
 
-  // TODO: 2/26/2024 Implement SQL queries for pattern searches
-
+  /**
+   * Constructs and returns a {@link Single} that, when executed (subscribed to), inserts
+   * {@code pattern} into the database and invokes the subscribing
+   * {@link io.reactivex.rxjava3.functions.Consumer} with the auto-generated primary key value of
+   * the inserted record.
+   *
+   * @param pattern {@link Pattern} instance to be inserted.
+   * @return {@link Single} that will (when subscribed to) insert {@code pattern} into the database.
+   */
   @Insert
   Single<Long> insert(Pattern pattern);
 
+  /**
+   * Constructs and returns a {@link LiveData}-based query of a single pattern, using the primary
+   * key value. When observed (or when the contents of the {@code pattern} table are modified using
+   * Room methods), the query is executed.
+   *
+   * @param id Unique identifier (primary key value) of the {@link Pattern} instance of interest.
+   * @return {@link LiveData} that can be observed for the {@link Pattern} instance of interest.
+   */
   @Query("SELECT * FROM pattern WHERE pattern_id = :id")
   LiveData<Pattern> select(Long id);
 
+  /**
+   * Constructs and returns a {@link Single} that, when executed (subscribed to), updates
+   * {@code pattern} to the database.
+   *
+   * @param pattern {@link Pattern} instance to be updated.
+   * @return {@link Single} that will update {@code pattern} to the database.
+   */
   @Update
   Single<Integer> update(Pattern pattern);
 
@@ -32,15 +62,30 @@ public interface PatternDao {
         .map((count) -> pattern);
   }
 
-  // TODO: 3/19/2024 write save method for stitch location.
-
+  /**
+   * Constructs and returns a {@link LiveData}-based query of a single pattern, using the
+   * primary key value. When observed (or when the contents of the {@code patternLocation} table
+   * are modified using Room methods), the query is executed.
+   *
+   * @param patternId Unique identifier (primary key value) of the {@link Pattern} instance of
+   *                  interest.
+   * @return {@link LiveData} that can be observed for the {@link Pattern} instance of interest.
+   */
   @Transaction
   @Query("SELECT p.*, r.current_stitch_id FROM pattern AS p "
       + "JOIN `row` AS r ON p.current_row_id = r.row_id "
       + "WHERE p.pattern_id = :patternId")
   LiveData<PatternLocation> getLocation(long patternId);
 
+  // TODO: 3/19/2024 look into other CRUD ops for the PatternLocation stuff.
 
+  /**
+   * Constructs and returns a {@link LiveData}-based query of a {@link List} of {@link Pattern}
+   * entities. When observed (or when the contents of the {@code pattern}
+   * table are modified using Room methods), the query is executed.
+   *
+   * @return {@link LiveData} that can be observed for the {@link Pattern} instances of interest.
+   */
   @Query("SELECT * FROM pattern")
   LiveData<List<Pattern>> select();
 
