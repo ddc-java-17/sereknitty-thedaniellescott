@@ -6,7 +6,6 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.entity.Row;
 import io.reactivex.rxjava3.core.Single;
 
@@ -16,7 +15,7 @@ public interface RowDao {
   @Insert
   Single<Long> insert(Row row);
 
-  @Query("SELECT * FROM row WHERE row_id = :id")
+  @Query("SELECT * FROM 'row' WHERE row_id = :id")
   LiveData<Row> select(Long id);
 
   @Update

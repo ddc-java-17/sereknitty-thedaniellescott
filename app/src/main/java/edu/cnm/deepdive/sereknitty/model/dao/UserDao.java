@@ -53,6 +53,7 @@ public interface UserDao {
   /**
    * Constructs and returns a {@Link Single} that, when executed (subscribed to), updates
    * {@code user} to the database.
+   *
    * @param user {@link User} instance to be updated.
    * @return {@link Single} that will update {@code user} to the database.
    */
@@ -87,9 +88,11 @@ public interface UserDao {
   LiveData<User> select(long id);
 
   /**
+   * Constructs and returns a {@link LiveData}-based query of a {@link List} of {@link User}
+   * entities. When observed (or when the contents of the {@code user} table are modified using Room
+   * methods), the query is executed.
    *
-   *
-   * @return
+   * @return {@link LiveData} that can be observed for the {@link User} instances of interest.
    */
   @Query("SELECT * FROM user")
   LiveData<List<User>> select();
@@ -107,7 +110,5 @@ public interface UserDao {
    */
   @Query("SELECT * FROM user WHERE oauth_key = :oauthKey")
   Maybe<User> select(String oauthKey);
-
-
 
 }
