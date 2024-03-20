@@ -12,4 +12,6 @@
     android:layout_height="match_parent"
     android:text="@string/hello_blank_fragment"/>
 
+<!--  TODO: Make Finish and Start Knitting button that leads to pattern_reader_fragment-->
+
 </FrameLayout>

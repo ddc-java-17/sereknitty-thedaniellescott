@@ -22,6 +22,9 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import java.time.Instant;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Encapsulates the data elements maintained for a signed-in user in the app's Room/SQLite-based
@@ -37,11 +40,16 @@ import java.time.Instant;
 )
 public class User {
 
+
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "user_id")
   private long id;
 
+  @ColumnInfo(name = "external_key")
+  private UUID key;
+
   @NonNull
+  @ColumnInfo(name = "created")
   private Instant created = Instant.MIN;
 
   @NonNull
@@ -65,13 +73,24 @@ public class User {
   }
 
   /**
-   * Sets the unique identifier of this instance.
-   *
-   * @param id
+   * Sets the auto-generated unique identifier of this instance.
    */
-  @SuppressWarnings("JavadocDeclaration")
   public void setId(long id) {
     this.id = id;
+  }
+
+  /**
+   * Returns the UUID for this instance.
+   */
+  public UUID getKey() {
+    return key;
+  }
+
+  /**
+   * Sets the UUID for this instance.
+   */
+  public void setKey(UUID key) {
+    this.key = key;
   }
 
   /**
@@ -83,20 +102,23 @@ public class User {
   }
 
   /**
-   * Sets the INSERT timestamp of this user. This method should be invoked just prior to INSERT.
-   *
-   * @param created
+   * Sets the timestamp of the INSERT of this user in the database.
    */
-  @SuppressWarnings("JavadocDeclaration")
   public void setCreated(@NonNull Instant created) {
     this.created = created;
   }
 
+  /**
+   * Returns the timestamp of the UPDATE of this user in the database.
+   */
   @NonNull
   public Instant getModified() {
     return modified;
   }
 
+  /**
+   * Sets the last timestamp of the UPDATE of this user in the database.
+   */
   public void setModified(@NonNull Instant modified) {
     this.modified = modified;
   }
@@ -111,8 +133,6 @@ public class User {
 
   /**
    * Sets the fixed OAuth2.0 identifier (aka <em>subject</em>) of this user.
-   *
-   * @param oauthKey
    */
   @SuppressWarnings("JavadocDeclaration")
   public void setOauthKey(@NonNull String oauthKey) {
@@ -129,16 +149,15 @@ public class User {
 
   /**
    * Sets unique display name of this user.
-   *
-   * @param displayName
    */
   @SuppressWarnings("JavadocDeclaration")
   public void setDisplayName(@NonNull String displayName) {
     this.displayName = displayName;
   }
 
-  // TODO Define additional getters and setters. These must be defined for any additional fields
-  //  mapped to database columns.
+  private void generateKey() {
+    key = UUID.randomUUID();
+  }
 
   /**
    * Computes and returns the {@code int}-valued hash code of this instance. Currently, this
@@ -173,5 +192,6 @@ public class User {
     }
     return matched;
   }
+
 
 }

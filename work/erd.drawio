@@ -123,7 +123,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="zahgdTUHl35OuNzUsJ94-28" value="PatternManager is going to&amp;nbsp;&lt;br&gt;be the user&#39;s fetcher.&lt;br&gt;It will be in charge of linking&lt;br&gt;stitch locations to&lt;br&gt;patterns so the user can&lt;br&gt;have multiple projects in the&amp;nbsp;&lt;br&gt;same pattern." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zahgdTUHl35OuNzUsJ94-27" vertex="1" connectable="0">
+        <mxCell id="zahgdTUHl35OuNzUsJ94-28" value="PatternManager is going to&amp;nbsp;&lt;br&gt;be the user&#39;s fetcher.&lt;br&gt;It will be in charge of linking&lt;br&gt;rowStitch locations to&lt;br&gt;patterns so the user can&lt;br&gt;have multiple projects in the&amp;nbsp;&lt;br&gt;same pattern." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zahgdTUHl35OuNzUsJ94-27" vertex="1" connectable="0">
           <mxGeometry x="-0.0427" y="3" relative="1" as="geometry">
             <mxPoint x="6" y="82" as="offset" />
           </mxGeometry>
@@ -250,7 +250,7 @@
             <mxPoint x="720" y="120" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zahgdTUHl35OuNzUsJ94-68" value="StitchLocation&amp;nbsp; is the row, stitch&amp;nbsp;&lt;br&gt;coordinate of where the user&lt;br&gt;stopped knitting. Think of it like&lt;br&gt;a bookmark, but for knitters." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zahgdTUHl35OuNzUsJ94-66" vertex="1" connectable="0">
+        <mxCell id="zahgdTUHl35OuNzUsJ94-68" value="StitchLocation&amp;nbsp; is the row, rowStitch&amp;nbsp;&lt;br&gt;coordinate of where the user&lt;br&gt;stopped knitting. Think of it like&lt;br&gt;a bookmark, but for knitters." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="zahgdTUHl35OuNzUsJ94-66" vertex="1" connectable="0">
           <mxGeometry x="-0.4177" y="-4" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>

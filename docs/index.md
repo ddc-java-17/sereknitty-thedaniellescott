@@ -11,6 +11,7 @@ order: 0
 
 Sereknitty is an app that makes knitting patterns easier to keep handy on their phone or tablet. It will also allow knitters to input patterns and take pictures of their swatches or projects for their own reference in the future. Sereknitty allows knitters to save exactly what row and stitch they end on when they have to stop knitting.
 
+
 ## Intended users & user stories
 {: menu="Users" }
 
@@ -28,8 +29,8 @@ Sereknitty is an app that makes knitting patterns easier to keep handy on their 
 * Knitters will be able to access knitting patterns that they put into Sereknitty and see pictures they have taken of their work like a knitting journal or catalogue.
 * Zoomable knitting pattern and a togglable key off the side showing what individual stitch symbols mean.
 * A counter that one simply has to tap to progress. If the knitter just needs to see the pattern, they can hide or turn off the counting feature.
-* Highlight current row and/or stitch in the pattern (also a toggleable feature).
-* Save current row and stitch location for later when you have to stop knitting.
+* Highlight current row and/or rowStitch in the pattern (also a toggleable feature).
+* Save current row and rowStitch location for later when you have to stop knitting.
 
 
 ## Persistent data
