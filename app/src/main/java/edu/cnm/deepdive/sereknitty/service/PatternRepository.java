@@ -3,14 +3,12 @@ package edu.cnm.deepdive.sereknitty.service;
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
-import edu.cnm.deepdive.sereknitty.model.entity.User;
 import edu.cnm.deepdive.sereknitty.model.pojo.PatternLocation;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import java.time.Instant;
 import java.util.List;
-import java.util.Objects;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -59,6 +57,7 @@ public class PatternRepository {
    * Returns a {@link LiveData}-based query of a {@link PatternLocation} instance. The query
    * executes when observed, or (if already being observed) whenever the contents of the underlying
    * {@code pattern} table are modified using Room data-access methods.
+   *
    * @param patternId Unique identifier (primary key value) of a {@link Pattern} entity instance.
    * @return {@link LiveData}-based query for the {@link PatternLocation} identified by
    * {@code patternId}.
@@ -73,13 +72,13 @@ public class PatternRepository {
    * Constructs and returns a {@link Single} task that, when executed (subscribed to), will insert
    * or update the specified {@code pattern} in the database, and pass the updated {@link Pattern}
    * instance to the subscribing {@link io.reactivex.rxjava3.functions.Consumer}. The specific
-   * persistence operation is determined by examining the value returned by {@link Pattern#getId()}: a
-   * value of zero (0) indicates the {@code user} has not yet been {@code INSERT}ed and must be; a
+   * persistence operation is determined by examining the value returned by {@link Pattern#getId()}:
+   * a value of zero (0) indicates the {@code user} has not yet been {@code INSERT}ed and must be; a
    * non-zero value indicates that {@code user} is already in the database, and must thus be
    * {@code UPDATE}d.
    *
-   * @param pattern Instance of {@link Pattern} entity class to be persisted (inserted or updated) in the
-   *             database.
+   * @param pattern Instance of {@link Pattern} entity class to be persisted (inserted or updated)
+   *                in the database.
    * @return {@link Single} task that will persist {@code pattern} to the database when executed
    * (subscribed to).
    */
@@ -93,8 +92,8 @@ public class PatternRepository {
   }
 
   /**
-   * Constructs and returns a {@link Completable} task that, when executed (subscribed to),
-   * removes the specified {@code pattern} from the database.
+   * Constructs and returns a {@link Completable} task that, when executed (subscribed to), removes
+   * the specified {@code pattern} from the database.
    *
    * @param pattern Instance of {@link Pattern} entity class to be deleted from the database.
    * @return {@link Completable} task that will delete {@code pattern} from the database when
