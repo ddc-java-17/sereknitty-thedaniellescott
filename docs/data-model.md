@@ -46,6 +46,6 @@ erd:
 ## Repositories
 
 * [`edu.cnm.deepdive.sereknitty.service.UserRepository`](https://github.com/ddc-java-17/sereknitty-thedaniellescott/blob/main/app/src/main/java/edu/cnm/deepdive/sereknitty/service/UserRepository.java)
-* [`edu.cnm.deepdive.sereknitty.service.PatternRepository`]()
+* [`edu.cnm.deepdive.sereknitty.service.PatternRepository`](https://github.com/ddc-java-17/sereknitty-thedaniellescott/blob/main/app/src/main/java/edu/cnm/deepdive/sereknitty/service/PatternRepository.java)
 * [`edu.cnm.deepdive.sereknitty.service.PreferencesRepository`](https://github.com/ddc-java-17/sereknitty-thedaniellescott/blob/main/app/src/main/java/edu/cnm/deepdive/sereknitty/service/PreferencesRepository.java)
 * [`edu.cnm.deepdive.sereknitty.service.PermissionsRepository`](https://github.com/ddc-java-17/sereknitty-thedaniellescott/blob/main/app/src/main/java/edu/cnm/deepdive/sereknitty/service/PermissionsRepository.java)
