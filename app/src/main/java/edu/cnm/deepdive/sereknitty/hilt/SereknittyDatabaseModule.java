@@ -20,9 +20,9 @@ import javax.inject.Singleton;
  */
 @InstallIn(SingletonComponent.class)
 @Module
-public final class DatabaseModule {
+public final class SereknittyDatabaseModule {
 
-  DatabaseModule() {
+  SereknittyDatabaseModule() {
     // Package-private constructor to avoid automatic HTML documentation generation.
   }
 
