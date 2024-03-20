@@ -11,7 +11,7 @@ import io.reactivex.rxjava3.core.Single;
 public interface RowStitchDao {
 
   @Insert
-  Single<String> insert(RowStitch rowStitch);
+  Single<Long> insert(RowStitch rowStitch);
 
   @Query("SELECT * FROM row_stitch WHERE ordinal_position = :position")
   LiveData<RowStitch> select(int position);
