@@ -89,8 +89,8 @@ public interface UserDao {
 
   /**
    * Constructs and returns a {@link LiveData}-based query of a {@link List} of {@link User}
-   * entities. When observed (or when the contents of the {@code user}
-   * table are modified using Room methods), the query is executed.
+   * entities. When observed (or when the contents of the {@code user} table are modified using Room
+   * methods), the query is executed.
    *
    * @return {@link LiveData} that can be observed for the {@link User} instances of interest.
    */
@@ -110,6 +110,5 @@ public interface UserDao {
    */
   @Query("SELECT * FROM user WHERE oauth_key = :oauthKey")
   Maybe<User> select(String oauthKey);
-
 
 }
