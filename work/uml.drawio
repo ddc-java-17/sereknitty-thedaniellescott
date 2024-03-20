@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-03-15T22:15:41.025Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.4 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="1hA09pZuRiHDRLk0e1mQ" version="24.0.4" type="device">
+<mxfile host="Electron" modified="2024-03-20T03:57:16.894Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.4 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="d2Xa8Lne-wOhjGf4NNGv" version="24.0.4" type="device">
   <diagram name="Page-1" id="3u2PUxA4fozJV27yU-xL">
     <mxGraphModel dx="1050" dy="621" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -71,19 +71,19 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="5RmZWiUL2xGMqx1dRzF2-21" value="&amp;lt;&amp;lt;Stitch&amp;gt;&amp;gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="505" y="780" width="170" height="112" as="geometry" />
+          <mxGeometry x="500" y="780" width="180" height="112" as="geometry" />
         </mxCell>
         <mxCell id="5RmZWiUL2xGMqx1dRzF2-31" value="- name: String {readOnly}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="5RmZWiUL2xGMqx1dRzF2-21" vertex="1">
-          <mxGeometry y="26" width="170" height="26" as="geometry" />
+          <mxGeometry y="26" width="180" height="26" as="geometry" />
         </mxCell>
         <mxCell id="5RmZWiUL2xGMqx1dRzF2-32" value="- image: Drawable {readOnly}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="5RmZWiUL2xGMqx1dRzF2-21" vertex="1">
-          <mxGeometry y="52" width="170" height="26" as="geometry" />
+          <mxGeometry y="52" width="180" height="26" as="geometry" />
         </mxCell>
         <mxCell id="5RmZWiUL2xGMqx1dRzF2-23" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="5RmZWiUL2xGMqx1dRzF2-21" vertex="1">
-          <mxGeometry y="78" width="170" height="8" as="geometry" />
+          <mxGeometry y="78" width="180" height="8" as="geometry" />
         </mxCell>
         <mxCell id="5RmZWiUL2xGMqx1dRzF2-24" value="- add() : Completable" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="5RmZWiUL2xGMqx1dRzF2-21" vertex="1">
-          <mxGeometry y="86" width="170" height="26" as="geometry" />
+          <mxGeometry y="86" width="180" height="26" as="geometry" />
         </mxCell>
         <mxCell id="5RmZWiUL2xGMqx1dRzF2-27" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;entryX=0.5;entryY=1.015;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="5RmZWiUL2xGMqx1dRzF2-21" target="5RmZWiUL2xGMqx1dRzF2-18" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
@@ -100,7 +100,7 @@
         <mxCell id="5RmZWiUL2xGMqx1dRzF2-30" value="A row from a knitting&amp;nbsp;&lt;div&gt;pattern is made up&lt;/div&gt;&lt;div&gt;of stitches. There are&lt;/div&gt;&lt;div&gt;thousands of thousands&lt;/div&gt;&lt;div&gt;of stitches and the&lt;/div&gt;&lt;div&gt;combination of different&lt;/div&gt;&lt;div&gt;types of stitches is&lt;/div&gt;&lt;div&gt;what makes knitted&lt;/div&gt;&lt;div&gt;items so different from&lt;/div&gt;&lt;div&gt;woven fabric.&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="430" y="620" width="150" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="eqGr11WSq8T-t1iJYqRL-1" value="User will build and own&lt;div&gt;patterns for their own&amp;nbsp;&lt;/div&gt;&lt;div&gt;library.&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;Eventaully, I would&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;like to allow users to&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;find patterns on sites like&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Ravelry or exchange&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;patterns with other users.&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="eqGr11WSq8T-t1iJYqRL-1" value="User will build and own&lt;div&gt;patterns for their own&amp;nbsp;&lt;/div&gt;&lt;div&gt;library.&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;Eventaully, I would&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;like to allow users to&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;find patterns on sites like&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Ravelry or exchange&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;patterns with other users.&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="345" y="60" width="160" height="110" as="geometry" />
         </mxCell>
       </root>

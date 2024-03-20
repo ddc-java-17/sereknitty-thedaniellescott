@@ -63,10 +63,22 @@ public abstract class SereknittyDatabase extends RoomDatabase {
    */
   public abstract UserDao getUserDao();
 
+  /**
+   * Returns an instance of a {@link PatternDao} implementation, providing persistence operations on
+   * instances of the {@link Pattern } entity class.
+   */
   public abstract PatternDao getPatternDao();
 
+  /**
+   * Returns an instance of a {@link RowDao} implementation, providing persistence operations on
+   * instances of the {@link Row} entity class.
+   */
   public abstract RowDao getRowDao();
 
+  /**
+   * Returns an instance of a {@link RowStitchDao} implementation, providing persistence operations on
+   * instances of the {@link RowStitchDao} entity class.
+   */
   public abstract RowStitchDao getRowStitchDao();
 
 
