@@ -27,8 +27,8 @@ erd:
 
 ## DAO Interfaces
 
-* [`edu.cnm.deepdive.sereknitty.model.dao.UserDao`](https://github.com/ddc-java-17/sereknitty-thedaniellescott/blob/main/app/src/main/java/edu/cnm/deepdive/sereknitty/model/entity/User.java)
-* [`edu.cnm.deepdive.sereknitty.model.dao.PatternDao`](https://github.com/ddc-java-17/sereknitty-thedaniellescott/blob/main/app/src/main/java/edu/cnm/deepdive/sereknitty/model/entity/Pattern.java)
+* [`edu.cnm.deepdive.sereknitty.model.dao.UserDao`](https://github.com/ddc-java-17/sereknitty-thedaniellescott/blob/main/app/src/main/java/edu/cnm/deepdive/sereknitty/model/dao/UserDao.java)
+* [`edu.cnm.deepdive.sereknitty.model.dao.PatternDao`](https://github.com/ddc-java-17/sereknitty-thedaniellescott/blob/main/app/src/main/java/edu/cnm/deepdive/sereknitty/model/dao/PatternDao.java)
 * [`edu.cnm.deepdive.sereknitty.model.dao.RowDao`](https://github.com/ddc-java-17/sereknitty-thedaniellescott/blob/main/app/src/main/java/edu/cnm/deepdive/sereknitty/model/dao/RowDao.java)
 * [`edu.cnm.deepdive.sereknitty.model.dao.RowStitchDao`](https://github.com/ddc-java-17/sereknitty-thedaniellescott/blob/main/app/src/main/java/edu/cnm/deepdive/sereknitty/model/dao/RowStitchDao.java)
 
