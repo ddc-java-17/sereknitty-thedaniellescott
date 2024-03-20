@@ -112,13 +112,16 @@ public class PatternRepository {
         .map((id) -> {
           pattern.setId(id);
           return pattern;
-        });
+        })
+        .subscribeOn(Schedulers.io());
+
   }
 
   private Single<Pattern> update(Pattern pattern) {
     return patternDao
         .update(pattern)
-        .map((count) -> pattern);
+        .map((count) -> pattern)
+        .subscribeOn(Schedulers.io());
   }
 
 }
