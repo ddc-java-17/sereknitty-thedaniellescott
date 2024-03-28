@@ -1,5 +1,7 @@
 package edu.cnm.deepdive.sereknitty.model;
 
+import edu.cnm.deepdive.sereknitty.R;
+
 public enum Stitch {
 
 
@@ -20,7 +22,6 @@ public enum Stitch {
 
   private final String shorthandAlphaNum;
 
-
   Stitch(String shorthandAlphaNum) {
     this.shorthandAlphaNum = shorthandAlphaNum;
   }
@@ -28,7 +29,5 @@ public enum Stitch {
   public String shorthandAlphaNum() {
     return shorthandAlphaNum;
   }
-
-// TODO: 2/12/2024 Figure out how to notate cabling, brioche knitting,
 
 }
