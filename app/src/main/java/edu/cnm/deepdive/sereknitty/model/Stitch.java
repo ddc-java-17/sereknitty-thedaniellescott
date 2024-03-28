@@ -2,6 +2,7 @@ package edu.cnm.deepdive.sereknitty.model;
 
 public enum Stitch {
 
+
 // TODO: 3/24/2024 Apply my images for the knitting symbols to the correct stitch.
 
   KNIT("K"),
@@ -18,6 +19,7 @@ public enum Stitch {
   CENTER_DOUBLE_DECREASE("CDD");
 
   private final String shorthandAlphaNum;
+
 
   Stitch(String shorthandAlphaNum) {
     this.shorthandAlphaNum = shorthandAlphaNum;
