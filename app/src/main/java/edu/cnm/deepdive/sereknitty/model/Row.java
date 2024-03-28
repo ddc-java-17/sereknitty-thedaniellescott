@@ -13,8 +13,9 @@ public class Row {
   private final List<Stitch> stitch;
 
   /**
+   * This constructor initializes the basic building block for the {@link Row} class.
    *
-   * @param stitch
+   * @param stitch {@link Stitch} object that makes up a row.
    */
   Row(List<Stitch> stitch) {
     this.stitch = stitch;
