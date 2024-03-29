@@ -24,10 +24,15 @@
   </style>
 
   <style name="AppTheme.PatternName">
-    <item name="android:textFontWeight">700</item>
+    <item name="android:textFontWeight">800</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:maxLines">1</item>
+    <item name="android:minLines">1</item>
+  </style>
+
+  <style name="AppTheme.PatternSubtext">
     <item name="android:maxLines">2</item>
     <item name="android:minLines">1</item>
-<!--    <item name="android:textAlignment">center</item>-->
   </style>
 
 </resources>

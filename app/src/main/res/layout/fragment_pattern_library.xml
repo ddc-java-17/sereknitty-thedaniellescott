@@ -10,8 +10,15 @@
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/pattern_library_list"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintTop_toTopOf="parent"/>
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    tools:listitem="@layout/item_pattern_list">
+
+
+
+  </androidx.recyclerview.widget.RecyclerView>
 
 <!--  TODO: Add a layout for pattern list header.-->
 <!--  TODO: Add new layout for pattern list.-->
