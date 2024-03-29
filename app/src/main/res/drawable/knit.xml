@@ -6,6 +6,6 @@
     android:width="200dp"
     android:height="200dp"/>
   <solid
-    android:color="@color/transparent"/>
+    android:color="@color/accent_color"/>
 
 </shape>
