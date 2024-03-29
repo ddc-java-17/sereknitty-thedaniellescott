@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.sereknitty.model.entity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -45,6 +46,9 @@ public class Pattern {
 
   @ColumnInfo(name = "pattern_name")
   private String patternName;
+
+  @ColumnInfo(name = "image")
+  private String image;
 
   @ColumnInfo(name = "user_id", index = true)
   private long userId;
