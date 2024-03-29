@@ -34,8 +34,7 @@ public class PatternLibraryFragment extends Fragment {
   }
 
   @Override
-  public void onViewCreated(@NonNull View view,
-      @Nullable Bundle savedInstanceState) {
+  public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     binding.addPattern.setOnClickListener((button) ->
         Navigation.findNavController(button)

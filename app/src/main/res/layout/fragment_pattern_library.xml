@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:context=".controller.PatternLibraryFragment">
 
   <androidx.recyclerview.widget.RecyclerView
@@ -14,14 +14,7 @@
     android:orientation="vertical"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
-    tools:listitem="@layout/item_pattern_list">
-
-
-
-  </androidx.recyclerview.widget.RecyclerView>
-
-<!--  TODO: Add a layout for pattern list header.-->
-<!--  TODO: Add new layout for pattern list.-->
+    tools:listitem="@layout/item_pattern_list"/>
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
     android:id="@+id/add_pattern"
