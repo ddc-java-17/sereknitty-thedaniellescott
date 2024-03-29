@@ -7,12 +7,15 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:context=".controller.PatternLibraryFragment">
 
-  <!-- TODO: Update blank fragment layout -->
-  <TextView
-    android:id="@+id/pattern_library_fragment"
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/pattern_library_list"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:text="@string/hello_pattern_library_fragment"/>
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:text="@string/pattern_library_test"/>
+
+<!--  TODO: Add a layout for pattern list header.-->
+<!--  TODO: Add new layout for pattern list.-->
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
     android:id="@+id/add_pattern"
@@ -23,7 +26,5 @@
     app:useCompatPadding="true"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"/>
-
-  <!--  TODO: Add a floating button that navigates to PatternBuilderFragment-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
