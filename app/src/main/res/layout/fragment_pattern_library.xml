@@ -11,8 +11,7 @@
     android:id="@+id/pattern_library_list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:text="@string/pattern_library_test"/>
+    app:layout_constraintTop_toTopOf="parent"/>
 
 <!--  TODO: Add a layout for pattern list header.-->
 <!--  TODO: Add new layout for pattern list.-->
