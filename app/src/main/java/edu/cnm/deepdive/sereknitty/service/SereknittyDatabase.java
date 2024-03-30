@@ -32,6 +32,7 @@ import edu.cnm.deepdive.sereknitty.model.entity.RowStitch;
 import edu.cnm.deepdive.sereknitty.model.entity.User;
 import edu.cnm.deepdive.sereknitty.service.SereknittyDatabase.Converters;
 import java.time.Instant;
+import javax.inject.Provider;
 
 /**
  * Defines a connection to a local Room/SQLite database, All database reads/writes are performed
@@ -124,9 +125,25 @@ public abstract class SereknittyDatabase extends RoomDatabase {
    */
   public static class Callback extends RoomDatabase.Callback {
 
+    private final Provider<PatternRepository> repositoryProvider;
+
+    public Callback(Provider<PatternRepository> repositoryProvider) {
+      this.repositoryProvider = repositoryProvider;
+    }
+
+
     @Override
     public void onCreate(@NonNull SupportSQLiteDatabase db) {
       super.onCreate(db);
+      PatternRepository repository = repositoryProvider.get();
+      Pattern pattern = new Pattern();
+      pattern.setPatternName("Stockinette");
+      pattern.setPatternDescription("TEST");
+      repository.save(pattern).subscribe();
+      pattern = new Pattern();
+      pattern.setPatternName("garter");
+      pattern.setPatternDescription("also test");
+      repository.save(pattern).subscribe();
       // TODO Obtain DAO instances from database, and use them to perform any required preloads, e.g.
       //  LocalDatabase database = LocalDatabase.getInstance();
       //  etc.

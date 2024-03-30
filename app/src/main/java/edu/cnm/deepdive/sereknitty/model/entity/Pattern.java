@@ -31,18 +31,18 @@ public class Pattern {
 
   @PrimaryKey(autoGenerate = true)
   @ColumnInfo(name = "pattern_id")
-  private Long id;
+  private long id;
 
   @ColumnInfo(name = "external_key")
   private UUID key;
 
   @NonNull
   @ColumnInfo(name = "created")
-  private Instant created;
+  private Instant created = Instant.now();
 
   @NonNull
   @ColumnInfo(name = "modified")
-  private Instant modified;
+  private Instant modified = Instant.now();
 
   @ColumnInfo(name = "pattern_name")
   private String patternName;
@@ -54,17 +54,17 @@ public class Pattern {
   private String image;
 
   @ColumnInfo(name = "user_id", index = true)
-  private long userId;
+  private Long userId;
 
   @ColumnInfo(name = "current_row_id", index = true)
-  private long currentRowId;
+  private Long currentRowId;
 
 
-  public Long getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(long id) {
     this.id = id;
   }
 
@@ -118,19 +118,19 @@ public class Pattern {
     this.image = image;
   }
 
-  public long getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-  public void setUserId(long userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
-  public long getCurrentRowId() {
+  public Long getCurrentRowId() {
     return currentRowId;
   }
 
-  public void setCurrentRowId(long currentRowId) {
+  public void setCurrentRowId(Long currentRowId) {
     this.currentRowId = currentRowId;
   }
 

@@ -17,17 +17,15 @@ public class PatternLibraryViewModel extends ViewModel implements DefaultLifecyc
 
   private final PatternRepository patternRepository;
   private final UserRepository userRepository;
-  private final LiveData<List<Pattern>> patterns;
   private User currentUser;
 
   @Inject
   public PatternLibraryViewModel(PatternRepository patternRepository, UserRepository userRepository) {
     this.patternRepository = patternRepository;
     this.userRepository = userRepository;
-    patterns = patternRepository.getAll();
   }
 
   public LiveData<List<Pattern>> getPatterns() {
-    return patterns;
+    return patternRepository.getAll();
   }
 }

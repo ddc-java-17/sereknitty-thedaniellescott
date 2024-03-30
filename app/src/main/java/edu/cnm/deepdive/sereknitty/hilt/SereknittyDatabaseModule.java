@@ -11,7 +11,9 @@ import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowStitchDao;
 import edu.cnm.deepdive.sereknitty.model.dao.UserDao;
+import edu.cnm.deepdive.sereknitty.service.PatternRepository;
 import edu.cnm.deepdive.sereknitty.service.SereknittyDatabase;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 
 /**
@@ -34,10 +36,11 @@ public final class SereknittyDatabaseModule {
    */
   @Provides
   @Singleton
-  public SereknittyDatabase provideLocalDatabase(@ApplicationContext Context context) {
+  public SereknittyDatabase provideLocalDatabase(@ApplicationContext Context context,
+      Provider<PatternRepository> repositoryProvider) {
     return Room
         .databaseBuilder(context, SereknittyDatabase.class, SereknittyDatabase.NAME)
-        .addCallback(new SereknittyDatabase.Callback())
+        .addCallback(new SereknittyDatabase.Callback(repositoryProvider))
         .build();
   }
 
