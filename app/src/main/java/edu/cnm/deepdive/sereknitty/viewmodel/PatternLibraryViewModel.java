@@ -2,6 +2,7 @@ package edu.cnm.deepdive.sereknitty.viewmodel;
 
 import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 import dagger.hilt.android.lifecycle.HiltViewModel;
@@ -17,15 +18,25 @@ public class PatternLibraryViewModel extends ViewModel implements DefaultLifecyc
 
   private final PatternRepository patternRepository;
   private final UserRepository userRepository;
-  private User currentUser;
+  private final LiveData<Pattern> pattern;
+  private final MutableLiveData<Long> id;
 
   @Inject
   public PatternLibraryViewModel(PatternRepository patternRepository, UserRepository userRepository) {
     this.patternRepository = patternRepository;
     this.userRepository = userRepository;
+    id = new MutableLiveData<>();
+    pattern = Transformations.switchMap((id) -> patternRepository.get(id));
+
   }
+
+
 
   public LiveData<List<Pattern>> getPatterns() {
     return patternRepository.getAll();
+  }
+
+  public LiveData<Pattern> getPattern(long id) {
+    return patternRepository.get(id);
   }
 }

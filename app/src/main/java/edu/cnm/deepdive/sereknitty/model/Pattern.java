@@ -3,12 +3,25 @@ package edu.cnm.deepdive.sereknitty.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public class Pattern extends Project {
 
   private final String name;
   private final List<Row> rows;
 // file type?
 
+  /**
+   *
+   *
+   * @param id
+   * @param pattern
+   * @param currentRow
+   * @param currentPositionInRow
+   * @param name
+   * @param rows
+   */
   public Pattern(String id, Pattern pattern, int currentRow, int currentPositionInRow, String name,
       List<Row> rows) {
     super(id, pattern, currentRow, currentPositionInRow);

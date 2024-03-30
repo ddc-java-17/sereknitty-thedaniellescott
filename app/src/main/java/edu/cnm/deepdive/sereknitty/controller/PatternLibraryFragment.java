@@ -29,7 +29,7 @@ public class PatternLibraryFragment extends Fragment {
   private static final String TAG = PatternLibraryFragment.class.getSimpleName();
   private FragmentPatternLibraryBinding binding;
   private PatternLibraryViewModel viewModel;
-  
+
 
   public PatternLibraryFragment() {
     // Required empty public constructor
@@ -56,6 +56,7 @@ public class PatternLibraryFragment extends Fragment {
         .observe(owner, (patterns) -> {
           PatternLibraryAdapter adapter = new PatternLibraryAdapter(requireContext(), patterns,
               (pattern, position, clickedView) -> {
+                Navigation.findNavController(clickedView).navigate(PatternLibraryFragmentDirections.navigateToPatternReader());
                 // TODO: 3/30/2024 Move to the pattern reader fragment with the selected pattern.
                 Log.d(TAG, pattern.getPatternName() + " was clicked at position " + position);
           });
