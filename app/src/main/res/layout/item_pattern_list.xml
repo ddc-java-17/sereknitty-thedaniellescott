@@ -16,12 +16,10 @@
     android:scaleType="centerInside"
     android:padding="@dimen/half_dynamic_spacing"
     android:backgroundTint="@color/accent_color"
-    android:src="@color/accent_color"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-
     />
-<!--  TODO: Remove android:src="@color/accent_color"-->
+
 <!--  TODO: Fix magic numbers-->
 
   <TextView
@@ -34,7 +32,7 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toTopOf="@id/pattern_subtext"
     style="@style/AppTheme.PatternName"
-    tools:text="Pattern name here"
+    android:text="Pattern name here"
     />
 
   <TextView
@@ -47,9 +45,7 @@
     app:layout_constraintTop_toBottomOf="@id/pattern_name"
     app:layout_constraintBottom_toBottomOf="parent"
     style="@style/AppTheme.PatternSubtext"
-    tools:text="Pattern subtext here"
+    android:text="Pattern description here"
     />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

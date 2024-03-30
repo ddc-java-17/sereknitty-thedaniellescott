@@ -19,12 +19,14 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.sereknitty.R;
 
 /**
  * Hosts an instance of {@link SettingsFragment} to present a settings screen without any additional
  * UI elements (such as options menu).
  */
+@AndroidEntryPoint
 public class SettingsActivity extends AppCompatActivity {
 
   @Override

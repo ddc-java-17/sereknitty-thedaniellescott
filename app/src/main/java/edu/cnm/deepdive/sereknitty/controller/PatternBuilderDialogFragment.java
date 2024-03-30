@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.sereknitty.R;
 import edu.cnm.deepdive.sereknitty.databinding.FragmentPatternBuilderDialogBinding;
 
@@ -17,6 +18,7 @@ import edu.cnm.deepdive.sereknitty.databinding.FragmentPatternBuilderDialogBindi
  * {@link PatternBuilderFragment}. Its purpose is to ask the user to give the dimensions of their
  * new pattern so the pattern builder can build a blank "canvas" in the correct dimensions.
  */
+@AndroidEntryPoint
 public class PatternBuilderDialogFragment extends DialogFragment {
 
   private FragmentPatternBuilderDialogBinding binding;

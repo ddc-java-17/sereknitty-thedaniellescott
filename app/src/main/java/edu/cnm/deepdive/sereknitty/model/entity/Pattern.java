@@ -47,6 +47,9 @@ public class Pattern {
   @ColumnInfo(name = "pattern_name")
   private String patternName;
 
+  @ColumnInfo(name = "pattern_description")
+  private String patternDescription;
+
   @ColumnInfo(name = "image")
   private String image;
 
@@ -99,6 +102,22 @@ public class Pattern {
     this.patternName = patternName;
   }
 
+  public String getPatternDescription() {
+    return patternDescription;
+  }
+
+  public void setPatternDescription(String patternDescription) {
+    this.patternDescription = patternDescription;
+  }
+
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
+  }
+
   public long getUserId() {
     return userId;
   }
@@ -115,13 +134,6 @@ public class Pattern {
     this.currentRowId = currentRowId;
   }
 
-  public String getImage() {
-    return image;
-  }
-
-  public void setImage(String image) {
-    this.image = image;
-  }
 
   private void generateKey() {
     key = UUID.randomUUID();
