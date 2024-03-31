@@ -2,7 +2,11 @@ package edu.cnm.deepdive.sereknitty.service;
 
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
+import edu.cnm.deepdive.sereknitty.model.dao.RowDao;
+import edu.cnm.deepdive.sereknitty.model.dao.RowStitchDao;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
+import edu.cnm.deepdive.sereknitty.model.entity.Row;
+import edu.cnm.deepdive.sereknitty.model.entity.RowStitch;
 import edu.cnm.deepdive.sereknitty.model.pojo.PatternLocation;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
@@ -23,13 +27,17 @@ import javax.inject.Singleton;
 public class PatternRepository {
 
   private final PatternDao patternDao;
+  private final RowDao rowDao;
+  private final RowStitchDao rowStitchDao;
 
   /**
    * Initializes this instance by establishing a logical connection to the underlying database.
    */
   @Inject
-  PatternRepository(PatternDao patternDao) {
+  PatternRepository(PatternDao patternDao, RowDao rowDao, RowStitchDao rowStitchDao) {
     this.patternDao = patternDao;
+    this.rowDao = rowDao;
+    this.rowStitchDao = rowStitchDao;
   }
 
   /**
@@ -40,7 +48,7 @@ public class PatternRepository {
    * @param id Unique identifier (primary key value) of a {@link Pattern} entity instance.
    * @return {@link LiveData}-based query for the {@link Pattern} identified by {@code id}.
    */
-  public LiveData<Pattern> get(long id) {
+  public LiveData<Pattern> getPattern(long id) {
     return patternDao.select(id);
   }
 
@@ -49,8 +57,16 @@ public class PatternRepository {
    * executes when observed, or (if already being observed) whenever the contents of the underlying
    * {@code pattern} table are modified using Room data-access methods.
    */
-  public LiveData<List<Pattern>> getAll() {
+  public LiveData<List<Pattern>> getAllPatterns() {
     return patternDao.select();
+  }
+
+  public LiveData<List<Row>> getRows(long patternId) {
+    return rowDao.selectByPattern(patternId);
+  }
+
+  public LiveData<List<RowStitch>> getStitchesByRow(long rowId) {
+    return rowStitchDao.selectForRow(rowId);
   }
 
   /**

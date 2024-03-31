@@ -7,7 +7,7 @@ import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
-import edu.cnm.deepdive.sereknitty.model.entity.User;
+import edu.cnm.deepdive.sereknitty.model.entity.Row;
 import edu.cnm.deepdive.sereknitty.service.PatternRepository;
 import edu.cnm.deepdive.sereknitty.service.UserRepository;
 import java.util.List;
@@ -20,23 +20,29 @@ public class PatternLibraryViewModel extends ViewModel implements DefaultLifecyc
   private final UserRepository userRepository;
   private final LiveData<Pattern> pattern;
   private final MutableLiveData<Long> id;
+  private final LiveData<List<Row>> rows;
 
   @Inject
   public PatternLibraryViewModel(PatternRepository patternRepository, UserRepository userRepository) {
     this.patternRepository = patternRepository;
     this.userRepository = userRepository;
     id = new MutableLiveData<>();
-    pattern = Transformations.switchMap((id) -> patternRepository.get(id));
+    pattern = Transformations.switchMap(id, patternRepository::getPattern);
+    rows = Transformations.switchMap(id, patternRepository::getRows);
 
   }
 
 
 
   public LiveData<List<Pattern>> getPatterns() {
-    return patternRepository.getAll();
+    return patternRepository.getAllPatterns();
   }
 
-  public LiveData<Pattern> getPattern(long id) {
-    return patternRepository.get(id);
+  public LiveData<Pattern> getPattern() {
+    return pattern;
+  }
+
+  public void fetchPattern(long id) {
+    this.id.postValue(id);
   }
 }

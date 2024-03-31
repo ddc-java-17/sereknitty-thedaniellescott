@@ -20,8 +20,8 @@ import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A simple {@link Fragment} subclass. Use the {@link PatternLibraryFragment} factory
- * method to create an instance of this fragment.
+ * A simple {@link Fragment} subclass. Use the {@link PatternLibraryFragment} factory method to
+ * create an instance of this fragment.
  */
 @AndroidEntryPoint
 public class PatternLibraryFragment extends Fragment {
@@ -56,10 +56,10 @@ public class PatternLibraryFragment extends Fragment {
         .observe(owner, (patterns) -> {
           PatternLibraryAdapter adapter = new PatternLibraryAdapter(requireContext(), patterns,
               (pattern, position, clickedView) -> {
-                Navigation.findNavController(clickedView).navigate(PatternLibraryFragmentDirections.navigateToPatternReader());
-                // TODO: 3/30/2024 Move to the pattern reader fragment with the selected pattern.
-                Log.d(TAG, pattern.getPatternName() + " was clicked at position " + position);
-          });
+                Navigation.findNavController(binding.getRoot())
+                    .navigate(PatternLibraryFragmentDirections
+                        .navigateToPatternReader(pattern.getId()));
+              });
           binding.patternLibraryList.setAdapter(adapter);
         });
     binding.addPattern.setOnClickListener((button) ->

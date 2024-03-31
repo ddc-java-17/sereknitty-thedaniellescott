@@ -6,14 +6,13 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:context=".controller.PatternReaderFragment">
 
-  <GridView
+  <ListView
     android:id="@+id/pattern"
     android:layout_width="match_parent"
     android:layout_height="0dp"
+    android:orientation="vertical"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    num
-    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+    app:layout_constraintBottom_toBottomOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

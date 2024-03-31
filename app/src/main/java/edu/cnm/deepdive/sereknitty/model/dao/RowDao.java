@@ -8,6 +8,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 import edu.cnm.deepdive.sereknitty.model.entity.Row;
 import io.reactivex.rxjava3.core.Single;
+import java.util.List;
 
 @Dao
 public interface RowDao {
@@ -16,7 +17,10 @@ public interface RowDao {
   Single<Long> insert(Row row);
 
   @Query("SELECT * FROM 'row' WHERE row_id = :id")
-  LiveData<Row> select(Long id);
+  LiveData<Row> select(long id);
+
+  @Query("SELECT * FROM `row` WHERE pattern_id = :patternId ORDER BY row_id")
+  LiveData<List<Row>> selectByPattern(long patternId);
 
   @Update
   Single<Integer> update(Row row);
