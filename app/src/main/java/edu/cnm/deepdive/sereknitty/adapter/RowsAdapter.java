@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import edu.cnm.deepdive.sereknitty.R;
 import edu.cnm.deepdive.sereknitty.databinding.ItemRowsBinding;
 import edu.cnm.deepdive.sereknitty.model.RowWithStitches;
-import edu.cnm.deepdive.sereknitty.model.entity.Row;
 import java.util.List;
 
 public class RowsAdapter extends ArrayAdapter<RowWithStitches> {
@@ -34,4 +33,5 @@ public class RowsAdapter extends ArrayAdapter<RowWithStitches> {
 //    binding.getRoot().setAdapter();
     return binding.getRoot();
   }
+
 }

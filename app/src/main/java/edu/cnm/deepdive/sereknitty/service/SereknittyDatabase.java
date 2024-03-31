@@ -127,6 +127,11 @@ public abstract class SereknittyDatabase extends RoomDatabase {
 
     private final Provider<PatternRepository> repositoryProvider;
 
+    /**
+     *
+     *
+     * @param repositoryProvider
+     */
     public Callback(Provider<PatternRepository> repositoryProvider) {
       this.repositoryProvider = repositoryProvider;
     }
@@ -138,11 +143,11 @@ public abstract class SereknittyDatabase extends RoomDatabase {
       PatternRepository repository = repositoryProvider.get();
       Pattern pattern = new Pattern();
       pattern.setPatternName("Stockinette");
-      pattern.setPatternDescription("TEST");
+      pattern.setPatternDescription("Testing");
       repository.save(pattern).subscribe();
       pattern = new Pattern();
-      pattern.setPatternName("garter");
-      pattern.setPatternDescription("also test");
+      pattern.setPatternName("Garter");
+      pattern.setPatternDescription("Testing here, too");
       repository.save(pattern).subscribe();
       // TODO Obtain DAO instances from database, and use them to perform any required preloads, e.g.
       //  LocalDatabase database = LocalDatabase.getInstance();

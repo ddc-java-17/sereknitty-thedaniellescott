@@ -5,6 +5,7 @@ import edu.cnm.deepdive.sereknitty.model.entity.Row;
 import edu.cnm.deepdive.sereknitty.model.entity.RowStitch;
 import java.util.List;
 
+
 public class RowWithStitches extends Row {
 
   @Relation(entityColumn = "row_id", parentColumn = "row_id")

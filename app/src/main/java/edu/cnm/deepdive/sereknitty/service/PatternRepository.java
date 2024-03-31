@@ -62,10 +62,23 @@ public class PatternRepository {
     return patternDao.select();
   }
 
+  /**
+   *
+   *
+   * @param patternId
+   * @return
+   */
+
   public LiveData<List<Row>> getRows(long patternId) {
     return rowDao.selectByPattern(patternId);
   }
 
+  /**
+   *
+   *
+   * @param rowId
+   * @return
+   */
   public LiveData<List<RowStitch>> getStitchesByRow(long rowId) {
     return rowStitchDao.selectForRow(rowId);
   }
