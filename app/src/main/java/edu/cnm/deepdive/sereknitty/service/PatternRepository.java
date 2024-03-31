@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.sereknitty.service;
 
 import androidx.lifecycle.LiveData;
+import edu.cnm.deepdive.sereknitty.model.PatternWithRows;
 import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowStitchDao;
@@ -48,7 +49,7 @@ public class PatternRepository {
    * @param id Unique identifier (primary key value) of a {@link Pattern} entity instance.
    * @return {@link LiveData}-based query for the {@link Pattern} identified by {@code id}.
    */
-  public LiveData<Pattern> getPattern(long id) {
+  public LiveData<PatternWithRows> getPattern(long id) {
     return patternDao.select(id);
   }
 

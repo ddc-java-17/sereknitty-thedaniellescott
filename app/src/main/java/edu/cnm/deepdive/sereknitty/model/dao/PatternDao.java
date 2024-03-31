@@ -7,6 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
+import edu.cnm.deepdive.sereknitty.model.PatternWithRows;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.pojo.PatternLocation;
 import io.reactivex.rxjava3.core.Single;
@@ -43,7 +44,7 @@ public interface PatternDao {
    * @return {@link LiveData} that can be observed for the {@link Pattern} instance of interest.
    */
   @Query("SELECT * FROM pattern WHERE pattern_id = :id")
-  LiveData<Pattern> select(Long id);
+  LiveData<PatternWithRows> select(Long id);
 
   /**
    * Constructs and returns a {@link Single} that, when executed (subscribed to), updates

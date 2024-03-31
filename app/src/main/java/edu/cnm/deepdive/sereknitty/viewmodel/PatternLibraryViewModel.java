@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 import dagger.hilt.android.lifecycle.HiltViewModel;
+import edu.cnm.deepdive.sereknitty.model.PatternWithRows;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.entity.Row;
 import edu.cnm.deepdive.sereknitty.service.PatternRepository;
@@ -18,7 +19,7 @@ public class PatternLibraryViewModel extends ViewModel implements DefaultLifecyc
 
   private final PatternRepository patternRepository;
   private final UserRepository userRepository;
-  private final LiveData<Pattern> pattern;
+  private final LiveData<PatternWithRows> pattern;
   private final MutableLiveData<Long> id;
   private final LiveData<List<Row>> rows;
 
@@ -38,7 +39,7 @@ public class PatternLibraryViewModel extends ViewModel implements DefaultLifecyc
     return patternRepository.getAllPatterns();
   }
 
-  public LiveData<Pattern> getPattern() {
+  public LiveData<PatternWithRows> getPattern() {
     return pattern;
   }
 
