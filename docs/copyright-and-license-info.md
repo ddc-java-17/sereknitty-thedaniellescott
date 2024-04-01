@@ -136,6 +136,8 @@ SOFTWARE.
 
 nicholasjmartinez5@gmail.com
 
+{portfolio and website pending}
+
 Thank you for making my icon and creating vector drawings of my knitting symbols!
 
 
