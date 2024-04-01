@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import edu.cnm.deepdive.sereknitty.R;
+import edu.cnm.deepdive.sereknitty.databinding.ItemStitchesBinding;
 import edu.cnm.deepdive.sereknitty.model.Stitch;
 import java.util.List;
 
@@ -20,7 +21,8 @@ public class StitchesAdapter extends ArrayAdapter<Stitch> {
   private final LayoutInflater inflater;
 
   /**
-   *
+   * This constructor inflates the layout for the individual stitches that will show in
+   * {@link edu.cnm.deepdive.sereknitty.controller.PatternReaderFragment}.
    *
    * @param context
    * @param stitches
@@ -33,7 +35,11 @@ public class StitchesAdapter extends ArrayAdapter<Stitch> {
   @NonNull
   @Override
   public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-    return super.getView(position, convertView, parent);
+    // Do I tell this adapter to populate the view or is that the other adapter's job?
+    ItemStitchesBinding binding = (convertView != null)
+        ? ItemStitchesBinding.bind(convertView)
+        : ItemStitchesBinding.inflate(inflater, parent, false);
+    return binding.getRoot();
   }
 
 }

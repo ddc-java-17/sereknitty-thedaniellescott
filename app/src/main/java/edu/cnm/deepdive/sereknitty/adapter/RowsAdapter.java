@@ -11,19 +11,24 @@ import edu.cnm.deepdive.sereknitty.R;
 import edu.cnm.deepdive.sereknitty.databinding.ItemRowsBinding;
 import edu.cnm.deepdive.sereknitty.model.RowWithStitches;
 import java.util.List;
+import edu.cnm.deepdive.sereknitty.model.entity.Row;
 
 /**
- *
+ * This {@link android.widget.Adapter} is the joining element between the data and the view model.
+ * This class links {@link RowWithStitches} to the view allowing the
+ * {@link edu.cnm.deepdive.sereknitty.controller.PatternReaderFragment} to display a particular row
+ * with a particular set of stitches when a pattern is called up.
  */
 public class RowsAdapter extends ArrayAdapter<RowWithStitches> {
 
   private final LayoutInflater inflater;
 
   /**
-   *
+   * This constructor inflates the layout for the rows that will show in
+   * {@link edu.cnm.deepdive.sereknitty.controller.PatternReaderFragment}
    *
    * @param context
-   * @param rows
+   * @param rows The set of {@link Row} that is linked to a particular pattern.
    */
   public RowsAdapter(@NonNull Context context, @NonNull List<RowWithStitches> rows) {
     super(context, R.layout.item_rows, rows);
