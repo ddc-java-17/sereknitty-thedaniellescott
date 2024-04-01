@@ -11,8 +11,12 @@ import android.view.ViewGroup;
 import androidx.lifecycle.ViewModelProvider;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.sereknitty.R;
+import edu.cnm.deepdive.sereknitty.adapter.RowsAdapter;
 import edu.cnm.deepdive.sereknitty.databinding.FragmentPatternReaderBinding;
+import edu.cnm.deepdive.sereknitty.model.PatternWithRows;
+import edu.cnm.deepdive.sereknitty.model.RowWithStitches;
 import edu.cnm.deepdive.sereknitty.viewmodel.PatternLibraryViewModel;
+import java.util.List;
 
 /**
  * This fragment holds the PatternReader that the user will use to read their current pattern.
@@ -39,9 +43,10 @@ public class PatternReaderFragment extends Fragment {
     viewModel = new ViewModelProvider(requireActivity()).get(PatternLibraryViewModel.class);
     viewModel.getPattern().observe(getViewLifecycleOwner(), (pattern) -> {
       Log.d(getClass().getSimpleName(), "fetched pattern " + pattern.getPatternName());
-      // TODO: 3/30/2024 Create an instance of the Adapter and attach that instance to the ListView.
-
+      RowsAdapter adapter = new RowsAdapter(requireContext(), pattern.getRows());
+      binding.rows.setAdapter(adapter);
     });
+
     viewModel.fetchPattern(patternId);
   }
 }

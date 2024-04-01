@@ -10,7 +10,7 @@ import edu.cnm.deepdive.sereknitty.R;
  */
 public enum Stitch {
 
-  KNIT("K", 0),
+  KNIT("K", R.drawable.knit),
   PURL("P", R.drawable.purl),
   KNIT_2_TOGETHER("K2tog", R.drawable.knit_2_together),
   SLIP_SLIP_KNIT("SSK", R.drawable.slip_slip_knit),
