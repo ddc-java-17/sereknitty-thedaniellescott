@@ -12,10 +12,19 @@ import edu.cnm.deepdive.sereknitty.databinding.ItemRowsBinding;
 import edu.cnm.deepdive.sereknitty.model.RowWithStitches;
 import java.util.List;
 
+/**
+ *
+ */
 public class RowsAdapter extends ArrayAdapter<RowWithStitches> {
 
   private final LayoutInflater inflater;
 
+  /**
+   *
+   *
+   * @param context
+   * @param rows
+   */
   public RowsAdapter(@NonNull Context context, @NonNull List<RowWithStitches> rows) {
     super(context, R.layout.item_rows, rows);
     inflater = LayoutInflater.from(context);
