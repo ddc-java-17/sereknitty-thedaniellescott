@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.sereknitty.model;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Relation;
 import edu.cnm.deepdive.sereknitty.model.entity.Row;
 import edu.cnm.deepdive.sereknitty.model.entity.RowStitch;
@@ -10,10 +11,43 @@ import java.util.List;
  * {@code stitches} associated with a particular {@link Row} instance. It is not entity, but it
  * allows for more complicated queries without complicated SQL code.
  */
-public class RowWithStitches extends Row {
+public class RowWithStitches {
+
+  @ColumnInfo(name = "row_id")
+  private long id;
+
+  @ColumnInfo(name = "current_stitch_id", index = true)
+  private long currentStitchId;
+
+  @ColumnInfo(name = "pattern_id", index = true)
+  private long patternId;
 
   @Relation(entityColumn = "row_id", parentColumn = "row_id")
   private List<RowStitch> stitches;
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public long getCurrentStitchId() {
+    return currentStitchId;
+  }
+
+  public void setCurrentStitchId(long currentStitchId) {
+    this.currentStitchId = currentStitchId;
+  }
+
+  public long getPatternId() {
+    return patternId;
+  }
+
+  public void setPatternId(long patternId) {
+    this.patternId = patternId;
+  }
 
   /**
    * This getter gets the {@link List} of stitches associated with a particular {@link Row}.

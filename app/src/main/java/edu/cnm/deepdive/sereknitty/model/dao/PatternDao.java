@@ -43,6 +43,7 @@ public interface PatternDao {
    * @param id Unique identifier (primary key value) of the {@link Pattern} instance of interest.
    * @return {@link LiveData} that can be observed for the {@link Pattern} instance of interest.
    */
+  @Transaction
   @Query("SELECT * FROM pattern WHERE pattern_id = :id")
   LiveData<PatternWithRows> select(Long id);
 

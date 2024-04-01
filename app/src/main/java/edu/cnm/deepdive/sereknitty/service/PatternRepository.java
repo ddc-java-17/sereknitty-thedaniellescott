@@ -13,6 +13,8 @@ import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import java.time.Instant;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -63,8 +65,6 @@ public class PatternRepository {
   }
 
   /**
-   *
-   *
    * @param patternId
    * @return
    */
@@ -74,8 +74,6 @@ public class PatternRepository {
   }
 
   /**
-   *
-   *
    * @param rowId
    * @return
    */
@@ -119,6 +117,38 @@ public class PatternRepository {
         .subscribeOn(Schedulers.io());
   }
 
+  public Single<Row> save(Row row) {
+    return (
+        (row.getId() == 0)
+            ? insert(row)
+            : update(row)
+    )
+        .subscribeOn(Schedulers.io());
+  }
+
+  public Single<RowStitch> save(RowStitch stitch) {
+    return (
+        (stitch.getId() == 0)
+            ? insert(stitch)
+            : update(stitch)
+    )
+        .subscribeOn(Schedulers.io());
+  }
+
+  public Single<Collection<RowStitch>> save(Collection<RowStitch> stitches) {
+    return rowStitchDao
+        .insert(stitches)
+        .map((ids) -> {
+          Iterator<Long> idIterator = ids.iterator();
+          Iterator<RowStitch> stitchIterator = stitches.iterator();
+          while (idIterator.hasNext()) {
+            stitchIterator.next().setId(idIterator.next());
+          }
+          return stitches;
+        })
+        .subscribeOn(Schedulers.io());
+  }
+
   /**
    * Constructs and returns a {@link Completable} task that, when executed (subscribed to), removes
    * the specified {@code pattern} from the database.
@@ -134,7 +164,6 @@ public class PatternRepository {
   }
 
 
-
   private Single<Pattern> insert(Pattern pattern) {
     pattern.setCreated(Instant.now());
     return patternDao
@@ -142,16 +171,44 @@ public class PatternRepository {
         .map((id) -> {
           pattern.setId(id);
           return pattern;
-        })
-        .subscribeOn(Schedulers.io());
+        });
 
   }
 
   private Single<Pattern> update(Pattern pattern) {
     return patternDao
         .update(pattern)
-        .map((count) -> pattern)
-        .subscribeOn(Schedulers.io());
+        .map((count) -> pattern);
   }
 
+
+  private Single<Row> insert(Row row) {
+    return rowDao
+        .insert(row)
+        .map((id) -> {
+          row.setId(id);
+          return row;
+        });
+  }
+
+  private Single<Row> update(Row row) {
+    return rowDao
+        .update(row)
+        .map((count) -> row);
+  }
+
+  private Single<RowStitch> insert(RowStitch stitch) {
+    return rowStitchDao
+        .insert(stitch)
+        .map((id) -> {
+          stitch.setId(id);
+          return stitch;
+        });
+  }
+
+  private Single<RowStitch> update(RowStitch stitch) {
+    return rowStitchDao
+        .update(stitch)
+        .map((count) -> stitch);
+  }
 }

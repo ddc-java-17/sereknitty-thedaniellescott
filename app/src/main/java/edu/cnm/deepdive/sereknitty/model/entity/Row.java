@@ -26,7 +26,7 @@ public class Row {
   private long id;
 
   @ColumnInfo(name = "current_stitch_id", index = true)
-  private long currentStitchId;
+  private Long currentStitchId;
 
   @ColumnInfo(name = "pattern_id", index = true)
   private long patternId;
@@ -39,11 +39,11 @@ public class Row {
     this.id = id;
   }
 
-  public long getCurrentStitchId() {
+  public Long getCurrentStitchId() {
     return currentStitchId;
   }
 
-  public void setCurrentStitchId(long currentStitchId) {
+  public void setCurrentStitchId(Long currentStitchId) {
     this.currentStitchId = currentStitchId;
   }
 

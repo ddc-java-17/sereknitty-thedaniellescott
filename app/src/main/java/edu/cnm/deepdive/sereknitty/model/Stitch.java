@@ -4,7 +4,7 @@ import edu.cnm.deepdive.sereknitty.R;
 
 /**
  * This is an {@link Enum} that holds a list of stitches. In knitting, a stitch
- * is the basic building block. A {@link Row} is made up of many stitches, and this {@link Enum}
+ * is the basic building block. A {@link edu.cnm.deepdive.sereknitty.model.entity.Row} is made up of many stitches, and this {@link Enum}
  * represents all the stitches my app uses at the moment. Think of this class like a stitch
  * dictionary.
  */

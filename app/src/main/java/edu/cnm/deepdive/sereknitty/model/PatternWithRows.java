@@ -2,6 +2,7 @@ package edu.cnm.deepdive.sereknitty.model;
 
 import androidx.room.Relation;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
+import edu.cnm.deepdive.sereknitty.model.entity.Row;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public class PatternWithRows extends Pattern {
 
-  @Relation(entityColumn = "pattern_id", parentColumn = "pattern_id")
+  @Relation(entity = Row.class, entityColumn = "pattern_id", parentColumn = "pattern_id")
   private List<RowWithStitches> rows;
 
   /**

@@ -22,6 +22,7 @@ import edu.cnm.deepdive.sereknitty.model.entity.Row;
 public class RowsAdapter extends ArrayAdapter<RowWithStitches> {
 
   private final LayoutInflater inflater;
+  private final Context context;
 
   /**
    * This constructor inflates the layout for the rows that will show in
@@ -33,6 +34,7 @@ public class RowsAdapter extends ArrayAdapter<RowWithStitches> {
   public RowsAdapter(@NonNull Context context, @NonNull List<RowWithStitches> rows) {
     super(context, R.layout.item_rows, rows);
     inflater = LayoutInflater.from(context);
+    this.context = context;
   }
 
   @NonNull
@@ -42,9 +44,8 @@ public class RowsAdapter extends ArrayAdapter<RowWithStitches> {
     ItemRowsBinding binding = (convertView != null)
         ? ItemRowsBinding.bind(convertView)
         : ItemRowsBinding.inflate(inflater, parent, false);
-    // TODO: 3/30/2024  create an instance of StitchesAdapter, pass to it in the constructor the
-    //  context, the list of rowStitches that we get from row.getStitches.
-//    binding.getRoot().setAdapter();
+    StitchesAdapter adapter = new StitchesAdapter(context, row.getStitches());
+    binding.getRoot().setAdapter(adapter);
     return binding.getRoot();
   }
 

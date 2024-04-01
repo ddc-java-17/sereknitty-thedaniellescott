@@ -8,6 +8,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 import edu.cnm.deepdive.sereknitty.model.entity.Row;
 import io.reactivex.rxjava3.core.Single;
+import java.util.Collection;
 import java.util.List;
 
 @Dao
@@ -15,6 +16,9 @@ public interface RowDao {
 
   @Insert
   Single<Long> insert(Row row);
+
+  @Insert
+  Single<List<Long>> insert(Collection<Row> rows);
 
   @Query("SELECT * FROM 'row' WHERE row_id = :id")
   LiveData<Row> select(long id);

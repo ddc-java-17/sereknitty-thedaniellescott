@@ -15,6 +15,7 @@
  */
 package edu.cnm.deepdive.sereknitty.service;
 
+import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.room.Database;
@@ -22,6 +23,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
+import edu.cnm.deepdive.sereknitty.model.Stitch;
 import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowStitchDao;
@@ -32,6 +34,11 @@ import edu.cnm.deepdive.sereknitty.model.entity.RowStitch;
 import edu.cnm.deepdive.sereknitty.model.entity.User;
 import edu.cnm.deepdive.sereknitty.service.SereknittyDatabase.Converters;
 import java.time.Instant;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import javax.inject.Provider;
 
 /**
@@ -137,14 +144,40 @@ public abstract class SereknittyDatabase extends RoomDatabase {
     }
 
 
+    @SuppressLint("CheckResult")
     @Override
     public void onCreate(@NonNull SupportSQLiteDatabase db) {
       super.onCreate(db);
       PatternRepository repository = repositoryProvider.get();
+      Row row = new Row();
+
+      //noinspection SimplifyStreamApiCallChains
+      List<RowStitch> stitches = Arrays.stream(Stitch.values())
+          .map((stitch) -> {
+            RowStitch rowStitch = new RowStitch();
+            rowStitch.setOrdinalPosition(stitch.ordinal());
+            return rowStitch;
+          }
+      )
+          .collect(Collectors.toList());
       Pattern pattern = new Pattern();
       pattern.setPatternName("Stockinette");
       pattern.setPatternDescription("Testing");
-      repository.save(pattern).subscribe();
+      //noinspection ResultOfMethodCallIgnored
+      repository.save(pattern)
+          .doOnSuccess((p) -> row.setPatternId(p.getId()))
+          .subscribe(
+              (p) -> {
+                row.setPatternId(p.getId());
+                //noinspection ResultOfMethodCallIgnored
+                repository.save(row)
+                    .doOnSuccess((r) -> stitches.forEach((s) -> s.setRowId(r.getId())))
+                    .subscribe(
+                        (r) -> repository.save(stitches)
+                            .subscribe()
+                    );
+              }
+          );
       pattern = new Pattern();
       pattern.setPatternName("Garter");
       pattern.setPatternDescription("Testing here, too");
