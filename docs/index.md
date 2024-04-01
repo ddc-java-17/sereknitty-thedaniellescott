@@ -15,7 +15,7 @@ Sereknitty is an app that makes knitting patterns easier to keep handy on their 
 ## Intended users & user stories
 {: menu="Users" }
 
-* Moderate to advanced knitters who like to work in complicated patterns like lace or intricate cables.
+* Moderate to advanced knitters who like to work in complicated patterns like lace.
 > As an advanced knitter, I want easy progress tracking on my lace shawl pattern so that I can pick up my knitting right where I left off.
 
 * Knitters who are still learning the ropes.
@@ -24,13 +24,14 @@ Sereknitty is an app that makes knitting patterns easier to keep handy on their 
 * Innovative knitters who write patterns
 > As a pattern writer, I like to have a pattern builder that I can use to create new patterns and edit patterns I am currently drafting.
 
+
 ## Functionality
 
 * Knitters will be able to access knitting patterns that they put into Sereknitty and see pictures they have taken of their work like a knitting journal or catalogue.
-* Zoomable knitting pattern and a togglable key off the side showing what individual stitch symbols mean.
-* A counter that one simply has to tap to progress. If the knitter just needs to see the pattern, they can hide or turn off the counting feature.
-* Highlight current row and/or rowStitch in the pattern (also a toggleable feature).
-* Save current row and rowStitch location for later when you have to stop knitting.
+* The Pattern Reader will feature a zoomable and interactive knitting pattern.
+* There will be a row counter that one simply has to tap to progress. If the knitter just needs to see the pattern, they can hide or turn off the counting feature.
+* Highlight current row and/or stitch in the pattern.
+* Save current row and stitch location for later when you have to stop knitting.
 
 
 ## Persistent data
@@ -45,6 +46,7 @@ Sereknitty is an app that makes knitting patterns easier to keep handy on their 
   * Which patterns are currently being worked on
 * Pictures of patterns
     
+
 ## Device/external services
 {: menu="Services" }
 
@@ -52,6 +54,7 @@ Sereknitty is an app that makes knitting patterns easier to keep handy on their 
   * https://developer.android.com/media/camera/camerax
   * Sereknitty will allow users to take pictures of their projects and save the picture with their pattern or project.
   * Sereknitty will not require full-time access to the camera to run the app.
+
 
 ## Stretch goals and possible enhancements 
 {: menu="Stretch goals" }
