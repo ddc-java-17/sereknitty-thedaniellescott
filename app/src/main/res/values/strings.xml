@@ -48,5 +48,6 @@
   <string name="hello_pattern_library_fragment">Hello, world! Welcome to the Pattern Library!</string>
   <string name="hello_pattern_builder_fragment">Hello, world! Welcome to the pattern builder fragment!</string>
   <string name="pattern_library_test">Pretty Pattern</string>
+  <string name="camera_label">Take a picture!</string>
 
 </resources>

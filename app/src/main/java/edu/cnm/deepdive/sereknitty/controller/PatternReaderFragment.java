@@ -49,4 +49,7 @@ public class PatternReaderFragment extends Fragment {
 
     viewModel.fetchPattern(patternId);
   }
+
+
+
 }
