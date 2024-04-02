@@ -7,10 +7,11 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
-import edu.cnm.deepdive.sereknitty.model.pojo.PatternWithRows;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.pojo.PatternLocation;
+import edu.cnm.deepdive.sereknitty.model.pojo.PatternWithRows;
 import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.functions.Consumer;
 import java.util.List;
 
 /**
@@ -25,9 +26,8 @@ public interface PatternDao {
 
   /**
    * Constructs and returns a {@link Single} that, when executed (subscribed to), inserts
-   * {@code pattern} into the database and invokes the subscribing
-   * {@link io.reactivex.rxjava3.functions.Consumer} with the auto-generated primary key value of
-   * the inserted record.
+   * {@code pattern} into the database and invokes the subscribing {@link Consumer} with the
+   * auto-generated primary key value of the inserted record.
    *
    * @param pattern {@link Pattern} instance to be inserted.
    * @return {@link Single} that will (when subscribed to) insert {@code pattern} into the database.
@@ -57,6 +57,12 @@ public interface PatternDao {
   @Update
   Single<Integer> update(Pattern pattern);
 
+  /**
+   * Updates and passes through a particular pattern, to avoid repeated queries.
+   *
+   * @param pattern {@link Pattern} to be updated.
+   * @return {@link Single} of the updated {@code pattern}.
+   */
   default Single<Pattern> updateAndPassThrough(Pattern pattern) {
     return update(pattern)
         .map((count) -> pattern);
@@ -77,8 +83,6 @@ public interface PatternDao {
       + "WHERE p.pattern_id = :patternId")
   LiveData<PatternLocation> getLocation(long patternId);
 
-  // TODO: 3/19/2024 look into other CRUD ops for the PatternLocation stuff.
-
   /**
    * Constructs and returns a {@link LiveData}-based query of a {@link List} of {@link Pattern}
    * entities. When observed (or when the contents of the {@code pattern} table are modified using
@@ -91,8 +95,8 @@ public interface PatternDao {
 
   /**
    * Constructs and returns a {@link Single} that, when executed (subscribed to), deletes
-   * {@code pattern} from the database and invokes the subscribing
-   * {@link io.reactivex.rxjava3.functions.Consumer} with the number of records modified.
+   * {@code pattern} from the database and invokes the subscribing {@link Consumer} with the number
+   * of records modified.
    *
    * @param pattern {@link Pattern} instance to be deleted.
    * @return {@link Single} that will (when subscribed to) delete {@code pattern} from the database.

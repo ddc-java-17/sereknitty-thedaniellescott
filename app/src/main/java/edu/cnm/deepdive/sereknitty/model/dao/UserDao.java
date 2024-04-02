@@ -24,6 +24,7 @@ import androidx.room.Update;
 import edu.cnm.deepdive.sereknitty.model.entity.User;
 import io.reactivex.rxjava3.core.Maybe;
 import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.functions.Consumer;
 import java.util.List;
 
 /**
@@ -40,9 +41,8 @@ public interface UserDao {
 
   /**
    * Constructs and returns a {@link Single} that, when executed (subscribed to), inserts
-   * {@code user} into the database and invokes the subscribing
-   * {@link io.reactivex.rxjava3.functions.Consumer} with the auto-generated primary key value of
-   * the inserted record.
+   * {@code user} into the database and invokes the subscribing {@link Consumer} with the
+   * auto-generated primary key value of the inserted record.
    *
    * @param user {@link User} instance to be inserted.
    * @return {@link Single} that will (when subscribed to) insert {@code user} into the database.
@@ -51,7 +51,7 @@ public interface UserDao {
   Single<Long> insert(User user);
 
   /**
-   * Constructs and returns a {@Link Single} that, when executed (subscribed to), updates
+   * Constructs and returns a {@link Single} that, when executed (subscribed to), updates
    * {@code user} to the database.
    *
    * @param user {@link User} instance to be updated.
@@ -60,6 +60,12 @@ public interface UserDao {
   @Update
   Single<Integer> update(User user);
 
+  /**
+   * Updates and passes through a particular user, to avoid repeated queries.
+   *
+   * @param user {@link User} to be updated.
+   * @return {@link Single} of the updated {@code user}.
+   */
   default Single<User> updateAndPassThrough(User user) {
     return update(user)
         .map((count) -> user);
@@ -67,8 +73,8 @@ public interface UserDao {
 
   /**
    * Constructs and returns a {@link Single} that, when executed (subscribed to), deletes
-   * {@code user} from the database and invokes the subscribing
-   * {@link io.reactivex.rxjava3.functions.Consumer} with the number of records modified.
+   * {@code user} from the database and invokes the subscribing {@link Consumer} with the number of
+   * records modified.
    *
    * @param user {@link User} instance to be deleted.
    * @return {@link Single} that will (when subscribed to) delete {@code user} from the database.
