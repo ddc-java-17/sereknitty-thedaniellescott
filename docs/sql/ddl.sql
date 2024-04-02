@@ -1,4 +1,4 @@
--- Generated 2024-03-19 20:25:55-0600 for database version 1
+-- Generated 2024-04-02 11:02:53-0600 for database version 1
 
 CREATE TABLE IF NOT EXISTS `user`
 (
@@ -16,13 +16,15 @@ CREATE UNIQUE INDEX IF NOT EXISTS `index_user_display_name` ON `user` (`display_
 
 CREATE TABLE IF NOT EXISTS `pattern`
 (
-    `pattern_id`     INTEGER PRIMARY KEY AUTOINCREMENT,
-    `external_key`   BLOB,
-    `created`        INTEGER NOT NULL,
-    `modified`       INTEGER NOT NULL,
-    `pattern_name`   TEXT,
-    `user_id`        INTEGER NOT NULL,
-    `current_row_id` INTEGER NOT NULL,
+    `pattern_id`          INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    `external_key`        BLOB,
+    `created`             INTEGER                           NOT NULL,
+    `modified`            INTEGER                           NOT NULL,
+    `pattern_name`        TEXT,
+    `pattern_description` TEXT,
+    `image`               TEXT,
+    `user_id`             INTEGER,
+    `current_row_id`      INTEGER,
     FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE,
     FOREIGN KEY (`current_row_id`) REFERENCES `row` (`row_id`) ON UPDATE NO ACTION ON DELETE CASCADE
 );
@@ -42,7 +44,7 @@ CREATE INDEX IF NOT EXISTS `index_pattern_current_row_id` ON `pattern` (`current
 CREATE TABLE IF NOT EXISTS `row`
 (
     `row_id`            INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    `current_stitch_id` INTEGER                           NOT NULL,
+    `current_stitch_id` INTEGER,
     `pattern_id`        INTEGER                           NOT NULL,
     FOREIGN KEY (`pattern_id`) REFERENCES `pattern` (`pattern_id`) ON UPDATE NO ACTION ON DELETE CASCADE,
     FOREIGN KEY (`current_stitch_id`) REFERENCES `row_stitch` (`row_stitch_id`) ON UPDATE NO ACTION ON DELETE CASCADE
