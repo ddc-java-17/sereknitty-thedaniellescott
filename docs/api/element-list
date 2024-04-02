@@ -1,0 +1,10 @@
+edu.cnm.deepdive.sereknitty
+edu.cnm.deepdive.sereknitty.adapter
+edu.cnm.deepdive.sereknitty.controller
+edu.cnm.deepdive.sereknitty.hilt
+edu.cnm.deepdive.sereknitty.model
+edu.cnm.deepdive.sereknitty.model.dao
+edu.cnm.deepdive.sereknitty.model.entity
+edu.cnm.deepdive.sereknitty.model.pojo
+edu.cnm.deepdive.sereknitty.service
+edu.cnm.deepdive.sereknitty.viewmodel
