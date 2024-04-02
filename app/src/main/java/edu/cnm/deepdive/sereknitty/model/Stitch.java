@@ -1,12 +1,12 @@
 package edu.cnm.deepdive.sereknitty.model;
 
 import edu.cnm.deepdive.sereknitty.R;
+import edu.cnm.deepdive.sereknitty.model.entity.Row;
 
 /**
- * This is an {@link Enum} that holds a list of stitches. In knitting, a stitch
- * is the basic building block. A {@link edu.cnm.deepdive.sereknitty.model.entity.Row} is made up of many stitches, and this {@link Enum}
- * represents all the stitches my app uses at the moment. Think of this class like a stitch
- * dictionary.
+ * This is an {@link Enum} that holds a list of stitches. In knitting, a stitch is the basic
+ * building block. A {@link Row} is made up of many stitches, and this {@link Enum} represents all
+ * the stitches my app uses at the moment. Think of this class like a stitch dictionary.
  */
 public enum Stitch {
 
@@ -30,7 +30,8 @@ public enum Stitch {
    * This constructor initializes all the fields and their assets.
    *
    * @param shorthandAlphaNum {@link String} shorthand for the stitch.
-   * @param drawableId {@link int} representing the image for the symbolic shorthand for the stitch.
+   * @param drawableId        {@link int} representing the image for the symbolic shorthand for the
+   *                          stitch.
    */
   Stitch(String shorthandAlphaNum, int drawableId) {
     this.shorthandAlphaNum = shorthandAlphaNum;
