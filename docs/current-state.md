@@ -10,6 +10,8 @@ order: 40
 ## Completion state
 {: menu="Completion" }
 
+The data structures are more or less complete. The User Interface only has a start, but a good one. An overwhelming amount of my logic is going to be in the UI and repositories. Sereknitty is very much a work in progress.
+
 ## Known deficiencies
 {: menu="Deficiencies" }
 
