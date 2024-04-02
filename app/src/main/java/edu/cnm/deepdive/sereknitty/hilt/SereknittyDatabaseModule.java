@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.sereknitty.hilt;
 
 import android.content.Context;
+import androidx.room.Dao;
 import androidx.room.Room;
 import dagger.Module;
 import dagger.Provides;
@@ -11,6 +12,10 @@ import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowStitchDao;
 import edu.cnm.deepdive.sereknitty.model.dao.UserDao;
+import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
+import edu.cnm.deepdive.sereknitty.model.entity.Row;
+import edu.cnm.deepdive.sereknitty.model.entity.RowStitch;
+import edu.cnm.deepdive.sereknitty.model.entity.User;
 import edu.cnm.deepdive.sereknitty.service.PatternRepository;
 import edu.cnm.deepdive.sereknitty.service.SereknittyDatabase;
 import javax.inject.Provider;
@@ -31,8 +36,10 @@ public final class SereknittyDatabaseModule {
   /**
    * Provides a single instance of {@link SereknittyDatabase}.
    *
-   * @param context
-   * @return {@link SereknittyDatabase}
+   * @param context {@link Context} is the global information from the activity that allows us to
+   *                share information across multiple fragments
+   * @return {@link SereknittyDatabase} This is the database for the app, and it stores and
+   * organizes all information in the app.
    */
   @Provides
   @Singleton
@@ -47,8 +54,10 @@ public final class SereknittyDatabaseModule {
   /**
    * Provides a single instance of {@link UserDao}.
    *
-   * @param database
-   * @return {@link UserDao}
+   * @param database This is {@link SereknittyDatabase}, and it stores and organizes all information
+   *                 in the app.
+   * @return {@link UserDao} The {@link Dao} that is responsible for the queries relating to the
+   * {@link User} instances.
    */
   @Provides
   @Singleton
@@ -59,8 +68,10 @@ public final class SereknittyDatabaseModule {
   /**
    * Provides a single instance of {@link PatternDao}.
    *
-   * @param database
-   * @return {@link PatternDao}
+   * @param database This is {@link SereknittyDatabase}, and it stores and organizes all information
+   *                 in the app.
+   * @return {@link PatternDao} The {@link Dao} that is responsible for the queries relating to the
+   * {@link Pattern} instances.
    */
   @Provides
   @Singleton
@@ -71,8 +82,10 @@ public final class SereknittyDatabaseModule {
   /**
    * Provides a single instance of {@link RowDao}.
    *
-   * @param database
-   * @return {@link RowDao}
+   * @param database This is {@link SereknittyDatabase}, and it stores and organizes all information
+   *                 in the app.
+   * @return {@link RowDao} The {@link Dao} that is responsible for the queries relating to the
+   * {@link Row} instances.
    */
   @Provides
   @Singleton
@@ -83,8 +96,10 @@ public final class SereknittyDatabaseModule {
   /**
    * Provides a single instance of {@link RowStitchDao}.
    *
-   * @param database
-   * @return {@link RowStitchDao}
+   * @param database This is {@link SereknittyDatabase}, and it stores and organizes all information
+   *                 in the app.
+   * @return {@link RowStitchDao} The {@link Dao} that is responsible for the queries relating to
+   * the {@link RowStitch} instances.
    */
   @Provides
   @Singleton
