@@ -24,3 +24,6 @@ order: 30
 ## User instructions
 {: menu="User" }
 
+When Sereknitty opens and after you sign in, it will automatically open to the Pattern Library. Tap the floating button with a "+" to open the Pattern Builder (it doesn't to anything yet). Tap a pattern in the Pattern Library to open that pattern in the Pattern Reader (will show the pattern and nothing more).
+
+To get to the Settings, tap the meatballs in the upper right on the Action Bar to open the drawer, and then tap "Settings". To sign out, open the same drawer menu and tap sign out.
