@@ -14,8 +14,8 @@ order: 30
 2. Make sure that you have a Github account.
 3. Have IntelliJ IDEA installed.
 3. Go to [Sereknitty's Github Repository](https://github.com/ddc-java-17/sereknitty-thedaniellescott) at https://github.com/ddc-java-17/sereknitty-thedaniellescott
-4. Click on the green `Code` button in the upper right hand side of the screen, and clone the repository.
-5. 
+4. Click on the green `Code` button in the upper right hand side of the screen, and copy the link to clone the repository.
+5. Open IntelliJ IDEA and click on `Get from VCS`. This will open a dialogue window. Paste the link from Github into the URL field and 
 2. Download and install the app.
 
 
