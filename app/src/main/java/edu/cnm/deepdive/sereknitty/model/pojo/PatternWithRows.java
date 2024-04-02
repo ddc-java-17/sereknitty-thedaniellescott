@@ -16,14 +16,16 @@ public class PatternWithRows extends Pattern {
   private List<RowWithStitches> rows;
 
   /**
-   * This getter gets the {@link List} of {@code rows} associated with a particular {@link Pattern}.
+   * This getter gets the {@link List} of {@code rows} associated with a particular
+   * {@link Pattern}.
    */
   public List<RowWithStitches> getRows() {
     return rows;
   }
 
   /**
-   * This setter sets the {@link List} of {@code rows} associated with a particular {@link Pattern}.
+   * This setter sets the {@link List} of {@code rows} associated with a particular
+   * {@link Pattern}.
    */
   public void setRows(List<RowWithStitches> rows) {
     this.rows = rows;
