@@ -1,7 +1,7 @@
 ---
 title: Copyright and License Information
 description: "Copyrights, licensing, credit, and anything else that I did not create or ever own"
-menu: State
+menu: Intellectual Property
 order: 50
 ---
 
