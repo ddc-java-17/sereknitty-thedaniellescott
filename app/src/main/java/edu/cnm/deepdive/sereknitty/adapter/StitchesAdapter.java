@@ -5,11 +5,13 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import edu.cnm.deepdive.sereknitty.R;
+import edu.cnm.deepdive.sereknitty.controller.PatternReaderFragment;
 import edu.cnm.deepdive.sereknitty.databinding.ItemStitchesBinding;
 import edu.cnm.deepdive.sereknitty.model.Stitch;
 import edu.cnm.deepdive.sereknitty.model.entity.RowStitch;
@@ -17,8 +19,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * This {@link android.widget.Adapter} is the joining element between the data and the view model.
- * This class links {@link Stitch} to the
+ * This {@link Adapter} is the joining element between the data and the view model. This class links
+ * {@link Stitch} to the view model dealing with {@link PatternReaderFragment}.
  */
 public class StitchesAdapter extends ArrayAdapter<RowStitch> {
 
@@ -27,10 +29,12 @@ public class StitchesAdapter extends ArrayAdapter<RowStitch> {
 
   /**
    * This constructor inflates the layout for the individual stitches that will show in
-   * {@link edu.cnm.deepdive.sereknitty.controller.PatternReaderFragment}.
+   * {@link PatternReaderFragment}.
    *
-   * @param context
-   * @param stitches
+   * @param context  {@link Context} is the global information from the activity that allows us to
+   *                 share information across multiple fragments
+   * @param stitches {@link List} of {@link RowStitch} objects that link to the {@link Enum}
+   *                 {@link Stitch}
    */
   public StitchesAdapter(@NonNull Context context, @NonNull List<RowStitch> stitches) {
     super(context, R.layout.item_stitches, stitches);
