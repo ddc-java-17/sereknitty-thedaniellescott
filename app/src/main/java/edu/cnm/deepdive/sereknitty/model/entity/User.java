@@ -152,9 +152,6 @@ public class User {
     this.displayName = displayName;
   }
 
-  /**
-   * Generates the {@link UUID} key for the user.
-   */
   private void generateKey() {
     key = UUID.randomUUID();
   }
