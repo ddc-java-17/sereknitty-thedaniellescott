@@ -12,7 +12,7 @@ order: 50
 
 Personal Android Project Template
 
-v1.0.0 written by Danielle Scott.
+v1.0.0 written by Nicholas Bennett and Todd Nordquist.
 
 Copyright (c) 2024 CNM Ingenuity, Inc.
 
@@ -129,14 +129,14 @@ SOFTWARE.
 ——————
 
 
-## Credit and Special Thanks
+## Credit
 {: menu="Credit" }
 
 ### Nicolas Martinez
 
 nicholasjmartinez5@gmail.com
 
-{portfolio and website pending}
+(portfolio and website pending)
 
 Thank you for making my icon and creating vector drawings of my knitting symbols!
 
@@ -147,14 +147,21 @@ Annapurnapp Technologies
 
 https://play.google.com/store/apps/details?id=com.row_counter
 
-No code was taken, but I definitely got a couple ideas from this fine app.
+No code was taken, but I definitely got a couple ideas and leads from this fine knitting app.
 
+
+## Thanks and Acknowledgements
+{: menu="Thanks" }
+
+### The Deep Dive Coding Staff and Students
+
+Thanks for your support, the laughs, and for listening to me when I needed an ear. Thank you, Nick Bennett, for being a badass instructor.
 
 ### All My Local Coffee Shops
 
-Thanks for all the delicious coffee and the WIFI!
+Thanks for all the delicious coffee and the Wi-Fi!
 
 
 ### Noodle and Meatball
 
-My sister's fine pupper and kitty (named respectively) have been remarkable debugging assistants and fantastic therapists.
+My sister's pupper and kitty (named respectively) have been remarkable debugging assistants and fantastic therapists.
