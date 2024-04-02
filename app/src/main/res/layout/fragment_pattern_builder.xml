@@ -5,6 +5,8 @@
   android:layout_height="match_parent"
   tools:context=".controller.PatternBuilderFragment">
 
+
+
   <!-- TODO: Update blank fragment layout -->
   <TextView
     android:id="@+id/pattern_builder_fragment"

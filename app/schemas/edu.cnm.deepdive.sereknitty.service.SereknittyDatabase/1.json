@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c69c4b4868a7060791ba4a2f09732fd0",
+    "identityHash": "de92b25361c591f705b693bcae44012d",
     "entities": [
       {
         "tableName": "user",
@@ -75,13 +75,13 @@
       },
       {
         "tableName": "pattern",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_id` INTEGER PRIMARY KEY AUTOINCREMENT, `external_key` BLOB, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `pattern_name` TEXT, `user_id` INTEGER NOT NULL, `current_row_id` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`current_row_id`) REFERENCES `row`(`row_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pattern_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `external_key` BLOB, `created` INTEGER NOT NULL, `modified` INTEGER NOT NULL, `pattern_name` TEXT, `pattern_description` TEXT, `image` TEXT, `user_id` INTEGER, `current_row_id` INTEGER, FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`current_row_id`) REFERENCES `row`(`row_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "pattern_id",
             "affinity": "INTEGER",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "key",
@@ -108,16 +108,28 @@
             "notNull": false
           },
           {
+            "fieldPath": "patternDescription",
+            "columnName": "pattern_description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "image",
+            "columnName": "image",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
             "fieldPath": "userId",
             "columnName": "user_id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "currentRowId",
             "columnName": "current_row_id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -209,7 +221,7 @@
       },
       {
         "tableName": "row",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`row_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `current_stitch_id` INTEGER NOT NULL, `pattern_id` INTEGER NOT NULL, FOREIGN KEY(`pattern_id`) REFERENCES `pattern`(`pattern_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`current_stitch_id`) REFERENCES `row_stitch`(`row_stitch_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`row_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `current_stitch_id` INTEGER, `pattern_id` INTEGER NOT NULL, FOREIGN KEY(`pattern_id`) REFERENCES `pattern`(`pattern_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`current_stitch_id`) REFERENCES `row_stitch`(`row_stitch_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -221,7 +233,7 @@
             "fieldPath": "currentStitchId",
             "columnName": "current_stitch_id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "patternId",
@@ -357,7 +369,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c69c4b4868a7060791ba4a2f09732fd0')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'de92b25361c591f705b693bcae44012d')"
     ]
   }
 }

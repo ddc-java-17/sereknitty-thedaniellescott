@@ -2,12 +2,20 @@ package edu.cnm.deepdive.sereknitty.service;
 
 import androidx.lifecycle.LiveData;
 import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
+import edu.cnm.deepdive.sereknitty.model.dao.RowDao;
+import edu.cnm.deepdive.sereknitty.model.dao.RowStitchDao;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
+import edu.cnm.deepdive.sereknitty.model.entity.Row;
+import edu.cnm.deepdive.sereknitty.model.entity.RowStitch;
 import edu.cnm.deepdive.sereknitty.model.pojo.PatternLocation;
+import edu.cnm.deepdive.sereknitty.model.pojo.PatternWithRows;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import java.time.Instant;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -23,13 +31,17 @@ import javax.inject.Singleton;
 public class PatternRepository {
 
   private final PatternDao patternDao;
+  private final RowDao rowDao;
+  private final RowStitchDao rowStitchDao;
 
   /**
    * Initializes this instance by establishing a logical connection to the underlying database.
    */
   @Inject
-  PatternRepository(PatternDao patternDao) {
+  PatternRepository(PatternDao patternDao, RowDao rowDao, RowStitchDao rowStitchDao) {
     this.patternDao = patternDao;
+    this.rowDao = rowDao;
+    this.rowStitchDao = rowStitchDao;
   }
 
   /**
@@ -40,7 +52,7 @@ public class PatternRepository {
    * @param id Unique identifier (primary key value) of a {@link Pattern} entity instance.
    * @return {@link LiveData}-based query for the {@link Pattern} identified by {@code id}.
    */
-  public LiveData<Pattern> get(long id) {
+  public LiveData<PatternWithRows> getPattern(long id) {
     return patternDao.select(id);
   }
 
@@ -49,8 +61,27 @@ public class PatternRepository {
    * executes when observed, or (if already being observed) whenever the contents of the underlying
    * {@code pattern} table are modified using Room data-access methods.
    */
-  public LiveData<List<Pattern>> getAll() {
+  public LiveData<List<Pattern>> getAllPatterns() {
     return patternDao.select();
+  }
+
+  /**
+   * @param patternId
+   * @return
+   */
+
+  public LiveData<List<Row>> getRows(long patternId) {
+    return rowDao.selectByPattern(patternId);
+  }
+
+  /**
+   * Gets {@link RowStitch} instances linked to a particular {@link Row}.
+   *
+   * @param rowId Id of a paticular {@link Row}
+   * @return {@link LiveData}-based query for the {@link Row} identified by {@code rowId}.
+   */
+  public LiveData<List<RowStitch>> getStitchesByRow(long rowId) {
+    return rowStitchDao.selectForRow(rowId);
   }
 
   /**
@@ -65,8 +96,6 @@ public class PatternRepository {
   public LiveData<PatternLocation> getLocation(long patternId) {
     return patternDao.getLocation(patternId);
   }
-
-  // TODO: 3/19/2024 write save method for stitch location.
 
   /**
    * Constructs and returns a {@link Single} task that, when executed (subscribed to), will insert
@@ -92,6 +121,72 @@ public class PatternRepository {
   }
 
   /**
+   * Constructs and returns a {@link Single} task that, when executed (subscribed to), will insert
+   * or update the specified {@code row} in the database, and pass the updated {@link Row} instance
+   * to the subscribing {@link Consumer}. The specific persistence operation is determined by
+   * examining the value returned by {@link Row#getId()}: a value of zero (0) indicates the
+   * {@code row} has not yet been {@code INSERT}ed and must be; a non-zero value indicates that
+   * {@code row} is already in the database, and must thus be {@code UPDATE}d.
+   *
+   * @param row The row that is to be saved.
+   * @return {@link Single} that indicates the result of the save.
+   */
+  public Single<Row> save(Row row) {
+    return (
+        (row.getId() == 0)
+            ? insert(row)
+            : update(row)
+    )
+        .subscribeOn(Schedulers.io());
+  }
+
+  /**
+   * Constructs and returns a {@link Single} task that, when executed (subscribed to), will insert
+   * or update the specified {@code stitch} in the database, and pass the updated {@link RowStitch}
+   * instance to the subscribing {@link Consumer}. The specific persistence operation is determined
+   * by examining the value returned by {@link RowStitch#getId()}: a value of zero (0) indicates the
+   * {@code stitch} has not yet been {@code INSERT}ed and must be; a non-zero value indicates that
+   * {@code stitch} is already in the database, and must thus be {@code UPDATE}d.
+   *
+   * @param stitch The rowStitch that is to be saved.
+   * @return {@link Single} that indicates the result of the save.
+   */
+  public Single<RowStitch> save(RowStitch stitch) {
+    return (
+        (stitch.getId() == 0)
+            ? insert(stitch)
+            : update(stitch)
+    )
+        .subscribeOn(Schedulers.io());
+  }
+
+  /**
+   * Constructs and returns a {@link Single} task that, when executed (subscribed to), will insert
+   * or update the specified {@code stitches} in the database, and pass the updated
+   * {@link RowStitch} instance to the subscribing {@link Consumer}. The specific persistence
+   * operation is determined by examining the value returned by {@link RowStitch#getId()}: a value
+   * of zero (0) indicates the {@code stitches} have not yet been {@code INSERT}ed and must be; a
+   * non-zero value indicates that {@code stitches} are already in the database, and must thus be
+   * {@code UPDATE}d.
+   *
+   * @param stitches The stitches to be saved.
+   * @return {@link Single} that indicates the result of the save.
+   */
+  public Single<Collection<RowStitch>> save(Collection<RowStitch> stitches) {
+    return rowStitchDao
+        .insert(stitches)
+        .map((ids) -> {
+          Iterator<Long> idIterator = ids.iterator();
+          Iterator<RowStitch> stitchIterator = stitches.iterator();
+          while (idIterator.hasNext()) {
+            stitchIterator.next().setId(idIterator.next());
+          }
+          return stitches;
+        })
+        .subscribeOn(Schedulers.io());
+  }
+
+  /**
    * Constructs and returns a {@link Completable} task that, when executed (subscribed to), removes
    * the specified {@code pattern} from the database.
    *
@@ -105,6 +200,7 @@ public class PatternRepository {
         .subscribeOn(Schedulers.io());
   }
 
+
   private Single<Pattern> insert(Pattern pattern) {
     pattern.setCreated(Instant.now());
     return patternDao
@@ -112,16 +208,44 @@ public class PatternRepository {
         .map((id) -> {
           pattern.setId(id);
           return pattern;
-        })
-        .subscribeOn(Schedulers.io());
+        });
 
   }
 
   private Single<Pattern> update(Pattern pattern) {
     return patternDao
         .update(pattern)
-        .map((count) -> pattern)
-        .subscribeOn(Schedulers.io());
+        .map((count) -> pattern);
   }
 
+
+  private Single<Row> insert(Row row) {
+    return rowDao
+        .insert(row)
+        .map((id) -> {
+          row.setId(id);
+          return row;
+        });
+  }
+
+  private Single<Row> update(Row row) {
+    return rowDao
+        .update(row)
+        .map((count) -> row);
+  }
+
+  private Single<RowStitch> insert(RowStitch stitch) {
+    return rowStitchDao
+        .insert(stitch)
+        .map((id) -> {
+          stitch.setId(id);
+          return stitch;
+        });
+  }
+
+  private Single<RowStitch> update(RowStitch stitch) {
+    return rowStitchDao
+        .update(stitch)
+        .map((count) -> stitch);
+  }
 }

@@ -6,6 +6,9 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+/**
+ * This entity represents a row in a {@link Pattern}.
+ */
 @Entity(
     tableName = "row",
     indices = {
@@ -17,7 +20,7 @@ import androidx.room.PrimaryKey;
         @ForeignKey(entity = RowStitch.class,
             parentColumns = "row_stitch_id",
             childColumns = "current_stitch_id",
-        onDelete = ForeignKey.CASCADE)}
+            onDelete = ForeignKey.CASCADE)}
 )
 public class Row {
 
@@ -26,31 +29,49 @@ public class Row {
   private long id;
 
   @ColumnInfo(name = "current_stitch_id", index = true)
-  private long currentStitchId;
+  private Long currentStitchId;
 
   @ColumnInfo(name = "pattern_id", index = true)
   private long patternId;
 
+  /**
+   * Gets the id for a particular {@link Row}.
+   */
   public long getId() {
     return id;
   }
 
+  /**
+   * Sets the id for a particular {@link Row}.
+   */
   public void setId(long id) {
     this.id = id;
   }
 
-  public long getCurrentStitchId() {
+  /**
+   * Gets the currentStitchId for a particular {@link Row}
+   */
+  public Long getCurrentStitchId() {
     return currentStitchId;
   }
 
-  public void setCurrentStitchId(long currentStitchId) {
+  /**
+   * Gets the currentStitchId for a particular {@link Row}.
+   */
+  public void setCurrentStitchId(Long currentStitchId) {
     this.currentStitchId = currentStitchId;
   }
 
+  /**
+   * Gets the id for a particular {@link Pattern}.
+   */
   public long getPatternId() {
     return patternId;
   }
 
+  /**
+   * Sets the id for a particular {@link Pattern}.
+   */
   public void setPatternId(long patternId) {
     this.patternId = patternId;
   }

@@ -1,28 +1,58 @@
 package edu.cnm.deepdive.sereknitty.model;
 
+import edu.cnm.deepdive.sereknitty.R;
+import edu.cnm.deepdive.sereknitty.model.entity.Row;
+
+/**
+ * This is an {@link Enum} that holds a list of stitches. In knitting, a stitch is the basic
+ * building block. A {@link Row} is made up of many stitches, and this {@link Enum} represents all
+ * the stitches my app uses at the moment. Think of this class like a stitch dictionary.
+ */
 public enum Stitch {
 
-  // TODO: 2/15/2024 Find images for the knitting symbols.
-
-  KNIT("K"),
-  PURL("P"),
-  KNIT_2_TOGETHER("K2tog"),
-  PURL_2_TOGETHER("P2tog"),
-  YARN_OVER("YO"),
-  MAKE_1_RIGHT("M1R"),
-  MAKE_1_LEFT("M1L"),
-  KNIT_3_TOGETHER("K3tog");
+  KNIT("K", R.drawable.knit),
+  PURL("P", R.drawable.purl),
+  KNIT_2_TOGETHER("K2tog", R.drawable.knit_2_together),
+  SLIP_SLIP_KNIT("SSK", R.drawable.slip_slip_knit),
+  PURL_2_TOGETHER("P2tog", R.drawable.purl_2_together),
+  SLIP_SLIP_PURL("SSP", R.drawable.slip_slip_purl),
+  YARN_OVER("YO", R.drawable.yarn_over),
+  MAKE_1_RIGHT("M1R", R.drawable.make_1_right),
+  MAKE_1_LEFT("M1L", R.drawable.make_1_left),
+  KNIT_3_TOGETHER("K3tog", R.drawable.knit_3_together),
+  PURL_3_TOGETHER("P3tog", R.drawable.purl_3_together),
+  CENTER_DOUBLE_DECREASE("CDD", R.drawable.center_double_decrease);
 
   private final String shorthandAlphaNum;
+  private final int image;
 
-  Stitch(String shorthandAlphaNum) {
+  /**
+   * This constructor initializes all the fields and their assets.
+   *
+   * @param shorthandAlphaNum {@link String} shorthand for the stitch.
+   * @param drawableId        {@link int} representing the image for the symbolic shorthand for the
+   *                          stitch.
+   */
+  Stitch(String shorthandAlphaNum, int drawableId) {
     this.shorthandAlphaNum = shorthandAlphaNum;
+    this.image = drawableId;
   }
 
+  /**
+   * This getter returns the alphanumeric shorthand for the stitches.
+   *
+   * @return shorthandAlphaNum
+   */
   public String shorthandAlphaNum() {
     return shorthandAlphaNum;
   }
 
-// TODO: 2/12/2024 Figure out how to notate cabling, brioche knitting,
-
+  /**
+   * This getter returns the drawable image that will show the symbolic shorthand for the stitches.
+   *
+   * @return image
+   */
+  public int getImage() {
+    return image;
+  }
 }
