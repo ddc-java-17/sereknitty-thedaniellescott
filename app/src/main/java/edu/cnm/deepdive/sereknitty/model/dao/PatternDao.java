@@ -7,7 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
-import edu.cnm.deepdive.sereknitty.model.PatternWithRows;
+import edu.cnm.deepdive.sereknitty.model.pojo.PatternWithRows;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.pojo.PatternLocation;
 import io.reactivex.rxjava3.core.Single;

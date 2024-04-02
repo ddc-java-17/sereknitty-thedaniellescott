@@ -10,13 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.lifecycle.ViewModelProvider;
 import dagger.hilt.android.AndroidEntryPoint;
-import edu.cnm.deepdive.sereknitty.R;
 import edu.cnm.deepdive.sereknitty.adapter.RowsAdapter;
 import edu.cnm.deepdive.sereknitty.databinding.FragmentPatternReaderBinding;
-import edu.cnm.deepdive.sereknitty.model.PatternWithRows;
-import edu.cnm.deepdive.sereknitty.model.RowWithStitches;
 import edu.cnm.deepdive.sereknitty.viewmodel.PatternLibraryViewModel;
-import java.util.List;
 
 /**
  * This fragment holds the PatternReader that the user will use to read their current pattern.

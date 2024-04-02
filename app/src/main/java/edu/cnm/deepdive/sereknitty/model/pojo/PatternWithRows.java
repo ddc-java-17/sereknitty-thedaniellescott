@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.sereknitty.model;
+package edu.cnm.deepdive.sereknitty.model.pojo;
 
 import androidx.room.Relation;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;

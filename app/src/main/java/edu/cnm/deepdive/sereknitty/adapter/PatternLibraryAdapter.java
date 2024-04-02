@@ -12,12 +12,25 @@ import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This {@link Adapter} is the joining element between the data and the view model. This class sends
+ * the {@link List} of {@code patterns} to the
+ * {@link edu.cnm.deepdive.sereknitty.viewmodel.PatternLibraryViewModel} and populates the layout
+ * with data
+ */
 public class PatternLibraryAdapter extends Adapter<ViewHolder> {
 
   private final List<Pattern> patterns;
   private final LayoutInflater inflater;
   private final OnPatternClickListener listener;
 
+  /**
+   * This constructor is the
+   *
+   * @param context
+   * @param patterns
+   * @param listener
+   */
   public PatternLibraryAdapter(Context context, List<Pattern> patterns,
       OnPatternClickListener listener) {
     this.patterns = patterns;

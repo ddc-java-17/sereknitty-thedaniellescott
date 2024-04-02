@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import edu.cnm.deepdive.sereknitty.R;
 import edu.cnm.deepdive.sereknitty.databinding.ItemRowsBinding;
-import edu.cnm.deepdive.sereknitty.model.RowWithStitches;
+import edu.cnm.deepdive.sereknitty.model.pojo.RowWithStitches;
 import java.util.List;
 import edu.cnm.deepdive.sereknitty.model.entity.Row;
 

@@ -1,7 +1,7 @@
 package edu.cnm.deepdive.sereknitty.service;
 
 import androidx.lifecycle.LiveData;
-import edu.cnm.deepdive.sereknitty.model.PatternWithRows;
+import edu.cnm.deepdive.sereknitty.model.pojo.PatternWithRows;
 import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowStitchDao;

@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 import dagger.hilt.android.lifecycle.HiltViewModel;
-import edu.cnm.deepdive.sereknitty.model.PatternWithRows;
+import edu.cnm.deepdive.sereknitty.model.pojo.PatternWithRows;
 import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.entity.Row;
 import edu.cnm.deepdive.sereknitty.service.PatternRepository;
