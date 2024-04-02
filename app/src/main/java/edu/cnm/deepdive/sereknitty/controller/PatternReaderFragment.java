@@ -2,12 +2,12 @@ package edu.cnm.deepdive.sereknitty.controller;
 
 import android.os.Bundle;
 import android.util.Log;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.sereknitty.adapter.RowsAdapter;
@@ -15,7 +15,8 @@ import edu.cnm.deepdive.sereknitty.databinding.FragmentPatternReaderBinding;
 import edu.cnm.deepdive.sereknitty.viewmodel.PatternLibraryViewModel;
 
 /**
- * This fragment holds the PatternReader that the user will use to read their current pattern.
+ * This {@link Fragment} holds the logic for the {@link PatternReaderFragment} that the user will
+ * use to read a {@code pattern} that they selected from the {@link PatternLibraryFragment}.
  */
 @AndroidEntryPoint
 public class PatternReaderFragment extends Fragment {

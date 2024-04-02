@@ -19,6 +19,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.sereknitty.R;
 
@@ -36,8 +37,8 @@ public class SettingsActivity extends AppCompatActivity {
   }
 
   /**
-   * Presents a standard settings screen, populated from the
-   * {@link androidx.preference.PreferenceScreen} declared in {@code res/xml/settings.xml}.
+   * Presents a standard settings screen, populated from the {@link PreferenceScreen} declared in
+   * {@code res/xml/settings.xml}.
    */
   public static class SettingsFragment extends PreferenceFragmentCompat {
 

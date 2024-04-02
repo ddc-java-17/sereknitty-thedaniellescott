@@ -24,6 +24,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.sereknitty.R;
@@ -41,7 +42,7 @@ import java.util.stream.Collectors;
  * two {@link String String[]} arguments provided&mdash;one containing permissions to explain, and
  * the other containing permissions to request. (The latter are simply passed back to the host
  * activity, for subsequent invocation of
- * {@link androidx.core.app.ActivityCompat#requestPermissions(Activity, String[], int)}.)</p>
+ * {@link ActivityCompat#requestPermissions(Activity, String[], int)}.)</p>
  * <p>Rationales for permissions being explained are read from string resources, identified by
  * taking the last component of the permission name, converting it to lower case, appending
  * "_explanation", and using the result as the name of a string resource. If no such resource
