@@ -1,7 +1,6 @@
 package edu.cnm.deepdive.sereknitty.service;
 
 import androidx.lifecycle.LiveData;
-import edu.cnm.deepdive.sereknitty.model.pojo.PatternWithRows;
 import edu.cnm.deepdive.sereknitty.model.dao.PatternDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowDao;
 import edu.cnm.deepdive.sereknitty.model.dao.RowStitchDao;
@@ -9,8 +8,10 @@ import edu.cnm.deepdive.sereknitty.model.entity.Pattern;
 import edu.cnm.deepdive.sereknitty.model.entity.Row;
 import edu.cnm.deepdive.sereknitty.model.entity.RowStitch;
 import edu.cnm.deepdive.sereknitty.model.pojo.PatternLocation;
+import edu.cnm.deepdive.sereknitty.model.pojo.PatternWithRows;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import java.time.Instant;
 import java.util.Collection;
@@ -74,8 +75,10 @@ public class PatternRepository {
   }
 
   /**
-   * @param rowId
-   * @return
+   * Gets {@link RowStitch} instances linked to a particular {@link Row}.
+   *
+   * @param rowId Id of a paticular {@link Row}
+   * @return {@link LiveData}-based query for the {@link Row} identified by {@code rowId}.
    */
   public LiveData<List<RowStitch>> getStitchesByRow(long rowId) {
     return rowStitchDao.selectForRow(rowId);
@@ -117,6 +120,17 @@ public class PatternRepository {
         .subscribeOn(Schedulers.io());
   }
 
+  /**
+   * Constructs and returns a {@link Single} task that, when executed (subscribed to), will insert
+   * or update the specified {@code row} in the database, and pass the updated {@link Row} instance
+   * to the subscribing {@link Consumer}. The specific persistence operation is determined by
+   * examining the value returned by {@link Row#getId()}: a value of zero (0) indicates the
+   * {@code row} has not yet been {@code INSERT}ed and must be; a non-zero value indicates that
+   * {@code row} is already in the database, and must thus be {@code UPDATE}d.
+   *
+   * @param row The row that is to be saved.
+   * @return {@link Single} that indicates the result of the save.
+   */
   public Single<Row> save(Row row) {
     return (
         (row.getId() == 0)
@@ -126,6 +140,17 @@ public class PatternRepository {
         .subscribeOn(Schedulers.io());
   }
 
+  /**
+   * Constructs and returns a {@link Single} task that, when executed (subscribed to), will insert
+   * or update the specified {@code stitch} in the database, and pass the updated {@link RowStitch}
+   * instance to the subscribing {@link Consumer}. The specific persistence operation is determined
+   * by examining the value returned by {@link RowStitch#getId()}: a value of zero (0) indicates the
+   * {@code stitch} has not yet been {@code INSERT}ed and must be; a non-zero value indicates that
+   * {@code stitch} is already in the database, and must thus be {@code UPDATE}d.
+   *
+   * @param stitch The rowStitch that is to be saved.
+   * @return {@link Single} that indicates the result of the save.
+   */
   public Single<RowStitch> save(RowStitch stitch) {
     return (
         (stitch.getId() == 0)
@@ -135,6 +160,18 @@ public class PatternRepository {
         .subscribeOn(Schedulers.io());
   }
 
+  /**
+   * Constructs and returns a {@link Single} task that, when executed (subscribed to), will insert
+   * or update the specified {@code stitches} in the database, and pass the updated
+   * {@link RowStitch} instance to the subscribing {@link Consumer}. The specific persistence
+   * operation is determined by examining the value returned by {@link RowStitch#getId()}: a value
+   * of zero (0) indicates the {@code stitches} have not yet been {@code INSERT}ed and must be; a
+   * non-zero value indicates that {@code stitches} are already in the database, and must thus be
+   * {@code UPDATE}d.
+   *
+   * @param stitches The stitches to be saved.
+   * @return {@link Single} that indicates the result of the save.
+   */
   public Single<Collection<RowStitch>> save(Collection<RowStitch> stitches) {
     return rowStitchDao
         .insert(stitches)
