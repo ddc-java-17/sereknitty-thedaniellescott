@@ -27,6 +27,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import dagger.hilt.android.AndroidEntryPoint;
@@ -44,12 +45,11 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
- * Demonstrates access to and observation of {@link androidx.lifecycle.LiveData} elements in
- * {@link LoginViewModel}, {@link UserViewModel}, {@link PermissionsViewModel}, and
- * {@link PreferencesViewModel}, as well as acting as a navigation placeholder. This fragment can be
- * used as an example for creating other navigable fragments that access these core viewmodels; it
- * can then be evolved to provide more application-specific utility, or removed/replaced
- * altogether.
+ * Demonstrates access to and observation of {@link LiveData} elements in {@link LoginViewModel},
+ * {@link UserViewModel}, {@link PermissionsViewModel}, and {@link PreferencesViewModel}, as well as
+ * acting as a navigation placeholder. This fragment can be used as an example for creating other
+ * navigable fragments that access these core viewmodels; it can then be evolved to provide more
+ * application-specific utility, or removed/replaced altogether.
  */
 @AndroidEntryPoint
 public class DemoFragment extends Fragment {

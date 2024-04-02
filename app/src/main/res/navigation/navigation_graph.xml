@@ -29,7 +29,13 @@
 
     <action
       android:id="@+id/navigate_to_pattern_reader"
-      app:destination="@id/pattern_reader_fragment"/>
+      app:destination="@id/pattern_reader_fragment">
+
+      <argument
+        android:name="pattern_id"
+        app:argType="long"/>
+
+    </action>
 
     <action
       android:id="@+id/navigate_to_pattern_builder"
@@ -60,6 +66,10 @@
     android:name="edu.cnm.deepdive.sereknitty.controller.PatternReaderFragment"
     android:label="@string/pattern_reader_label"
     tools:layout="@layout/fragment_pattern_reader">
+
+    <argument
+      android:name="pattern_id"
+      app:argType="long"/>
 
   </fragment>
 

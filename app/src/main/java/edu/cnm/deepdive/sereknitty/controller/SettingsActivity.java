@@ -19,12 +19,15 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
+import dagger.hilt.android.AndroidEntryPoint;
 import edu.cnm.deepdive.sereknitty.R;
 
 /**
  * Hosts an instance of {@link SettingsFragment} to present a settings screen without any additional
  * UI elements (such as options menu).
  */
+@AndroidEntryPoint
 public class SettingsActivity extends AppCompatActivity {
 
   @Override
@@ -34,8 +37,8 @@ public class SettingsActivity extends AppCompatActivity {
   }
 
   /**
-   * Presents a standard settings screen, populated from the
-   * {@link androidx.preference.PreferenceScreen} declared in {@code res/xml/settings.xml}.
+   * Presents a standard settings screen, populated from the {@link PreferenceScreen} declared in
+   * {@code res/xml/settings.xml}.
    */
   public static class SettingsFragment extends PreferenceFragmentCompat {
 
